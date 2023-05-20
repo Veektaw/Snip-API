@@ -37,3 +37,6 @@ class UrlShortener(Resource):
 
 if __name__ == '__main__':
     app.run(debug=True)
+    
+    
+    #'id', db.Text(length=36), default=lambda: str(uuid.uuid4()), primary_key=True

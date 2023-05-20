@@ -1,4 +1,5 @@
 import os
+from flask_caching import Cache
 from decouple import config
 from datetime import timedelta
 
@@ -16,7 +17,6 @@ class Config:
     JWT_REFRESH_TOKEN_EXPIRES = timedelta(minutes=30)
     JWT_SECRET_KEY = config('JWT_SECRET_KEY')
  
-
 class DevConfig(Config):
     DEBUG = True
     SQLALCHEMY_TRACK_MODIFICATIONS = False

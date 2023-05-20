@@ -29,7 +29,7 @@ class URLCreator:
         
         if does_url_exist: 
             URLCreator.short_url()
-            return new_url
+        return new_url
     
 
     @classmethod

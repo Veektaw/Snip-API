@@ -3,13 +3,12 @@ import random
 import string
 from datetime import datetime
 from uuid import uuid4
-
+from flask_uuid import uuid
 
 class Url(db.Model):
     __tablename__  = 'urls'
 
-    id = db.Column(db.Integer(), primary_key=True)
-    uuid = db.Column(db.String(length=60), nullable=False,  unique=True)
+    id = db.Column('id', db.Text(length=36), default=lambda: str(uuid.uuid4()), primary_key=True)
     user_long_url = db.Column(db.String(300), nullable=False)
     qr_code_url = db.Column(db.String(300), nullable=True, unique=True)
     custom_url = db.Column(db.String(300), nullable=True, unique=True)
@@ -23,13 +22,12 @@ class Url(db.Model):
         return f"<url {self.id}>"
     
     def save(self):
-        self.uuid = uuid4().hex
         db.session.add(self)
         db.session.commit()
 
     @classmethod
-    def get_by_id(cls, uuid):
-        return cls.query.get_or_404(uuid)
+    def get_by_id(cls, id):
+        return cls.query.get_or_404(id)
     
     def delete(self):
         db.session.delete(self)
