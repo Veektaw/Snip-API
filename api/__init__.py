@@ -31,6 +31,9 @@ def create_app(config=config_dict['dev']):
     bcrypt = Bcrypt(app)
     migrate = Migrate(app, db)
     cache.init_app(app)
+    
+    
+    
     #limiter = Limiter(app, key_func=get_remote_address)
 
     authorizations = {
