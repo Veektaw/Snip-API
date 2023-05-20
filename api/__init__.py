@@ -5,7 +5,7 @@ from flask_restx import Api
 from .auth.views import auth_namespace
 from .urls.views import url_namespace
 from .config.config import config_dict
-from .utility import db
+from .utility import db, cache
 from .models.url import Url
 from .models.user import User
 from flask_migrate import Migrate
@@ -18,47 +18,20 @@ from flask_bcrypt import Bcrypt
 import logging
 from logging.handlers import RotatingFileHandler
 
-cache = Cache()
 
 def create_app(config=config_dict['dev']):
     app = Flask(__name__)
     app.config.from_object(config)
     CORS(app)
     
-    #cache = Cache(app, config={'CACHE_TYPE': 'simple', 'CACHE_DEFAULT_TIMEOUT': 300})
-    
-    
-    
-    log_file = 'app.log'
-    log_formatter = logging.Formatter('%(asctime)s %(levelname)s: %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
-    log_handler = RotatingFileHandler(log_file, maxBytes=1024 * 1024, backupCount=10)
-    log_handler.setFormatter(log_formatter)
-
-    cache = Cache(app, config={'CACHE_TYPE': 'simple', 'CACHE_DEFAULT_TIMEOUT': 300})
-    cache.init_app(app)
-
-    logger = logging.getLogger('my_logger')
-    logger.addHandler(log_handler)
-    logger.setLevel(logging.INFO)
-    
-    
-    class FlaskCacheHandler(logging.Handler):
-        def emit(self, record):
-            cache_key = 'log_cache_key'
-            logs = cache.get(cache_key) or []
-            logs.append(self.format(record))
-            cache.set(cache_key, logs)
-
-    flask_cache_handler = FlaskCacheHandler()
-    logger.addHandler(flask_cache_handler) 
-    
-    #limiter = Limiter(app, key_func=get_remote_address)
 
     db.init_app(app)
 
     jwt = JWTManager(app)
     bcrypt = Bcrypt(app)
     migrate = Migrate(app, db)
+    cache.init_app(app)
+    #limiter = Limiter(app, key_func=get_remote_address)
 
     authorizations = {
         'Bearer Auth':{
@@ -69,8 +42,8 @@ def create_app(config=config_dict['dev']):
         }
     }
 
-    api = Api(app, title='Stdent portal API',
-              description='A student portal API',
+    api = Api(app, title='Scissor',
+              description='A URL shortening API',
               version = 1.0,
               authorizations=authorizations,
               security='Bearer Auth')
@@ -95,5 +68,11 @@ def create_app(config=config_dict['dev']):
             'user': User
         }
 
+    log_file = 'app.log'
+    log_formatter = logging.Formatter('%(asctime)s %(levelname)s: %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
+    log_handler = RotatingFileHandler(log_file, maxBytes=1024 * 1024, backupCount=10)
+    log_handler.setFormatter(log_formatter)
+    app.logger.addHandler(log_handler)
+    
 
     return app

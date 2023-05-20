@@ -1,12 +1,17 @@
 import qrcode
+import base64
 import io
 import logging
 from http import HTTPStatus
 from flask_restx import Namespace , Resource 
-from flask import request , Response, send_file, redirect
+from flask import request , Response, send_file, redirect, make_response
 from flask_jwt_extended import jwt_required , get_jwt_identity
-from .serializer import url_expect_serializer , url_marshall_serializer, url_namespace
-from ..utility import db
+from .serializer import (url_expect_serializer, 
+                         url_marshall_serializer,
+                         url_custom_expect_serializer,
+                         url_custom_marshall_serializer,
+                         url_namespace)
+from ..utility import db, cache, limiter
 from api.helpers.url_validator import URLCreator
 from api.models.user import User
 from api.models.url import Url
@@ -14,10 +19,6 @@ from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 from flask_caching import Cache
 #from api.auth.views import DateTimeEncoder
-
-
-cache = Cache()
-limiter = Limiter(key_func=get_remote_address)
  
 
 @url_namespace.route('/create')
@@ -53,12 +54,12 @@ class CreateURL(Resource):
       
         if URLCreator.is_valid_url(user_long_url):
             url_title = URLCreator.extract_url_data(user_long_url)
-            short_url = URLCreator.short_url()
+            short_url = URLCreator.short_url(user_long_url)
          
             url = Url (
                 user_long_url = user_long_url,
                 short_url = short_url,
-                    url_title = url_title,
+                url_title = url_title,
                 creator = authenticated_user.email
             )
          
@@ -71,6 +72,7 @@ class CreateURL(Resource):
                 response = {"message": "Error loading"} 
                 return response , HTTPStatus.INTERNAL_SERVER_ERROR 
         
+            logger.debug(f"Created a short url: {url}")
             return url, HTTPStatus.OK  
     
         logger.warning("This is not a valid URL")
@@ -79,13 +81,77 @@ class CreateURL(Resource):
    
 
 
+@url_namespace.route('/custom')
+class CreateCustomURL(Resource):
+   
+    @url_namespace.expect(url_custom_expect_serializer)     
+    @url_namespace.marshal_with(url_custom_marshall_serializer)
+    @url_namespace.doc(description = "Make a custom url",
+                      params={"user_long_url":"Long url by the user",
+                              "custom_url": "User provides a custom url"}) 
+    #@cache.cached(timeout=50)
+    @limiter.limit("10/minute")  
+    @jwt_required()
+     
+    def post(self):
+       
+        """
+    
+            Create a custom URL. User provides long url, and it is shortened.
+    
+        """
+        logger = logging.getLogger(__name__)
+        logger.info("CreateCustomURL is called")
+       
+        current_user = get_jwt_identity() 
+        authenticated_user = User.query.filter_by(email=current_user).first()  
+       
+        if not authenticated_user:
+            logger.error("User not found")
+            return {"message": "User not found"}, HTTPStatus.NOT_FOUND     
+       
+        data = request.get_json()
+        user_long_url = data.get('user_long_url')
+        custom_url = data.get('custom_url')
+      
+        if URLCreator.is_valid_url(user_long_url):
+            url_title = URLCreator.extract_url_data(user_long_url)
+            custom_url = URLCreator.custom_url(user_long_url, custom_url)
+         
+            url = Url (
+                user_long_url = user_long_url,
+                custom_url = custom_url,
+                url_title = url_title,
+                creator = authenticated_user.email
+            )
+         
+            try:
+                url.save()
+            
+            except:
+                logger.exception("Error loading")
+                db.session.rollback()
+                response = {"message": "Error loading"} 
+                return response , HTTPStatus.INTERNAL_SERVER_ERROR
+             
+            logger.debug(f"Created custom url: {url}")
+            return url, HTTPStatus.OK  
+    
+        logger.warning("This is not a valid URL")
+        response = {"message": "This is not a valid URL"}
+        return response, HTTPStatus.BAD_REQUEST
+
+
+
+
+
 @url_namespace.route('/urls') 
 class GetURLS(Resource):
    
     @url_namespace.doc(description = "Get all URLS",
                        params = {"get method":"Get all URLs"})
     @url_namespace.marshal_with(url_marshall_serializer) 
-    @cache.cached(timeout=50)
+    #@cache.cached(timeout=50)
     @limiter.limit("10/minute") 
     @jwt_required()
 
@@ -248,10 +314,11 @@ class GetURLSInfo(Resource):
 @url_namespace.route('/<id>/qrcode')
 class GenerateURLQrCodeApiView(Resource):
    
-    @url_namespace.doc(description = "Get Analytics") 
+    @url_namespace.doc(description = "Get QR code of a short URL",
+                       params={"id": "UUID of the short URL created earlier"}) 
     @jwt_required()
        
-    def get(self, url_uuid ):
+    def get(self, id):
         authenticated_user_email = get_jwt_identity() 
       
         authenticated_user = User.query.filter_by(email = authenticated_user_email).first()
@@ -259,12 +326,19 @@ class GenerateURLQrCodeApiView(Resource):
         if not authenticated_user:
             return {"message": "User not found"}, HTTPStatus.NOT_FOUND
 
-        url = Url.query.filter_by(creator = authenticated_user.email).all()
-        img = qrcode.make(url_uuid)
+        url = Url.query.filter_by(id=id, creator=authenticated_user.email).first()
+        img = qrcode.make(id)
         img_io = io.BytesIO()
         img.save(img_io, 'PNG')
         img_io.seek(0)
+        
+        image_data = base64.b64encode(img_io.getvalue()).decode('utf-8')
+        url.qr_code_url = image_data
+        url.save()
       
-        return send_file(img_io, mimetype='image/png', as_attachment = True, attachment_filename='qrcode.png')
+        response = make_response(send_file(img_io, mimetype='image/png'))
+        response.headers['Content-Disposition'] = f'attachment; filename=qrcode_{url.id}.png'
+        
+        return response, HTTPStatus.CREATED
 
 

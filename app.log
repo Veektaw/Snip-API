@@ -1,34 +1,10 @@
-
-
-2023-05-20 01:12:48 INFO: GetURLS endpoint called
-2023-05-20 01:12:48 ERROR: Exception on /url/urls [GET]
-Traceback (most recent call last):
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/flask/app.py", line 1820, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/flask/app.py", line 1796, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/flask_restx/api.py", line 404, in wrapper
-    resp = resource(*args, **kwargs)
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/flask/views.py", line 107, in view
-    return current_app.ensure_sync(self.dispatch_request)(**kwargs)
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/flask_restx/resource.py", line 46, in dispatch_request
-    resp = meth(*args, **kwargs)
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/api/urls/views.py", line 85, in get
-    authenticated_user_email = get_jwt_identity()
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/flask_jwt_extended/utils.py", line 62, in get_jwt_identity
-    return get_jwt().get(config.identity_claim_key, None)
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/flask_jwt_extended/utils.py", line 28, in get_jwt
-    raise RuntimeError(
-RuntimeError: You must call `@jwt_required()` or `verify_jwt_in_request()` before using this method
-2023-05-20 01:14:07 INFO: GetURLS endpoint called
-2023-05-20 01:14:07 DEBUG: Retrieved 2 URLs
-2023-05-20 01:51:12 ERROR: Exception on /url/urls [GET]
+2023-05-20 10:47:31 ERROR: Exception on /url/create [POST]
 Traceback (most recent call last):
   File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/flask_caching/__init__.py", line 380, in decorated_function
     rv = self.cache.get(cache_key)
   File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/flask_caching/__init__.py", line 186, in cache
     return app.extensions["cache"][self]
-KeyError: <flask_caching.Cache object at 0x103727d60>
+KeyError: <flask_caching.Cache object at 0x10a354fd0>
 
 During handling of the above exception, another exception occurred:
 
@@ -48,13 +24,13 @@ Traceback (most recent call last):
   File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/flask_caching/__init__.py", line 398, in decorated_function
     if self.app.debug:
 AttributeError: 'Cache' object has no attribute 'app'
-2023-05-20 01:53:13 ERROR: Exception on /url/urls [GET]
+2023-05-20 11:03:36 ERROR: Exception on /url/create [POST]
 Traceback (most recent call last):
   File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/flask_caching/__init__.py", line 380, in decorated_function
     rv = self.cache.get(cache_key)
   File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/flask_caching/__init__.py", line 186, in cache
     return app.extensions["cache"][self]
-KeyError: <flask_caching.Cache object at 0x103b42d90>
+KeyError: <flask_caching.Cache object at 0x1075b3af0>
 
 During handling of the above exception, another exception occurred:
 
@@ -74,13 +50,13 @@ Traceback (most recent call last):
   File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/flask_caching/__init__.py", line 398, in decorated_function
     if self.app.debug:
 AttributeError: 'Cache' object has no attribute 'app'
-2023-05-20 01:55:17 ERROR: Exception on /url/urls [GET]
+2023-05-20 11:05:08 ERROR: Exception on /url/create [POST]
 Traceback (most recent call last):
   File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/flask_caching/__init__.py", line 380, in decorated_function
     rv = self.cache.get(cache_key)
   File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/flask_caching/__init__.py", line 186, in cache
     return app.extensions["cache"][self]
-KeyError: <flask_caching.Cache object at 0x102a55c10>
+KeyError: <flask_caching.Cache object at 0x1048b1ac0>
 
 During handling of the above exception, another exception occurred:
 
@@ -100,13 +76,13 @@ Traceback (most recent call last):
   File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/flask_caching/__init__.py", line 398, in decorated_function
     if self.app.debug:
 AttributeError: 'Cache' object has no attribute 'app'
-2023-05-20 01:55:40 ERROR: Exception on /url/urls [GET]
+2023-05-20 11:15:02 ERROR: Exception on /url/create [POST]
 Traceback (most recent call last):
   File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/flask_caching/__init__.py", line 380, in decorated_function
     rv = self.cache.get(cache_key)
   File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/flask_caching/__init__.py", line 186, in cache
     return app.extensions["cache"][self]
-KeyError: <flask_caching.Cache object at 0x1028f4cd0>
+KeyError: <flask_caching.Cache object at 0x1041fad90>
 
 During handling of the above exception, another exception occurred:
 
@@ -126,13 +102,13 @@ Traceback (most recent call last):
   File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/flask_caching/__init__.py", line 398, in decorated_function
     if self.app.debug:
 AttributeError: 'Cache' object has no attribute 'app'
-2023-05-20 01:58:19 ERROR: Exception on /url/urls [GET]
+2023-05-20 11:19:42 ERROR: Exception on /url/create [POST]
 Traceback (most recent call last):
   File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/flask_caching/__init__.py", line 380, in decorated_function
     rv = self.cache.get(cache_key)
   File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/flask_caching/__init__.py", line 186, in cache
     return app.extensions["cache"][self]
-KeyError: <flask_caching.Cache object at 0x1100f8be0>
+KeyError: <flask_caching.Cache object at 0x10369ab80>
 
 During handling of the above exception, another exception occurred:
 
@@ -152,15 +128,13 @@ Traceback (most recent call last):
   File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/flask_caching/__init__.py", line 398, in decorated_function
     if self.app.debug:
 AttributeError: 'Cache' object has no attribute 'app'
-2023-05-20 02:00:55 INFO: GetURLS endpoint called
-2023-05-20 02:00:55 DEBUG: Retrieved 2 URLs
-2023-05-20 02:04:14 ERROR: Exception on /url/urls [GET]
+2023-05-20 11:19:59 ERROR: Exception on /url/create [POST]
 Traceback (most recent call last):
   File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/flask_caching/__init__.py", line 380, in decorated_function
     rv = self.cache.get(cache_key)
   File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/flask_caching/__init__.py", line 186, in cache
     return app.extensions["cache"][self]
-KeyError: <flask_caching.Cache object at 0x1062f1f10>
+KeyError: <flask_caching.Cache object at 0x10d15d0a0>
 
 During handling of the above exception, another exception occurred:
 
@@ -180,144 +154,7 @@ Traceback (most recent call last):
   File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/flask_caching/__init__.py", line 398, in decorated_function
     if self.app.debug:
 AttributeError: 'Cache' object has no attribute 'app'
-2023-05-20 02:12:36 ERROR: Exception on /url/create [POST]
-Traceback (most recent call last):
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/flask_caching/__init__.py", line 380, in decorated_function
-    rv = self.cache.get(cache_key)
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/flask_caching/__init__.py", line 186, in cache
-    return app.extensions["cache"][self]
-KeyError: <flask_caching.Cache object at 0x10a6ffdc0>
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/flask/app.py", line 1820, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/flask/app.py", line 1796, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/flask_restx/api.py", line 404, in wrapper
-    resp = resource(*args, **kwargs)
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/flask/views.py", line 107, in view
-    return current_app.ensure_sync(self.dispatch_request)(**kwargs)
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/flask_restx/resource.py", line 46, in dispatch_request
-    resp = meth(*args, **kwargs)
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/flask_restx/marshalling.py", line 244, in wrapper
-    resp = f(*args, **kwargs)
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/flask_caching/__init__.py", line 398, in decorated_function
-    if self.app.debug:
-AttributeError: 'Cache' object has no attribute 'app'
-2023-05-20 02:19:31 ERROR: Exception on /url/create [POST]
-Traceback (most recent call last):
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/flask_caching/__init__.py", line 380, in decorated_function
-    rv = self.cache.get(cache_key)
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/flask_caching/__init__.py", line 186, in cache
-    return app.extensions["cache"][self]
-KeyError: <flask_caching.Cache object at 0x10f010d60>
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/flask/app.py", line 1820, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/flask/app.py", line 1796, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/flask_restx/api.py", line 404, in wrapper
-    resp = resource(*args, **kwargs)
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/flask/views.py", line 107, in view
-    return current_app.ensure_sync(self.dispatch_request)(**kwargs)
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/flask_restx/resource.py", line 46, in dispatch_request
-    resp = meth(*args, **kwargs)
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/flask_restx/marshalling.py", line 244, in wrapper
-    resp = f(*args, **kwargs)
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/flask_caching/__init__.py", line 398, in decorated_function
-    if self.app.debug:
-AttributeError: 'Cache' object has no attribute 'app'
-2023-05-20 02:26:41 ERROR: Exception on /url/create [POST]
-Traceback (most recent call last):
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/flask_caching/__init__.py", line 380, in decorated_function
-    rv = self.cache.get(cache_key)
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/flask_caching/__init__.py", line 186, in cache
-    return app.extensions["cache"][self]
-KeyError: <flask_caching.Cache object at 0x108cf7c10>
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/flask/app.py", line 1820, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/flask/app.py", line 1796, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/flask_restx/api.py", line 404, in wrapper
-    resp = resource(*args, **kwargs)
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/flask/views.py", line 107, in view
-    return current_app.ensure_sync(self.dispatch_request)(**kwargs)
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/flask_restx/resource.py", line 46, in dispatch_request
-    resp = meth(*args, **kwargs)
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/flask_restx/marshalling.py", line 244, in wrapper
-    resp = f(*args, **kwargs)
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/flask_caching/__init__.py", line 398, in decorated_function
-    if self.app.debug:
-AttributeError: 'Cache' object has no attribute 'app'
-2023-05-20 02:32:51 ERROR: Exception on /url/create [POST]
-Traceback (most recent call last):
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/flask_caching/__init__.py", line 380, in decorated_function
-    rv = self.cache.get(cache_key)
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/flask_caching/__init__.py", line 186, in cache
-    return app.extensions["cache"][self]
-KeyError: <flask_caching.Cache object at 0x103f59400>
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/flask/app.py", line 1820, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/flask/app.py", line 1796, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/flask_restx/api.py", line 404, in wrapper
-    resp = resource(*args, **kwargs)
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/flask/views.py", line 107, in view
-    return current_app.ensure_sync(self.dispatch_request)(**kwargs)
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/flask_restx/resource.py", line 46, in dispatch_request
-    resp = meth(*args, **kwargs)
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/flask_restx/marshalling.py", line 244, in wrapper
-    resp = f(*args, **kwargs)
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/flask_caching/__init__.py", line 398, in decorated_function
-    if self.app.debug:
-AttributeError: 'Cache' object has no attribute 'app'
-2023-05-20 02:42:33 ERROR: Exception on /url/create [POST]
-Traceback (most recent call last):
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/flask/app.py", line 1820, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/flask/app.py", line 1796, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/flask_restx/api.py", line 404, in wrapper
-    resp = resource(*args, **kwargs)
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/flask/views.py", line 107, in view
-    return current_app.ensure_sync(self.dispatch_request)(**kwargs)
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/flask_restx/resource.py", line 46, in dispatch_request
-    resp = meth(*args, **kwargs)
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/flask_restx/marshalling.py", line 244, in wrapper
-    resp = f(*args, **kwargs)
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/flask_limiter/extension.py", line 1191, in __inner
-    R, flask.current_app.ensure_sync(cast(Callable[P, R], obj))(*a, **k)
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/flask_jwt_extended/view_decorators.py", line 153, in decorator
-    verify_jwt_in_request(optional, fresh, refresh, locations, verify_type)
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/flask_jwt_extended/view_decorators.py", line 89, in verify_jwt_in_request
-    jwt_data, jwt_header, jwt_location = _decode_jwt_from_request(
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/flask_jwt_extended/view_decorators.py", line 323, in _decode_jwt_from_request
-    decoded_token = decode_token(encoded_token, csrf_token)
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/flask_jwt_extended/utils.py", line 127, in decode_token
-    return jwt_manager._decode_jwt_from_config(encoded_token, csrf_value, allow_expired)
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/flask_jwt_extended/jwt_manager.py", line 553, in _decode_jwt_from_config
-    return _decode_jwt(**kwargs, allow_expired=allow_expired)
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/flask_jwt_extended/tokens.py", line 94, in _decode_jwt
-    decoded_token = jwt.decode(
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/jwt/api_jwt.py", line 168, in decode
-    decoded = self.decode_complete(
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/jwt/api_jwt.py", line 136, in decode_complete
-    self._validate_claims(
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/jwt/api_jwt.py", line 199, in _validate_claims
-    self._validate_exp(payload, now, leeway)
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.9/site-packages/jwt/api_jwt.py", line 237, in _validate_exp
-    raise ExpiredSignatureError("Signature has expired")
-jwt.exceptions.ExpiredSignatureError: Signature has expired
+2023-05-20 11:24:54 INFO: CreateURL is called
+2023-05-20 11:24:57 DEBUG: Created short url: <url ffd379a7-53cf-41b5-ba36-0029c918a2dd>
+2023-05-20 11:33:25 INFO: CreateURL is called
+2023-05-20 11:33:28 DEBUG: Created a short url: <url 4731fecd-2392-4ada-87e5-d83c64f6d8b2>

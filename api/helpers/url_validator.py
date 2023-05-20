@@ -21,7 +21,7 @@ def check_valid_url(url):
 class URLCreator:
 
     @classmethod
-    def short_url(cls):
+    def short_url(cls, user_long_url):
         characters_combinantion = string.ascii_letters + string.digits
         random_string_combination = ''.join(random.choices(characters_combinantion, k=5))
         new_url = f"https://{request.host}/{random_string_combination}"
@@ -30,6 +30,17 @@ class URLCreator:
         if does_url_exist: 
             URLCreator.short_url()
         return new_url
+    
+    
+    @classmethod
+    def custom_url(cls, user_long_url, custom_url):
+            new_url = f"https://{request.host}/{custom_url}"
+            does_url_exist = Url.check_url(new_url)
+        
+            if does_url_exist:
+                URLCreator.custom_url()
+        
+            return new_url
     
 
     @classmethod

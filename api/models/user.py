@@ -1,7 +1,10 @@
 from ..utility import db
-from sqlalchemy import text as sa_text
+from sqlalchemy import text
 from sqlalchemy.dialects.postgresql import UUID
 from flask_uuid import uuid
+from sqlalchemy.ext.declarative import declarative_base
+
+Base = declarative_base()
 
 
 class User(db.Model):
