@@ -13,7 +13,7 @@ class Url(db.Model):
     qr_code_url = db.Column(db.String(300), nullable=True, unique=True)
     custom_url = db.Column(db.String(300), nullable=True, unique=True)
     short_url = db.Column(db.String(300), nullable=True, unique=True)
-    created = db.Column(db.DateTime() , nullable=False , default=datetime.utcnow)
+    created = db.Column(db.DateTime, nullable=False , default=datetime.utcnow)
     url_title = db.Column(db.String(300), nullable=True)
     visited = db.Column(db.Integer(), default=0)
     creator = db.Column(db.Integer(), db.ForeignKey('users.id') , nullable=False)
@@ -24,6 +24,10 @@ class Url(db.Model):
     def save(self):
         db.session.add(self)
         db.session.commit()
+        
+    def format_datetime(dt):
+        return dt.strftime("%Y-%m-%d %I:%M %p")    
+    
 
     @classmethod
     def get_by_id(cls, id):

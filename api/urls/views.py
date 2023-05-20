@@ -4,7 +4,7 @@ import io
 import logging
 from http import HTTPStatus
 from flask_restx import Namespace , Resource 
-from flask import request , Response, send_file, redirect, make_response
+from flask import request , Response, send_file, redirect, make_response, current_app
 from flask_jwt_extended import jwt_required , get_jwt_identity
 from .serializer import (url_expect_serializer, 
                          url_marshall_serializer,
@@ -24,11 +24,11 @@ from flask_caching import Cache
 @url_namespace.route('/create')
 class CreateURL(Resource):
    
+    @cache.cached(timeout=50)
     @url_namespace.expect(url_expect_serializer)     
     @url_namespace.marshal_with(url_marshall_serializer)
     @url_namespace.doc(description = "Make a url short",
                       params={"user_long_url":"Long url by the user"}) 
-    @cache.cached(timeout=50)
     @limiter.limit("10/minute")  
     @jwt_required()
      
@@ -39,6 +39,8 @@ class CreateURL(Resource):
             Create a short URL. User provides long url, and it is shortened.
     
         """
+        
+        
         logger = logging.getLogger(__name__)
         logger.info("CreateURL is called")
        
@@ -77,6 +79,7 @@ class CreateURL(Resource):
     
         logger.warning("This is not a valid URL")
         response = {"message": "This is not a valid URL"}
+        
         return response, HTTPStatus.BAD_REQUEST
    
 
@@ -84,6 +87,7 @@ class CreateURL(Resource):
 @url_namespace.route('/custom')
 class CreateCustomURL(Resource):
    
+    @cache.cached(timeout=50)
     @url_namespace.expect(url_custom_expect_serializer)     
     @url_namespace.marshal_with(url_custom_marshall_serializer)
     @url_namespace.doc(description = "Make a custom url",
@@ -144,14 +148,13 @@ class CreateCustomURL(Resource):
 
 
 
-
 @url_namespace.route('/urls') 
 class GetURLS(Resource):
    
+    @cache.cached(timeout=50)
     @url_namespace.doc(description = "Get all URLS",
                        params = {"get method":"Get all URLs"})
     @url_namespace.marshal_with(url_marshall_serializer) 
-    #@cache.cached(timeout=50)
     @limiter.limit("10/minute") 
     @jwt_required()
 
@@ -183,7 +186,8 @@ class GetURLS(Resource):
     
 @url_namespace.route('/<id>')
 class ViewDeleteURLbyID(Resource):
-   
+    
+    @cache.cached(timeout=50)
     @url_namespace.doc(description = "Get a URL by id",
                        params = {"id":"UUID of the URL"})
     @url_namespace.marshal_with(url_marshall_serializer)  
@@ -214,7 +218,7 @@ class ViewDeleteURLbyID(Resource):
         return url, HTTPStatus.OK
     
     
-    
+    @cache.cached(timeout=50)
     @url_namespace.doc(description = "Get a URl by UUID",
                        params = {"id":"UUID of the URL"})
     @jwt_required()
@@ -249,14 +253,19 @@ class ViewDeleteURLbyID(Resource):
 @url_namespace.route('/<short_url>/visited')
 class ShortUrlRedirect(Resource):
     
+    @cache.cached(timeout=50)
     @url_namespace.doc(description = "Get Analytics",
                        params = {"short_url":"The short URL"})
     @jwt_required()
     
     def get(self, short_url):
         url = Url.query.filter_by(short_url=short_url).first()
+        
+        logger = logging.getLogger(__name__)
+        logger.info("ShortURLRedirect is called")
 
         if url is None:
+            logger.error("Invalid short URL")
             return {"message": "Invalid short URL"}, HTTPStatus.BAD_REQUEST
 
         url.visited += 1
@@ -268,6 +277,7 @@ class ShortUrlRedirect(Resource):
 @url_namespace.route('/info') 
 class GetURLSInfo(Resource):
    
+    @cache.cached(timeout=50)
     @url_namespace.doc(description= "Get infomation about urls",
                        params = {"id":"This provides more information about the URLS"})    
     @jwt_required()
@@ -275,7 +285,7 @@ class GetURLSInfo(Resource):
     def get(self):
         
         logger = logging.getLogger(__name__)
-        logger.info("GetURLSInfo info called")
+        logger.info("GetURLSInfo is called")
         
         authenticated_user_email = get_jwt_identity() 
         authenticated_user = User.query.filter_by(email = authenticated_user_email).first()
@@ -312,13 +322,18 @@ class GetURLSInfo(Resource):
 
 
 @url_namespace.route('/<id>/qrcode')
-class GenerateURLQrCodeApiView(Resource):
+class GenerateURLQRCode(Resource):
    
+    @cache.cached(timeout=50)
     @url_namespace.doc(description = "Get QR code of a short URL",
                        params={"id": "UUID of the short URL created earlier"}) 
     @jwt_required()
        
     def get(self, id):
+        
+        logger = logging.getLogger(__name__)
+        logger.info("GenerateURLQRCode is called")
+        
         authenticated_user_email = get_jwt_identity() 
       
         authenticated_user = User.query.filter_by(email = authenticated_user_email).first()
@@ -338,6 +353,8 @@ class GenerateURLQrCodeApiView(Resource):
       
         response = make_response(send_file(img_io, mimetype='image/png'))
         response.headers['Content-Disposition'] = f'attachment; filename=qrcode_{url.id}.png'
+        
+        logger.debug(f"QR code {response} created")
         
         return response, HTTPStatus.CREATED
 

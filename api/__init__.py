@@ -30,9 +30,8 @@ def create_app(config=config_dict['dev']):
     jwt = JWTManager(app)
     bcrypt = Bcrypt(app)
     migrate = Migrate(app, db)
+    
     cache.init_app(app)
-    
-    
     
     #limiter = Limiter(app, key_func=get_remote_address)
 
@@ -72,7 +71,8 @@ def create_app(config=config_dict['dev']):
         }
 
     log_file = 'app.log'
-    log_formatter = logging.Formatter('%(asctime)s %(levelname)s: %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
+    log_formatter = logging.Formatter('%(asctime)s %(levelname)s: %(message)s',
+                                      datefmt='%Y-%m-%d %H:%M:%S')
     log_handler = RotatingFileHandler(log_file, maxBytes=1024 * 1024, backupCount=10)
     log_handler.setFormatter(log_formatter)
     app.logger.addHandler(log_handler)

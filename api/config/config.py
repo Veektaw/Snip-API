@@ -16,9 +16,8 @@ class Config:
     JWT_ACCESS_TOKEN_EXPIRES = timedelta(minutes=30)
     JWT_REFRESH_TOKEN_EXPIRES = timedelta(minutes=30)
     JWT_SECRET_KEY = config('JWT_SECRET_KEY')
-    
-    
-cache = Cache(config={'CACHE_TYPE': 'simple', 'CACHE_DEFAULT_TIMEOUT': 300})
+    CACHE_TYPE = "SimpleCache"
+    CACHE_DEFAULT_TIMEOUT = 50
  
 class DevConfig(Config):
     DEBUG = True
