@@ -4,7 +4,7 @@ import io
 import logging
 from http import HTTPStatus
 from flask_restx import Namespace , Resource 
-from flask import request , Response, send_file, redirect, make_response, current_app
+from flask import request , Response, send_file, redirect, make_response, current_app, session
 from flask_jwt_extended import jwt_required , get_jwt_identity
 from .serializer import (url_expect_serializer, 
                          url_marshall_serializer,
@@ -15,22 +15,19 @@ from ..utility import db, cache, limiter
 from api.helpers.url_validator import URLCreator
 from api.models.user import User
 from api.models.url import Url
-from flask_limiter import Limiter
-from flask_limiter.util import get_remote_address
-from flask_caching import Cache
 #from api.auth.views import DateTimeEncoder
  
 
 @url_namespace.route('/create')
 class CreateURL(Resource):
    
-    @cache.cached(timeout=50)
     @url_namespace.expect(url_expect_serializer)     
     @url_namespace.marshal_with(url_marshall_serializer)
     @url_namespace.doc(description = "Make a url short",
-                      params={"user_long_url":"Long url by the user"}) 
-    @limiter.limit("10/minute")  
+                      params={"user_long_url":"Long url by the user"})   
     @jwt_required()
+    @cache.cached(timeout=50)
+    @limiter.limit("10/minute")
      
     def post(self):
        
@@ -87,15 +84,15 @@ class CreateURL(Resource):
 @url_namespace.route('/custom')
 class CreateCustomURL(Resource):
    
-    @cache.cached(timeout=50)
+
     @url_namespace.expect(url_custom_expect_serializer)     
     @url_namespace.marshal_with(url_custom_marshall_serializer)
     @url_namespace.doc(description = "Make a custom url",
                       params={"user_long_url":"Long url by the user",
-                              "custom_url": "User provides a custom url"}) 
-    #@cache.cached(timeout=50)
-    @limiter.limit("10/minute")  
+                              "custom_url": "User provides a custom url"})  
     @jwt_required()
+    @cache.cached(timeout=50)
+    @limiter.limit("10/minute")
      
     def post(self):
        
@@ -151,15 +148,16 @@ class CreateCustomURL(Resource):
 @url_namespace.route('/urls') 
 class GetURLS(Resource):
    
-    @cache.cached(timeout=50)
+    
     @url_namespace.doc(description = "Get all URLS",
                        params = {"get method":"Get all URLs"})
-    @url_namespace.marshal_with(url_marshall_serializer) 
-    @limiter.limit("10/minute") 
+    @url_namespace.marshal_with(url_marshall_serializer)  
     @jwt_required()
+    @cache.cached(timeout=50)
+    @limiter.limit("5 per minute")
 
     def get(self):
-        
+
         """
     
         Get all URLS, with a simple get method.
@@ -187,11 +185,12 @@ class GetURLS(Resource):
 @url_namespace.route('/<id>')
 class ViewDeleteURLbyID(Resource):
     
-    @cache.cached(timeout=50)
     @url_namespace.doc(description = "Get a URL by id",
                        params = {"id":"UUID of the URL"})
     @url_namespace.marshal_with(url_marshall_serializer)  
     @jwt_required()
+    @cache.cached(timeout=50)
+    @limiter.limit('3 per minute', key_func = lambda : session.get("id"))
        
     def get(self, id):
         
@@ -218,10 +217,11 @@ class ViewDeleteURLbyID(Resource):
         return url, HTTPStatus.OK
     
     
-    @cache.cached(timeout=50)
     @url_namespace.doc(description = "Get a URl by UUID",
                        params = {"id":"UUID of the URL"})
     @jwt_required()
+    @cache.cached(timeout=50)
+    @limiter.limit("10/minute")
     
     def delete(self, id):
         
@@ -253,10 +253,11 @@ class ViewDeleteURLbyID(Resource):
 @url_namespace.route('/<short_url>/visited')
 class ShortUrlRedirect(Resource):
     
-    @cache.cached(timeout=50)
-    @url_namespace.doc(description = "Get Analytics",
-                       params = {"short_url":"The short URL"})
+    @url_namespace.doc(description = "Add clicks to a created short URL",
+                       params = {"short_url":"Clicks"})
     @jwt_required()
+    @cache.cached(timeout=50)
+    @limiter.limit("10/minute")
     
     def get(self, short_url):
         url = Url.query.filter_by(short_url=short_url).first()
@@ -277,10 +278,11 @@ class ShortUrlRedirect(Resource):
 @url_namespace.route('/info') 
 class GetURLSInfo(Resource):
    
-    @cache.cached(timeout=50)
     @url_namespace.doc(description= "Get infomation about urls",
                        params = {"id":"This provides more information about the URLS"})    
     @jwt_required()
+    @cache.cached(timeout=50)
+    @limiter.limit("10/minute")
     
     def get(self):
         
@@ -298,7 +300,7 @@ class GetURLSInfo(Resource):
             "total_Urls": Url.total_urls(authenticated_user.email),
             "total_Clicks": Url.total_clicks(authenticated_user.email), 
         }
-        logger.debug(f"Info {response} URL")
+        logger.debug(f"Info {response} of URL")
         
         return response, HTTPStatus.OK  
    
@@ -324,10 +326,11 @@ class GetURLSInfo(Resource):
 @url_namespace.route('/<id>/qrcode')
 class GenerateURLQRCode(Resource):
    
-    @cache.cached(timeout=50)
     @url_namespace.doc(description = "Get QR code of a short URL",
                        params={"id": "UUID of the short URL created earlier"}) 
     @jwt_required()
+    @cache.cached(timeout=50)
+    @limiter.limit("10/minute")
        
     def get(self, id):
         

@@ -1,11 +1,11 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from flask_caching import Cache
 from functools import wraps
 from flask_restx import Api
 from .auth.views import auth_namespace
 from .urls.views import url_namespace
 from .config.config import config_dict
-from .utility import db, cache
+from .utility import db, cache, limiter
 from .models.url import Url
 from .models.user import User
 from flask_migrate import Migrate
@@ -23,18 +23,15 @@ def create_app(config=config_dict['dev']):
     app = Flask(__name__)
     app.config.from_object(config)
     CORS(app)
-    
 
     db.init_app(app)
-
+    
+    cache.init_app(app)
+    
     jwt = JWTManager(app)
     bcrypt = Bcrypt(app)
     migrate = Migrate(app, db)
     
-    cache.init_app(app)
-    
-    #limiter = Limiter(app, key_func=get_remote_address)
-
     authorizations = {
         'Bearer Auth':{
            "type": "apiKey",
@@ -71,10 +68,19 @@ def create_app(config=config_dict['dev']):
         }
 
     log_file = 'app.log'
-    log_formatter = logging.Formatter('%(asctime)s %(levelname)s: %(message)s',
+    log_formatter = logging.Formatter('%(asctime)s %(levelname)s: %(remote_addr)s - %(message)s',
                                       datefmt='%Y-%m-%d %H:%M:%S')
+
+    class ClientIPFilter(logging.Filter):
+        def filter(self, record):
+            record.remote_addr = request.remote_addr
+            record.method = request.method
+            record.url = request.url
+            return True
+
     log_handler = RotatingFileHandler(log_file, maxBytes=1024 * 1024, backupCount=10)
     log_handler.setFormatter(log_formatter)
+    log_handler.addFilter(ClientIPFilter())
     app.logger.addHandler(log_handler)
     
 

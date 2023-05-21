@@ -13,11 +13,13 @@ db_name = 'scissor_db'
 
 class Config:
     SECRET_KEY = config('SECRET_KEY', 'secret')
-    JWT_ACCESS_TOKEN_EXPIRES = timedelta(minutes=30)
-    JWT_REFRESH_TOKEN_EXPIRES = timedelta(minutes=30)
+    JWT_ACCESS_TOKEN_EXPIRES = timedelta(minutes=59)
+    JWT_REFRESH_TOKEN_EXPIRES = timedelta(minutes=59)
     JWT_SECRET_KEY = config('JWT_SECRET_KEY')
-    CACHE_TYPE = "SimpleCache"
+    CACHE_TYPE = "simple"
     CACHE_DEFAULT_TIMEOUT = 50
+    DEFAULT_LIMITS = ["5 per minute"]
+    STORAGE_URI = "memcached://localhost:5000"
  
 class DevConfig(Config):
     DEBUG = True
