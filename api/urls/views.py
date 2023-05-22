@@ -6,8 +6,7 @@ from http import HTTPStatus
 from flask_restx import Namespace , Resource 
 from flask import request , Response, send_file, redirect, make_response, current_app, session
 from flask_jwt_extended import jwt_required , get_jwt_identity
-from .serializer import (url_expect_serializer, 
-                         url_marshall_serializer,
+from .serializer import (url_expect_serializer, url_marshall_serializer,
                          url_custom_expect_serializer,
                          url_custom_marshall_serializer,
                          url_namespace)
@@ -15,7 +14,7 @@ from ..utility import db, cache, limiter
 from api.helpers.url_validator import URLCreator
 from api.models.user import User
 from api.models.url import Url
-#from api.auth.views import DateTimeEncoder
+from api.auth.views import DateTimeEncoder
  
 
 @url_namespace.route('/create')

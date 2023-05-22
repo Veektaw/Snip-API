@@ -1,6 +1,7 @@
 from flask import request
 import json
-import logging 
+import logging
+from ..utility import db 
 from datetime import datetime 
 from flask_restx import Namespace, Resource, fields
 from ..models.user import User
@@ -29,20 +30,47 @@ class SignUp(Resource):
       logger = logging.getLogger(__name__)
       logger.info("Signup is called")
      
+         
       data = request.get_json()
-
-      new_user = User(
-         first_name = data.get('first_name'),
-         last_name = data.get('last_name'),
-         email = data.get('email'),
-         password = generate_password_hash(data.get('password'))
+         
+      first_name = data.get('first_name')
+      last_name = data.get('last_name')     
+      email = data.get('email')
+      password = data.get('password')
+         
+      signup_try = User.query.filter_by(email=email).first()
+         
+      if signup_try:
+         response = {"message" : "Email already exist"} 
+         return response, HTTPStatus.BAD_REQUEST  
+         
+      new_user  = User (
+         email=email, 
+         password_hash = generate_password_hash(password)
       )
-
-      new_user.save()
-      
-      logger.debug(f"User {new_user} is created")
-
-      return new_user, HTTPStatus.CREATED
+         
+      try:
+         new_user.save()
+            
+      except:
+         db.session.rollback()
+         response = {"message" : "An error occured"}
+             
+         return response, HTTPStatus.INTERNAL_SERVER_ERROR
+         
+      access_token = create_access_token(identity=new_user.email)
+      refresh_token = create_refresh_token(identity=new_user.email)
+      tokens = {
+         'access_token' : access_token ,
+            'refresh_token' : refresh_token
+         }
+         
+      response = {
+         'id': new_user.id,
+         'email': new_user.email,
+         'tokens': tokens
+      }
+      return response , HTTPStatus.CREATED 
   
   
 @auth_namespace.route('/login')
