@@ -11,8 +11,8 @@ password_reset_mail = manage_namespace.model(
 
 password_reset_confirm = manage_namespace.model(
    'User', {
-      'password1' : fields.String(required=True , description='New Password'),
-      'password2' : fields.String(required=True , description='Confirm password'),
+      'new_password' : fields.String(required=True , description='New Password'),
+      'confirm_password' : fields.String(required=True , description='Confirm password'),
    }
 )
 

@@ -11,6 +11,11 @@ from flask import redirect , url_for
 # from flask_login import current_user 
 from ..utility import db
 from api.models.user import User, Token
+import base64
+from email.mime.text import MIMEText
+from google_auth_oauthlib.flow import InstalledAppFlow
+from googleapiclient.discovery import build
+from requests import HTTPError
 
 
 secrets.token_hex()
@@ -44,8 +49,8 @@ class DateTimeEncoder(json.JSONEncoder):
             return o.isoformat()
         return json.JSONEncoder.default(self, o)
 
-sender =  os.getenv('EMAIL_SENDER')  
-password = os.getenv('EMAIL_PASSWORD') 
+sender =  os.getenv('thecoldbrewresetpass@gmail.com')  
+password = os.getenv('kbmvazjcazimhoow') 
 
 
 class MailService:
@@ -64,7 +69,7 @@ class MailService:
         
                 You are receiving this email because you have requested for a new password.\n
                 \n
-                You can ignore if you didn't make the request.\n
+                You can ignore if you did not make this request.\n
                 \n
                 Click the link below the to set new password.\n
                 \n
@@ -96,8 +101,9 @@ class MailService:
         code = kwargs['code']
         subject = "Login attempt"
         body = f"""
-                we receive a request to sign in your account\n
-                You can ignore if you don't make the request.\n
+                We received a login request on ypur account\n
+                \n
+                You can ignore if you did not make this request.\n
                 CODE : {code}
             """
 
@@ -120,7 +126,7 @@ class MailService:
 
 class TokenService:
 
-    def create_password_reset_token(user_id:int )-> str :
+    def create_password_reset_token(user_id:str )-> str :
         """
         Generate a token for a user.
         :param user_id: The id of a user
@@ -128,27 +134,59 @@ class TokenService:
         """
         reset_token = secrets.token_hex(20) + secrets.token_urlsafe(20)
         token = Token(user=user_id, token=reset_token , is_password=True)
+        
         try:
            token.save()
+           
         except:
             db.session.rollback()
             return None
+        
         return reset_token
 
 
     def validate_password_reset_token(token:str , user_public_id):
+        
         try:
             user = User.query.filter_by(public_id=user_public_id).first()
+            
         except Exception as e :
             return False
+        
         token_object = Token.query.filter_by(user=user.id, token=token , is_password=True).first()
+        
         if token_object:
             current_time = datetime.now()
             time_diff_timedelta = current_time - token_object.created_at 
             hours = time_diff_timedelta.seconds > 3600
+            
             if hours > 1 : 
                 token_object.delete()
                 return False
+            
             token_object.delete()
             return True
+        
         return False
+    
+    
+# SCOPES = [
+#         "https://www.googleapis.com/auth/gmail.send"
+#     ]
+
+
+# flow = InstalledAppFlow.from_client_secrets_file('credentials.json', SCOPES)
+# creds = flow.run_local_server(port=0)
+
+# service = build('gmail', 'v1', credentials=creds)
+# message = MIMEText('This is the body of the email')
+# message['to'] = 'recipient@gmail.com'
+# message['subject'] = 'Email Subject'
+# create_message = {'raw': base64.urlsafe_b64encode(message.as_bytes()).decode()}
+
+# try:
+#     message = (service.users().messages().send(userId="me", body=create_message).execute())
+#     print(F'sent message to {message} Message Id: {message["id"]}')
+# except HTTPError as error:
+#     print(F'An error occurred: {error}')
+#     message = None

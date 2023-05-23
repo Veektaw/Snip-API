@@ -15,11 +15,11 @@ signup_expect_model = auth_namespace.model(
 
 signup_model = auth_namespace.model(
     'UserSignup',{
-        'id': fields.Integer(description='id of the user'),
+        'id': fields.String(description='id of the user'),
         'first_name': fields.String(description='First name of the user', required=True,),
         'last_name': fields.String(description='Last name of the user', required=True),
         'email': fields.String(description="Email of user", required=True),
-        'password': fields.String(description='Password of student', required=True)                          
+        'password': fields.String(description='Password of user', required=True)                          
     }
 )
 

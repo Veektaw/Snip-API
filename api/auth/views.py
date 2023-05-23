@@ -22,7 +22,7 @@ class DateTimeEncoder(json.JSONEncoder):
 class SignUp(Resource):
    
    @auth_namespace.expect(signup_expect_model)
-   @auth_namespace.marshal_with(signup_model)
+   @auth_namespace.marshal_list_with(signup_model)
    @auth_namespace.doc(description="Signup user")
    
    def post(self):
@@ -33,21 +33,19 @@ class SignUp(Resource):
          
       data = request.get_json()
          
-      first_name = data.get('first_name')
-      last_name = data.get('last_name')     
-      email = data.get('email')
-      password = data.get('password')
-         
-      signup_try = User.query.filter_by(email=email).first()
-         
-      if signup_try:
-         response = {"message" : "Email already exist"} 
-         return response, HTTPStatus.BAD_REQUEST  
-         
       new_user  = User (
-         email=email, 
-         password_hash = generate_password_hash(password)
+         first_name = data.get('first_name'),
+         last_name = data.get('last_name'),
+         email = data.get('email'), 
+         password = generate_password_hash(data.get('password'))
       )
+      
+      # signup_attempt = User.query.filter_by(email=new_user.email).first()
+      
+      # if signup_attempt:
+      #    response = {"message" : "email exists"}
+      #    return response, HTTPStatus.NOT_ACCEPTABLE
+         
          
       try:
          new_user.save()
@@ -58,17 +56,18 @@ class SignUp(Resource):
              
          return response, HTTPStatus.INTERNAL_SERVER_ERROR
          
-      access_token = create_access_token(identity=new_user.email)
-      refresh_token = create_refresh_token(identity=new_user.email)
-      tokens = {
-         'access_token' : access_token ,
-            'refresh_token' : refresh_token
-         }
+      # access_token = create_access_token(identity=new_user.email)
+      # refresh_token = create_refresh_token(identity=new_user.email)
+      
+      # tokens = {
+      #    'access_token' : access_token,
+      #    'refresh_token' : refresh_token
+      #    }
          
       response = {
          'id': new_user.id,
          'email': new_user.email,
-         'tokens': tokens
+         #'tokens': tokens
       }
       return response , HTTPStatus.CREATED 
   

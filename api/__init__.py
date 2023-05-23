@@ -7,7 +7,7 @@ from .urls.views import url_namespace
 from .config.config import config_dict
 from .utility import db, cache, limiter
 from .models.url import Url
-from .models.user import User
+from .models.user import User, Token
 from flask_migrate import Migrate
 from flask_jwt_extended import JWTManager, verify_jwt_in_request, get_jwt, create_access_token
 from werkzeug.exceptions import NotFound, NotAcceptable, MethodNotAllowed
@@ -64,7 +64,8 @@ def create_app(config=config_dict['dev']):
         return {
             'db': db,
             'url': Url,
-            'user': User
+            'user': User,
+            'Token': Token
         }
 
     log_file = 'app.log'
