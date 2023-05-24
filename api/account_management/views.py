@@ -104,7 +104,7 @@ class ChangePasswordRequest(Resource):
          
         if new_password and confirm_password :
             if new_password == confirm_password :
-                if user and check_password_hash(user.password , old_password):
+                if user and check_password_hash(user.password, old_password):
                     
                     user.password = generate_password_hash(confirm_password)
                     user.save()

@@ -40,11 +40,12 @@ class SignUp(Resource):
          password = generate_password_hash(data.get('password'))
       )
       
-      # signup_attempt = User.query.filter_by(email=new_user.email).first()
+      signup_attempt = User.query.filter_by(email=new_user.email).first()
       
-      # if signup_attempt:
-      #    response = {"message" : "email exists"}
-      #    return response, HTTPStatus.NOT_ACCEPTABLE
+      if signup_attempt:
+         logger.warning("User tries to sign up with used email")
+         response = {"message" : "Email exists"}
+         return response, HTTPStatus.NOT_ACCEPTABLE
          
          
       try:
@@ -53,22 +54,30 @@ class SignUp(Resource):
       except:
          db.session.rollback()
          response = {"message" : "An error occured"}
+         
+         logger.error("Databse error occurred while attempting to save new user")
              
          return response, HTTPStatus.INTERNAL_SERVER_ERROR
          
-      # access_token = create_access_token(identity=new_user.email)
-      # refresh_token = create_refresh_token(identity=new_user.email)
+      access_token = create_access_token(identity=new_user.email)
+      refresh_token = create_refresh_token(identity=new_user.email)
       
-      # tokens = {
-      #    'access_token' : access_token,
-      #    'refresh_token' : refresh_token
-      #    }
+      tokens = {
+         'access_token' : access_token,
+         'refresh_token' : refresh_token
+         }
          
       response = {
          'id': new_user.id,
+         'first_name': new_user.first_name,
+         'last_name': new_user.last_name,
          'email': new_user.email,
-         #'tokens': tokens
+         'password': new_user.password,
+         'tokens': tokens
       }
+      
+      logger.debug("New user is created")
+      
       return response , HTTPStatus.CREATED 
   
   

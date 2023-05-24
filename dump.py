@@ -40,3 +40,57 @@ if __name__ == '__main__':
     
     
     #'id', db.Text(length=36), default=lambda: str(uuid.uuid4()), primary_key=True
+    
+    
+    
+    
+# SCOPES = [
+#         "https://www.googleapis.com/auth/gmail.send"
+#     ]
+
+
+# flow = InstalledAppFlow.from_client_secrets_file('credentials.json', SCOPES)
+# creds = flow.run_local_server(port=0)
+
+# service = build('gmail', 'v1', credentials=creds)
+# message = MIMEText('This is the body of the email')
+# message['to'] = 'recipient@gmail.com'
+# message['subject'] = 'Email Subject'
+# create_message = {'raw': base64.urlsafe_b64encode(message.as_bytes()).decode()}
+
+# try:
+#     message = (service.users().messages().send(userId="me", body=create_message).execute())
+#     print(F'sent message to {message} Message Id: {message["id"]}')
+# except HTTPError as error:
+#     print(F'An error occurred: {error}')
+#     message = None
+
+
+
+
+# def send_sign_two_factor_authentication_mail(*args , **kwargs):
+        
+#         receiver = kwargs['email']
+#         code = kwargs['code']
+#         subject = "Login attempt"
+#         body = f"""
+#                 We received a login request on ypur account\n
+#                 \n
+#                 You can ignore if you did not make this request.\n
+#                 CODE : {code}
+#             """
+
+#         em = EmailMessage()
+#         em["From"] = sender
+#         em["To"] = receiver
+#         em["subject"] = subject
+#         em.set_content(body)
+#         context = ssl.create_default_context()
+
+#         try:
+#             with smtplib.SMTP_SSL("smtp.gmail.com", port=465, context=context) as connection:
+#                 connection.login(sender, password)
+#                 connection.sendmail(sender, receiver, em.as_string())
+#         except:
+#             pass
+#         return True

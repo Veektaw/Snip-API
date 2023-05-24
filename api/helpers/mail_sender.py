@@ -6,52 +6,28 @@ import secrets
 from email.message import EmailMessage
 from datetime import datetime  
 from functools import wraps
-# from dotenv import load_dotenv
-from flask import redirect , url_for
-# from flask_login import current_user 
+from flask import redirect , url_for, Request
+from googleapiclient.errors import HttpError 
 from ..utility import db
 from api.models.user import User, Token
 import base64
 from email.mime.text import MIMEText
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
+from google.oauth2.credentials import Credentials
 from requests import HTTPError
 
 
 secrets.token_hex()
 
 
-
-# load_dotenv()
-
-# def authenticated_not_allowed(func):
-#     @wraps(func)
-#     def decorated_view(*args, **kwargs):
-#         if current_user.is_authenticated:
-#             return redirect(url_for('posts_page'))
-#         return func(*args, **kwargs)
-#     return decorated_view
+SCOPES = ["https://www.googleapis.com/auth/gmail.send"]
 
 
+flow = InstalledAppFlow.from_client_secrets_file('credentials/credentials.json', SCOPES)
+credentials = flow.run_local_server(port=0)
 
-# Activation link
-# Hello
-
-# We are glad that you joined our website. We wish you a successful use of our 
-# website and the best possible click-throughs and conversions for your links.
-
-# To activate your account, click link below:
-
-
-class DateTimeEncoder(json.JSONEncoder):
-    def default(self,o):
-        if isinstance(o , datetime):
-            return o.isoformat()
-        return json.JSONEncoder.default(self, o)
-
-sender =  os.getenv('thecoldbrewresetpass@gmail.com')  
-password = os.getenv('kbmvazjcazimhoow') 
-
+service = build('gmail', 'v1', credentials=credentials)
 
 class MailService:
 
@@ -61,67 +37,23 @@ class MailService:
         Send password reset token to the email address in the kwargs
         
         """
-        receiver = kwargs['email']
+        
         token = kwargs['token']
         public_id = kwargs['public_id']
-        subject = "Password reset"
-        body = f"""
         
-                You are receiving this email because you have requested for a new password.\n
-                \n
-                You can ignore if you did not make this request.\n
-                \n
-                Click the link below the to set new password.\n
-                \n
-                http://127.0.0.1:5000/password-reset/{token}/{public_id}/confirm
-                
-                """
-
-        em = EmailMessage()
-        em["From"] = sender
-        em["To"] = receiver
-        em["subject"] = subject
-        em.set_content(body)
-        context = ssl.create_default_context()
+        message = MIMEText(f'You are receiving this email because you have requested for a new password.\nYou can ignore if you did not make this request.\nClick the link below to set a new password.\nhttp://127.0.0.1:5000/password-reset/{token}/{public_id}/confirm')
         
-        try:
-            with smtplib.SMTP_SSL("smtp.gmail.com", port=465, context=context) as connection:
-                connection.login(sender, password)
-                connection.sendmail(sender, receiver, em.as_string())
-                
-        except:
-            pass
-        return True
-    
-    
+        message['to'] = kwargs['email']
+        message['subject'] = 'Password Reset'
 
-    def send_sign_two_factor_authentication_mail(*args , **kwargs):
-        
-        receiver = kwargs['email']
-        code = kwargs['code']
-        subject = "Login attempt"
-        body = f"""
-                We received a login request on ypur account\n
-                \n
-                You can ignore if you did not make this request.\n
-                CODE : {code}
-            """
-
-        em = EmailMessage()
-        em["From"] = sender
-        em["To"] = receiver
-        em["subject"] = subject
-        em.set_content(body)
-        context = ssl.create_default_context()
+        raw_message = base64.urlsafe_b64encode(message.as_bytes()).decode()
+        create_message = {'raw': raw_message}
 
         try:
-            with smtplib.SMTP_SSL("smtp.gmail.com", port=465, context=context) as connection:
-                connection.login(sender, password)
-                connection.sendmail(sender, receiver, em.as_string())
-        except:
-            pass
-        return True
-
+            response = service.users().messages().send(userId='me', body=create_message).execute()
+            print(f'Successfully sent email to {kwargs["email"]}. Message ID: {response["id"]}')
+        except HttpError as error:
+            print(f'An error occurred while sending the email to: {error}')
 
 
 class TokenService:
@@ -133,7 +65,7 @@ class TokenService:
 
         """
         reset_token = secrets.token_hex(20) + secrets.token_urlsafe(20)
-        token = Token(user=user_id, token=reset_token , is_password=True)
+        token = Token(user_id=user_id, token=reset_token)
         
         try:
            token.save()
@@ -153,7 +85,7 @@ class TokenService:
         except Exception as e :
             return False
         
-        token_object = Token.query.filter_by(user=user.id, token=token , is_password=True).first()
+        token_object = Token.query.filter_by(user=user.id, token=token, password=True).first()
         
         if token_object:
             current_time = datetime.now()
@@ -168,25 +100,3 @@ class TokenService:
             return True
         
         return False
-    
-    
-# SCOPES = [
-#         "https://www.googleapis.com/auth/gmail.send"
-#     ]
-
-
-# flow = InstalledAppFlow.from_client_secrets_file('credentials.json', SCOPES)
-# creds = flow.run_local_server(port=0)
-
-# service = build('gmail', 'v1', credentials=creds)
-# message = MIMEText('This is the body of the email')
-# message['to'] = 'recipient@gmail.com'
-# message['subject'] = 'Email Subject'
-# create_message = {'raw': base64.urlsafe_b64encode(message.as_bytes()).decode()}
-
-# try:
-#     message = (service.users().messages().send(userId="me", body=create_message).execute())
-#     print(F'sent message to {message} Message Id: {message["id"]}')
-# except HTTPError as error:
-#     print(F'An error occurred: {error}')
-#     message = None
