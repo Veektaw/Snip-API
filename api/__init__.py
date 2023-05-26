@@ -4,6 +4,7 @@ from functools import wraps
 from flask_restx import Api
 from .auth.views import auth_namespace
 from .urls.views import url_namespace
+from .visitor.views import visitor_namespace
 from .account_management.views import manage_namespace
 from .config.config import config_dict
 from .utility import db, cache, limiter
@@ -53,6 +54,7 @@ def create_app(config=config_dict['dev']):
     
     
     api.add_namespace(url_namespace, path='/url')
+    api.add_namespace(visitor_namespace, path='/visitor')
     api.add_namespace(manage_namespace, path='/manage')
     api.add_namespace(auth_namespace, path='/auth')
 

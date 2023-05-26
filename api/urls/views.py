@@ -3,8 +3,8 @@ import base64
 import io
 import logging
 from http import HTTPStatus
-from flask_restx import Namespace , Resource 
-from flask import request , Response, send_file, redirect, make_response, current_app, session
+from flask_restx import Resource 
+from flask import request, Response, send_file, redirect, make_response, current_app, session
 from flask_jwt_extended import jwt_required , get_jwt_identity
 from .serializer import (url_expect_serializer, url_marshall_serializer,
                          url_custom_expect_serializer,
