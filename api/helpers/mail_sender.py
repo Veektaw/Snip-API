@@ -58,45 +58,53 @@ class MailService:
 
 class TokenService:
 
-    def create_password_reset_token(user_id:str )-> str :
+    @staticmethod
+    def create_password_reset_token(user_id: str) -> str:
         """
         Generate a token for a user.
         :param user_id: The id of a user
-
+        :return: The generated reset token
         """
-        reset_token = secrets.token_hex(20) + secrets.token_urlsafe(20)
-        token = Token(user_id=user_id, token=reset_token)
-        
+        reset_token = secrets.token_hex(30)
+        token = Token(user_id=user_id, token=reset_token, token_type='password_reset')
+
         try:
-           token.save()
-           
-        except:
+            token.save()
+        except Exception as e:
             db.session.rollback()
             return None
-        
+
         return reset_token
 
-
-    def validate_password_reset_token(token:str , user_public_id):
-        
+    @staticmethod   
+    def validate_password_reset_token(token: str, user_id: str):
+        """
+        Validate a password reset token.
+        :param token: The token to validate
+        :param user_id: The id of the user
+        :return: True if the token is valid, False otherwise
+        """
         try:
-            user = User.query.filter_by(public_id=user_public_id).first()
-            
-        except Exception as e :
+            user = User.query.filter_by(id=user_id).first()
+        except Exception as e:
+            print(f"Error retrieving user: {e}")
             return False
-        
-        token_object = Token.query.filter_by(user=user.id, token=token, password=True).first()
-        
+
+        token_object = Token.query.filter_by(user_id=user.id, token=token).first()
+    
         if token_object:
             current_time = datetime.now()
-            time_diff_timedelta = current_time - token_object.created_at 
-            hours = time_diff_timedelta.seconds > 3600
-            
-            if hours > 1 : 
+            time_diff = current_time - token_object.created
+            hours = time_diff.total_seconds() // 3600
+
+            if hours > 1:
                 token_object.delete()
+                print("Token expired")
                 return False
-            
+
             token_object.delete()
+            print("Token validated")
             return True
-        
+
+        print("Token not found")
         return False

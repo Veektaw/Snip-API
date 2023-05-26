@@ -3,7 +3,7 @@ from ..utility import db
 from ..helpers.mail_sender import MailService, TokenService
 from http import HTTPStatus
 from flask import request , Response
-from api.models.user import User
+from api.models.user import User, Token
 from .serializer import (manage_namespace,
                          password_change,
                          password_reset_confirm,
@@ -43,44 +43,62 @@ class ResetPasswordRequest(Resource):
         return  response , HTTPStatus.OK
 
 
-@manage_namespace.route('/password-reset/<token>/<public_id>/confirm')
+@manage_namespace.route('/password-reset/<token>/<user_id>/confirm')
 class ResetPasswordRequestConfirm(Resource):
 
     @manage_namespace.expect(password_reset_confirm) 
     @manage_namespace.doc(description="Request a password reset mail")
      
-    def post(self, token, public_id):
+    def post(self, token, user_id):
         
         data = request.get_json()
         
-        new_password = data.get('new_password', None)
-        confirm_password = data.get('confirm_password', None)
+        new_password = data.get('new_password')
+        confirm_password = data.get('confirm_password')
          
         if new_password and confirm_password:
             if new_password == confirm_password:
                 
-                if TokenService.validate_password_reset_token(token, public_id):
+                if TokenService.validate_password_reset_token(token, user_id=user_id):
                     
-                    user = User.query.filter_by(id=public_id).first()
+                    token_object = Token.query.filter_by(token=token).first()
                     
-                    if user:
-                        user.password = generate_password_hash(confirm_password)
-                        user.save()
+                    if token_object:
+                        user = User.query.filter_by(id=token_object.user_id).first()
                         
-                        response = {"success":True,
-                                    "message":"Password updated successfully"}
+                        if user:
+                            user.password = generate_password_hash(confirm_password)
+                            user.save()
+                            
+                            response = {"success": True,
+                                        "message": "Password updated successfully"}
+                            
+                            return response, HTTPStatus.OK
                         
-                        return response , HTTPStatus.OK
+                        print("User not found in the database")
+                        response = {"success": False,
+                                    "message": "User not found"}
+                        
+                        return response, HTTPStatus.BAD_REQUEST
                     
-                response = {"success": False,
-                            "message":"Password reset link is invalid"}
+                    print("Token object not found")
+                    response = {"success": False,
+                                "message": "Token object not found"}
+                    
+                    return response, HTTPStatus.BAD_REQUEST
                 
-                return response , HTTPStatus.BAD_REQUEST
+                print("Password reset link is invalid")
+                response = {"success": False,
+                            "message": "Password reset link is invalid"}
+                
+                return response, HTTPStatus.BAD_REQUEST
             
+        print("Passwords do not match")
         response = {"success": False,
-                    "mesasage":"Passwords does not match"}
+                    "message": "Passwords do not match"}
         
-        return response , HTTPStatus.BAD_REQUEST
+        return response, HTTPStatus.BAD_REQUEST
+
     
     
 @manage_namespace.route('/password-change')
