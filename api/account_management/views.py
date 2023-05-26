@@ -38,14 +38,12 @@ class ResetPassword(Resource):
             public_id = user.id
             
             Thread(target = MailService.send_reset_mail,
-                   kwargs={'email': user.email,
+                   kwargs = {'email': user.email,
                            'token': token,
                            'public_id': public_id}).start()
             
-        response = {
-        "success":True,
-        "detail":'Instruction to reset your password has been sent to the provided email' 
-        }
+        response = {"success":True,
+                    "message":'Instruction to reset your password has been sent to the provided email'}
         
         logger.debug("User successfully sends link to email to get new password")
         
@@ -83,8 +81,7 @@ class ResetPasswordConfirm(Resource):
                         
                         response = {
                             "success": True,
-                            "message": "Password updated successfully"
-                        }
+                            "message": "Password updated successfully"}
                         
                         logger.debug("User successfully creates a new password")
                         
@@ -92,8 +89,7 @@ class ResetPasswordConfirm(Resource):
                     
                 response = {
                     "success": False,
-                    "message": "Password reset link is invalid"
-                }
+                    "message": "Password reset link is invalid"}
                 
                 logger.warning("User enters wrong link")
                 
@@ -116,7 +112,7 @@ class ChangePasswordRequest(Resource):
  
     @manage_namespace.expect(password_change)
     @manage_namespace.doc(description = "Change user password")
-    @jwt_required(False)
+    @jwt_required()
     
     def post(self):
         

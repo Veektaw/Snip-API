@@ -32,7 +32,9 @@ class VisitorCreateURL(Resource):
         if URLCreator.is_valid_url(user_long_url):
             url_title = URLCreator.extract_url_data(user_long_url)
             short_url = URLCreator.short_url(user_long_url)
-         
+
+            logger.info("URL info is gotten")
+
             short_url_data = {
                 "user_long_url": user_long_url,
                 "short_url": short_url,
@@ -40,9 +42,11 @@ class VisitorCreateURL(Resource):
             }
          
             logger.debug(f"Visitor short url: {short_url_data} is created")
+            
             return short_url_data, HTTPStatus.CREATED  
     
         logger.warning("This is not a valid URL")
+        
         response = {"message": "This is not a valid URL"}
         
         return response, HTTPStatus.BAD_REQUEST

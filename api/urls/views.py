@@ -58,8 +58,7 @@ class CreateURL(Resource):
                 user_long_url = user_long_url,
                 short_url = short_url,
                 url_title = url_title,
-                creator = authenticated_user.email
-            )
+                creator = authenticated_user.email)
          
             try:
                 url.save()
@@ -67,14 +66,18 @@ class CreateURL(Resource):
             except:
                 logger.exception("Error loading")
                 db.session.rollback()
-                response = {"message": "Error loading"} 
+                
+                response = {"message": "Error loading"}
+                logger.error("Error loading information")
+                 
                 return response , HTTPStatus.INTERNAL_SERVER_ERROR 
         
             logger.debug(f"Created a short url: {url}")
+            
             return url, HTTPStatus.OK  
-    
-        logger.warning("This is not a valid URL")
+        
         response = {"message": "This is not a valid URL"}
+        logger.warning("User provides invalid URL")
         
         return response, HTTPStatus.BAD_REQUEST
    
