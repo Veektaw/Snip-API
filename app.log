@@ -1,3 +1,44 @@
 
 2023-05-24 18:21:20 INFO: 127.0.0.1 - Login is called
 2023-05-24 18:21:20 DEBUG: 127.0.0.1 - User <user veektaw@gmail.com> logged in
+2023-05-26 09:43:08 ERROR: 127.0.0.1 - Exception on /manage/password-reset/116d3f75d28155cb900f5f2c5cda125a9e20b74da28dd87972cc0a84bcc0/fa39953b-1f20-4a53-9fb2-cf6b81a0983b/confirm [POST]
+Traceback (most recent call last):
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 404, in wrapper
+    resp = resource(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/views.py", line 107, in view
+    return current_app.ensure_sync(self.dispatch_request)(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/resource.py", line 46, in dispatch_request
+    resp = meth(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/api/account_management/views.py", line 62, in post
+    user = User.query.filter_by(id=token_object.user_id).first()
+                                   ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'user_id'
+2023-05-26 10:15:24 ERROR: 127.0.0.1 - Exception on /manage/password-reset/6bfaab514005c099b7a24785ebafcdeafb38d13a504bbbbc39976c604368/fa39953b-1f20-4a53-9fb2-cf6b81a0983b/confirm [POST]
+Traceback (most recent call last):
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 404, in wrapper
+    resp = resource(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/views.py", line 107, in view
+    return current_app.ensure_sync(self.dispatch_request)(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/resource.py", line 46, in dispatch_request
+    resp = meth(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+TypeError: ResetPasswordRequestConfirm.post() got an unexpected keyword argument 'public_id'
+2023-05-26 10:39:07 INFO: 127.0.0.1 - Login is called
+2023-05-26 10:39:07 DEBUG: 127.0.0.1 - User <user veektaw@gmail.com> logged in

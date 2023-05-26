@@ -16,7 +16,7 @@ from werkzeug.security import generate_password_hash , check_password_hash
 
 
 @manage_namespace.route('/password-reset')
-class ResetPasswordRequest(Resource):
+class ResetPassword(Resource):
  
     @manage_namespace.expect(password_reset_mail)
     @manage_namespace.doc(description="Request a password reset mail")
@@ -44,60 +44,48 @@ class ResetPasswordRequest(Resource):
 
 
 @manage_namespace.route('/password-reset/<token>/<user_id>/confirm')
-class ResetPasswordRequestConfirm(Resource):
+class ResetPasswordConfirm(Resource):
 
     @manage_namespace.expect(password_reset_confirm) 
     @manage_namespace.doc(description="Request a password reset mail")
      
     def post(self, token, user_id):
-        
         data = request.get_json()
-        
         new_password = data.get('new_password')
         confirm_password = data.get('confirm_password')
          
         if new_password and confirm_password:
+            
             if new_password == confirm_password:
                 
                 if TokenService.validate_password_reset_token(token, user_id=user_id):
+                    user = User.query.get(user_id)
                     
-                    token_object = Token.query.filter_by(token=token).first()
-                    
-                    if token_object:
-                        user = User.query.filter_by(id=token_object.user_id).first()
+                    if user:
+                        user.password = generate_password_hash(confirm_password)
+                        user.save()
                         
-                        if user:
-                            user.password = generate_password_hash(confirm_password)
-                            user.save()
-                            
-                            response = {"success": True,
-                                        "message": "Password updated successfully"}
-                            
-                            return response, HTTPStatus.OK
+                        response = {
+                            "success": True,
+                            "message": "Password updated successfully"
+                        }
                         
-                        print("User not found in the database")
-                        response = {"success": False,
-                                    "message": "User not found"}
-                        
-                        return response, HTTPStatus.BAD_REQUEST
+                        return response, HTTPStatus.OK
                     
-                    print("Token object not found")
-                    response = {"success": False,
-                                "message": "Token object not found"}
-                    
-                    return response, HTTPStatus.BAD_REQUEST
-                
-                print("Password reset link is invalid")
-                response = {"success": False,
-                            "message": "Password reset link is invalid"}
+                response = {
+                    "success": False,
+                    "message": "Password reset link is invalid"
+                }
                 
                 return response, HTTPStatus.BAD_REQUEST
             
-        print("Passwords do not match")
-        response = {"success": False,
-                    "message": "Passwords do not match"}
+        response = {
+            "success": False,
+            "message": "Passwords do not match"
+        }
         
         return response, HTTPStatus.BAD_REQUEST
+
 
     
     

@@ -30,18 +30,15 @@ credentials = flow.run_local_server(port=0)
 service = build('gmail', 'v1', credentials=credentials)
 
 class MailService:
-
+    @staticmethod
     def send_reset_mail(*args, **kwargs):
-        
         """
         Send password reset token to the email address in the kwargs
-        
         """
-        
         token = kwargs['token']
         public_id = kwargs['public_id']
         
-        message = MIMEText(f'You are receiving this email because you have requested for a new password.\nYou can ignore if you did not make this request.\nClick the link below to set a new password.\nhttp://127.0.0.1:5000/password-reset/{token}/{public_id}/confirm')
+        message = MIMEText(f'You are receiving this email because you have requested for a new password.\nYou can ignore if you did not make this request.\nClick the link below to set a new password.\nhttp://127.0.0.1:5000/password-reset/{kwargs["token"]}/{kwargs["public_id"]}/confirm')
         
         message['to'] = kwargs['email']
         message['subject'] = 'Password Reset'
