@@ -62,6 +62,7 @@ class CreateURL(Resource):
          
             try:
                 url.save()
+                logger.info(f"Custom URL by {authenticated_user} is saved to the database")
             
             except:
                 logger.exception("Error loading")
@@ -130,6 +131,7 @@ class CreateCustomURL(Resource):
          
             try:
                 url.save()
+                logger.info(f"Custom URL by {authenticated_user} is saved to the database")
             
             except:
                 logger.exception("Error loading")
@@ -179,7 +181,7 @@ class GetURLS(Resource):
             
         
         url = Url.query.filter_by(creator=authenticated_user.email).all()
-        logger.debug(f"Retrieved {len(url)} URLs")
+        logger.debug(f"{authenticated_user} Retrieved {len(url)} URLs")
 
         return url, HTTPStatus.OK
     
