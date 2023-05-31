@@ -18,7 +18,8 @@ from werkzeug.security import generate_password_hash , check_password_hash
 
 @manage_namespace.route('/password-reset')
 class ResetPassword(Resource):
- 
+    
+    @limiter.limit("5 per minute")
     @manage_namespace.expect(password_reset_mail)
     @manage_namespace.doc(description="Request a password reset mail")
     
@@ -53,7 +54,7 @@ class ResetPassword(Resource):
 @manage_namespace.route('/password-reset/<token>/<user_id>/confirm')
 class ResetPasswordConfirm(Resource):
 
-    @limiter.limit("10/minute")
+    @limiter.limit("5 per minute")
     @manage_namespace.expect(password_reset_confirm) 
     @manage_namespace.doc(description="Request a password reset mail")
      
@@ -110,6 +111,7 @@ class ResetPasswordConfirm(Resource):
 @manage_namespace.route('/password-change')
 class ChangePasswordRequest(Resource):
  
+    @limiter.limit("5 per minute")
     @manage_namespace.expect(password_change)
     @manage_namespace.doc(description = "Change user password")
     @jwt_required()

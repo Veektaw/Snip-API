@@ -51,7 +51,7 @@ def create_app(config=config_dict['dev']):
 
     
     
-    
+    limiter.init_app(app)
     
     api.add_namespace(url_namespace, path='/url')
     api.add_namespace(visitor_namespace, path='/visitor')

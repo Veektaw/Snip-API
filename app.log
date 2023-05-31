@@ -1,144 +1,17 @@
-
-2023-05-24 18:21:20 INFO: 127.0.0.1 - Login is called
-2023-05-24 18:21:20 DEBUG: 127.0.0.1 - User <user veektaw@gmail.com> logged in
-2023-05-26 09:43:08 ERROR: 127.0.0.1 - Exception on /manage/password-reset/116d3f75d28155cb900f5f2c5cda125a9e20b74da28dd87972cc0a84bcc0/fa39953b-1f20-4a53-9fb2-cf6b81a0983b/confirm [POST]
-Traceback (most recent call last):
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1820, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1796, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 404, in wrapper
-    resp = resource(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/views.py", line 107, in view
-    return current_app.ensure_sync(self.dispatch_request)(**kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/resource.py", line 46, in dispatch_request
-    resp = meth(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/api/account_management/views.py", line 62, in post
-    user = User.query.filter_by(id=token_object.user_id).first()
-                                   ^^^^^^^^^^^^^^^^^^^^
-AttributeError: 'NoneType' object has no attribute 'user_id'
-2023-05-26 10:15:24 ERROR: 127.0.0.1 - Exception on /manage/password-reset/6bfaab514005c099b7a24785ebafcdeafb38d13a504bbbbc39976c604368/fa39953b-1f20-4a53-9fb2-cf6b81a0983b/confirm [POST]
-Traceback (most recent call last):
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1820, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1796, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 404, in wrapper
-    resp = resource(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/views.py", line 107, in view
-    return current_app.ensure_sync(self.dispatch_request)(**kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/resource.py", line 46, in dispatch_request
-    resp = meth(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^
-TypeError: ResetPasswordRequestConfirm.post() got an unexpected keyword argument 'public_id'
-2023-05-26 10:39:07 INFO: 127.0.0.1 - Login is called
-2023-05-26 10:39:07 DEBUG: 127.0.0.1 - User <user veektaw@gmail.com> logged in
-2023-05-26 17:51:24 ERROR: 127.0.0.1 - Exception on /manage/password-change [POST]
-Traceback (most recent call last):
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1820, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1796, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 404, in wrapper
-    resp = resource(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/views.py", line 107, in view
-    return current_app.ensure_sync(self.dispatch_request)(**kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/resource.py", line 46, in dispatch_request
-    resp = meth(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_jwt_extended/view_decorators.py", line 153, in decorator
-    verify_jwt_in_request(optional, fresh, refresh, locations, verify_type)
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_jwt_extended/view_decorators.py", line 89, in verify_jwt_in_request
-    jwt_data, jwt_header, jwt_location = _decode_jwt_from_request(
-                                         ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_jwt_extended/view_decorators.py", line 341, in _decode_jwt_from_request
-    raise NoAuthorizationError(errors[0])
-flask_jwt_extended.exceptions.NoAuthorizationError: Missing Authorization Header
-2023-05-26 17:51:38 INFO: 127.0.0.1 - Login is called
-2023-05-26 17:51:39 DEBUG: 127.0.0.1 - User <user veektaw@gmail.com> logged in
-2023-05-26 18:49:07 ERROR: 127.0.0.1 - Exception on /url/create [POST]
-Traceback (most recent call last):
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1820, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1796, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 404, in wrapper
-    resp = resource(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/views.py", line 107, in view
-    return current_app.ensure_sync(self.dispatch_request)(**kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/resource.py", line 46, in dispatch_request
-    resp = meth(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/marshalling.py", line 244, in wrapper
-    resp = f(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_jwt_extended/view_decorators.py", line 153, in decorator
-    verify_jwt_in_request(optional, fresh, refresh, locations, verify_type)
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_jwt_extended/view_decorators.py", line 89, in verify_jwt_in_request
-    jwt_data, jwt_header, jwt_location = _decode_jwt_from_request(
-                                         ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_jwt_extended/view_decorators.py", line 323, in _decode_jwt_from_request
-    decoded_token = decode_token(encoded_token, csrf_token)
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_jwt_extended/utils.py", line 127, in decode_token
-    return jwt_manager._decode_jwt_from_config(encoded_token, csrf_value, allow_expired)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_jwt_extended/jwt_manager.py", line 553, in _decode_jwt_from_config
-    return _decode_jwt(**kwargs, allow_expired=allow_expired)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_jwt_extended/tokens.py", line 94, in _decode_jwt
-    decoded_token = jwt.decode(
-                    ^^^^^^^^^^^
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/jwt/api_jwt.py", line 168, in decode
-    decoded = self.decode_complete(
-              ^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/jwt/api_jwt.py", line 136, in decode_complete
-    self._validate_claims(
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/jwt/api_jwt.py", line 199, in _validate_claims
-    self._validate_exp(payload, now, leeway)
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/jwt/api_jwt.py", line 237, in _validate_exp
-    raise ExpiredSignatureError("Signature has expired")
-jwt.exceptions.ExpiredSignatureError: Signature has expired
-2023-05-26 18:49:11 INFO: 127.0.0.1 - VisitorCreateURL is called
-2023-05-26 18:49:12 DEBUG: 127.0.0.1 - Visitor short url: {'user_long_url': 'https://stackoverflow.com/questions/40234933/importing-flask-bcrypt-not-working-on-windows', 'short_url': 'https://127.0.0.1:5000/bDd0j', 'url_title': 'python - Importing flask_bcrypt not working on Windows - Stack Overflow'} is created
-2023-05-26 18:50:19 INFO: 127.0.0.1 - VisitorCreateURL is called
-2023-05-26 18:50:20 DEBUG: 127.0.0.1 - Visitor short url: {'user_long_url': 'https://stackoverflow.com/questions/40234933/importing-flask-bcrypt-not-working-on-windows', 'short_url': 'https://127.0.0.1:5000/l7eQg', 'url_title': 'python - Importing flask_bcrypt not working on Windows - Stack Overflow'} is created
-2023-05-26 18:50:21 INFO: 127.0.0.1 - VisitorCreateURL is called
-2023-05-26 18:50:21 DEBUG: 127.0.0.1 - Visitor short url: {'user_long_url': 'https://stackoverflow.com/questions/40234933/importing-flask-bcrypt-not-working-on-windows', 'short_url': 'https://127.0.0.1:5000/OVzbl', 'url_title': 'python - Importing flask_bcrypt not working on Windows - Stack Overflow'} is created
-2023-05-26 18:50:22 INFO: 127.0.0.1 - VisitorCreateURL is called
-2023-05-26 18:50:23 DEBUG: 127.0.0.1 - Visitor short url: {'user_long_url': 'https://stackoverflow.com/questions/40234933/importing-flask-bcrypt-not-working-on-windows', 'short_url': 'https://127.0.0.1:5000/ZpLvk', 'url_title': 'python - Importing flask_bcrypt not working on Windows - Stack Overflow'} is created
-2023-05-26 18:50:24 INFO: 127.0.0.1 - VisitorCreateURL is called
-2023-05-26 18:50:25 DEBUG: 127.0.0.1 - Visitor short url: {'user_long_url': 'https://stackoverflow.com/questions/40234933/importing-flask-bcrypt-not-working-on-windows', 'short_url': 'https://127.0.0.1:5000/EBqVm', 'url_title': 'python - Importing flask_bcrypt not working on Windows - Stack Overflow'} is created
-2023-05-26 18:50:25 INFO: 127.0.0.1 - VisitorCreateURL is called
-2023-05-26 18:50:26 DEBUG: 127.0.0.1 - Visitor short url: {'user_long_url': 'https://stackoverflow.com/questions/40234933/importing-flask-bcrypt-not-working-on-windows', 'short_url': 'https://127.0.0.1:5000/m711P', 'url_title': 'python - Importing flask_bcrypt not working on Windows - Stack Overflow'} is created
-2023-05-26 18:50:27 INFO: 127.0.0.1 - VisitorCreateURL is called
-2023-05-26 18:50:28 DEBUG: 127.0.0.1 - Visitor short url: {'user_long_url': 'https://stackoverflow.com/questions/40234933/importing-flask-bcrypt-not-working-on-windows', 'short_url': 'https://127.0.0.1:5000/lkjzC', 'url_title': 'python - Importing flask_bcrypt not working on Windows - Stack Overflow'} is created
-2023-05-26 18:50:28 INFO: 127.0.0.1 - VisitorCreateURL is called
-2023-05-26 18:50:29 DEBUG: 127.0.0.1 - Visitor short url: {'user_long_url': 'https://stackoverflow.com/questions/40234933/importing-flask-bcrypt-not-working-on-windows', 'short_url': 'https://127.0.0.1:5000/bW8II', 'url_title': 'python - Importing flask_bcrypt not working on Windows - Stack Overflow'} is created
-2023-05-26 18:50:30 INFO: 127.0.0.1 - VisitorCreateURL is called
-2023-05-26 18:50:31 DEBUG: 127.0.0.1 - Visitor short url: {'user_long_url': 'https://stackoverflow.com/questions/40234933/importing-flask-bcrypt-not-working-on-windows', 'short_url': 'https://127.0.0.1:5000/hYoQB', 'url_title': 'python - Importing flask_bcrypt not working on Windows - Stack Overflow'} is created
-2023-05-26 18:50:31 INFO: 127.0.0.1 - VisitorCreateURL is called
-2023-05-26 18:50:33 DEBUG: 127.0.0.1 - Visitor short url: {'user_long_url': 'https://stackoverflow.com/questions/40234933/importing-flask-bcrypt-not-working-on-windows', 'short_url': 'https://127.0.0.1:5000/RbJ4G', 'url_title': 'python - Importing flask_bcrypt not working on Windows - Stack Overflow'} is created
-2023-05-26 18:50:33 INFO: 127.0.0.1 - VisitorCreateURL is called
-2023-05-26 18:50:34 DEBUG: 127.0.0.1 - Visitor short url: {'user_long_url': 'https://stackoverflow.com/questions/40234933/importing-flask-bcrypt-not-working-on-windows', 'short_url': 'https://127.0.0.1:5000/aOAnV', 'url_title': 'python - Importing flask_bcrypt not working on Windows - Stack Overflow'} is created
-2023-05-26 18:50:35 INFO: 127.0.0.1 - VisitorCreateURL is called
-2023-05-26 18:50:36 DEBUG: 127.0.0.1 - Visitor short url: {'user_long_url': 'https://stackoverflow.com/questions/40234933/importing-flask-bcrypt-not-working-on-windows', 'short_url': 'https://127.0.0.1:5000/mwqNo', 'url_title': 'python - Importing flask_bcrypt not working on Windows - Stack Overflow'} is created
-2023-05-26 18:50:39 INFO: 127.0.0.1 - VisitorCreateURL is called
-2023-05-26 18:50:41 DEBUG: 127.0.0.1 - Visitor short url: {'user_long_url': 'https://stackoverflow.com/questions/40234933/importing-flask-bcrypt-not-working-on-windows', 'short_url': 'https://127.0.0.1:5000/ppws8', 'url_title': 'python - Importing flask_bcrypt not working on Windows - Stack Overflow'} is created
+2023-05-31 19:27:43 INFO: 127.0.0.1 - Login is called
+2023-05-31 19:27:43 WARNING: 127.0.0.1 - Invalid credentials
+2023-05-31 19:27:50 INFO: 127.0.0.1 - Login is called
+2023-05-31 19:27:50 DEBUG: 127.0.0.1 - User <user veektaw@gmail.com> logged in
+2023-05-31 19:28:09 INFO: 127.0.0.1 - GetURLS endpoint called
+2023-05-31 19:28:09 DEBUG: 127.0.0.1 - <user veektaw@gmail.com> Retrieved 0 URLs
+2023-05-31 19:28:23 INFO: 127.0.0.1 - CreateURL is called
+2023-05-31 19:28:26 INFO: 127.0.0.1 - Custom URL by <user veektaw@gmail.com> is saved to the database
+2023-05-31 19:28:26 DEBUG: 127.0.0.1 - Created a short url: <url 92b7e2aa-f189-4d81-9ae3-0b22ab2fe005>
+2023-05-31 19:28:32 INFO: 127.0.0.1 - GetURLS endpoint called
+2023-05-31 19:28:32 DEBUG: 127.0.0.1 - <user veektaw@gmail.com> Retrieved 1 URLs
+2023-05-31 19:28:34 INFO: 127.0.0.1 - GetURLS endpoint called
+2023-05-31 19:28:34 DEBUG: 127.0.0.1 - <user veektaw@gmail.com> Retrieved 1 URLs
+2023-05-31 19:28:35 INFO: 127.0.0.1 - GetURLS endpoint called
+2023-05-31 19:28:35 DEBUG: 127.0.0.1 - <user veektaw@gmail.com> Retrieved 1 URLs
+2023-05-31 19:28:35 INFO: 127.0.0.1 - GetURLS endpoint called
+2023-05-31 19:28:35 DEBUG: 127.0.0.1 - <user veektaw@gmail.com> Retrieved 1 URLs

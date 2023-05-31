@@ -26,7 +26,7 @@ class CreateURL(Resource):
                       params={"user_long_url":"Long url by the user"})   
     @jwt_required()
     @cache.cached(timeout=50)
-    @limiter.limit("10/minute")
+    @limiter.limit("5 per minute")
      
     def post(self):
        
@@ -95,7 +95,7 @@ class CreateCustomURL(Resource):
                               "custom_url": "User provides a custom url"})  
     @jwt_required()
     @cache.cached(timeout=50)
-    @limiter.limit("10/minute")
+    @limiter.limit("5 per minute")
      
     def post(self):
        
@@ -194,7 +194,7 @@ class ViewDeleteURLbyID(Resource):
     @url_namespace.marshal_with(url_marshall_serializer)  
     @jwt_required()
     @cache.cached(timeout=50)
-    @limiter.limit('3 per minute', key_func = lambda : session.get("id"))
+    @limiter.limit("5 per minute")
        
     def get(self, id):
         
@@ -225,7 +225,7 @@ class ViewDeleteURLbyID(Resource):
                        params = {"id":"UUID of the URL"})
     @jwt_required()
     @cache.cached(timeout=50)
-    @limiter.limit("10/minute")
+    @limiter.limit("5 per minute")
     
     def delete(self, id):
         
@@ -261,7 +261,7 @@ class ShortUrlRedirect(Resource):
                        params = {"short_url":"Clicks"})
     @jwt_required()
     @cache.cached(timeout=50)
-    @limiter.limit("10/minute")
+    @limiter.limit("5 per minute")
     
     def get(self, short_url):
         url = Url.query.filter_by(short_url=short_url).first()
@@ -286,7 +286,7 @@ class GetURLSInfo(Resource):
                        params = {"id":"This provides more information about the URLS"})    
     @jwt_required()
     @cache.cached(timeout=50)
-    @limiter.limit("10/minute")
+    @limiter.limit("5 per minute")
     
     def get(self):
         
@@ -334,7 +334,7 @@ class GenerateURLQRCode(Resource):
                        params={"id": "UUID of the short URL created earlier"}) 
     @jwt_required()
     @cache.cached(timeout=50)
-    @limiter.limit("10/minute")
+    @limiter.limit("5 per minute")
        
     def get(self, id):
         
