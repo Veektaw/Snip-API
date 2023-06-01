@@ -149,41 +149,45 @@ class CreateCustomURL(Resource):
 
 
 
-@url_namespace.route('/urls') 
+@url_namespace.route('/urls')
 class GetURLS(Resource):
    
-    
-    @url_namespace.doc(description = "Get all URLS",
-                       params = {"get method":"Get all URLs"})
-    @url_namespace.marshal_with(url_marshall_serializer)  
+    @url_namespace.doc(description="Get all URLs", params={"get method": "Get all URLs"})
+    @url_namespace.marshal_with(url_marshall_serializer)
     @jwt_required()
     @cache.cached(timeout=50)
     @limiter.limit("5 per minute")
-
     def get(self):
-
         """
-    
-        Get all URLS, with a simple get method.
-    
+        Get all URLs with a simple GET method.
         """
-        
         logger = logging.getLogger(__name__)
         logger.info("GetURLS endpoint called")
 
-        authenticated_user_email = get_jwt_identity() 
+        authenticated_user_email = get_jwt_identity()
+        authenticated_user = User.query.filter_by(email=authenticated_user_email).first()
 
-        authenticated_user = User.query.filter_by(email = authenticated_user_email).first()
-          
         if not authenticated_user:
             logger.warning("User not found")
             return {"message": "User not found"}, HTTPStatus.NOT_FOUND
-            
-        
-        url = Url.query.filter_by(creator=authenticated_user.email).all()
-        logger.debug(f"{authenticated_user} Retrieved {len(url)} URLs")
 
-        return url, HTTPStatus.OK
+        page = request.args.get('page', default=1, type=int)
+        per_page = request.args.get('per_page', default=10, type=int)
+        pagination = Url.query.filter_by(creator=authenticated_user.email).paginate(page=page, per_page=per_page)
+
+        urls = pagination.items
+        total_urls = pagination.total
+
+        logger.debug(f"{authenticated_user}: Retrieved {len(urls)} URLs")
+
+        response = {
+            'urls': urls,
+            'total_urls': total_urls,
+            'current_page': page,
+            'per_page': per_page
+        }
+
+        return response, HTTPStatus.OK
     
     
 @url_namespace.route('/<id>')
