@@ -152,15 +152,21 @@ class CreateCustomURL(Resource):
 @url_namespace.route('/urls')
 class GetURLS(Resource):
    
+    @cache.cached(timeout=50)
+    @limiter.limit("5 per minute")
     @url_namespace.doc(description="Get all URLs", params={"get method": "Get all URLs"})
     @url_namespace.marshal_with(url_marshall_serializer)
     @jwt_required()
-    @cache.cached(timeout=50)
-    @limiter.limit("5 per minute")
+    
+    
     def get(self):
+        
         """
-        Get all URLs with a simple GET method.
+        
+                Get all URLs with a simple GET method.
+                 
         """
+        
         logger = logging.getLogger(__name__)
         logger.info("GetURLS endpoint called")
 
@@ -193,12 +199,13 @@ class GetURLS(Resource):
 @url_namespace.route('/<id>')
 class ViewDeleteURLbyID(Resource):
     
+    @cache.cached(timeout=50)
+    @limiter.limit("5 per minute")
     @url_namespace.doc(description = "Get a URL by id",
                        params = {"id":"UUID of the URL"})
     @url_namespace.marshal_with(url_marshall_serializer)  
     @jwt_required()
-    @cache.cached(timeout=50)
-    @limiter.limit("5 per minute")
+    
        
     def get(self, id):
         
@@ -225,11 +232,11 @@ class ViewDeleteURLbyID(Resource):
         return url, HTTPStatus.OK
     
     
+    @cache.cached(timeout=50)
+    @limiter.limit("5 per minute")
     @url_namespace.doc(description = "Get a URl by UUID",
                        params = {"id":"UUID of the URL"})
     @jwt_required()
-    @cache.cached(timeout=50)
-    @limiter.limit("5 per minute")
     
     def delete(self, id):
         
@@ -261,17 +268,20 @@ class ViewDeleteURLbyID(Resource):
 @url_namespace.route('/<short_url>/visited')
 class ShortUrlRedirect(Resource):
     
+    
+    @cache.cached(timeout=50)
+    @limiter.limit("5 per minute")
     @url_namespace.doc(description = "Add clicks to a created short URL",
                        params = {"short_url":"Clicks"})
     @jwt_required()
-    @cache.cached(timeout=50)
-    @limiter.limit("5 per minute")
+
     
     def get(self, short_url):
-        url = Url.query.filter_by(short_url=short_url).first()
         
         logger = logging.getLogger(__name__)
         logger.info("ShortURLRedirect is called")
+        
+        url = Url.query.filter_by(short_url=short_url).first()
 
         if url is None:
             logger.error("Invalid short URL")
@@ -286,11 +296,13 @@ class ShortUrlRedirect(Resource):
 @url_namespace.route('/info') 
 class GetURLSInfo(Resource):
    
+   
+    @cache.cached(timeout=50)
+    @limiter.limit("5 per minute")
     @url_namespace.doc(description= "Get infomation about urls",
                        params = {"id":"This provides more information about the URLS"})    
     @jwt_required()
-    @cache.cached(timeout=50)
-    @limiter.limit("5 per minute")
+    
     
     def get(self):
         
@@ -333,12 +345,14 @@ class GetURLSInfo(Resource):
 
 @url_namespace.route('/<id>/qrcode')
 class GenerateURLQRCode(Resource):
-   
+    
+    
+    @cache.cached(timeout=50)
+    @limiter.limit("5 per minute")
     @url_namespace.doc(description = "Get QR code of a short URL",
                        params={"id": "UUID of the short URL created earlier"}) 
     @jwt_required()
-    @cache.cached(timeout=50)
-    @limiter.limit("5 per minute")
+    
        
     def get(self, id):
         

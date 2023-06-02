@@ -16,22 +16,33 @@ class Config:
     JWT_ACCESS_TOKEN_EXPIRES = timedelta(minutes=59)
     JWT_REFRESH_TOKEN_EXPIRES = timedelta(minutes=59)
     JWT_SECRET_KEY = config('JWT_SECRET_KEY')
-    CACHE_TYPE = "simple"
+    CACHE_TYPE = 'redis'
     CACHE_DEFAULT_TIMEOUT = 50
     DEFAULT_LIMITS = ["5 per minute"]
-    STORAGE_URI = "memcached://localhost:5000"
+    CACHE_REDIS_URL = "redis://localhost:6379"
  
 class DevConfig(Config):
     DEBUG = True
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_ECHO = True
     SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')
+    CACHE_TYPE = 'flask_caching.backends.RedisCache'
+    CACHE_REDIS_URL = "redis://localhost:6379"
+    CACHE_DEFAULT_TIMEOUT = 50
+    DEFAULT_LIMITS = ["5 per minute"]
+    RATELIMIT_STORAGE_URL = os.environ.get('REDIS_URL') or 'redis://localhost:6379'
 
 class TestConfig(Config):
     TESTING = True
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_ECHO = True
     SQLALCHEMY_DATABASE_URI = 'sqlite://'
+    CACHE_DEFAULT_TIMEOUT = 50
+    CACHE_TYPE = 'flask_caching.backends.RedisCache'
+    DEFAULT_LIMITS = ["5 per minute"]
+    STORAGE_URI = "redis://localhost:6379"
+    CACHE_REDIS_URL = "redis://localhost:6379"
+    RATELIMIT_STORAGE_URL = os.environ.get('REDIS_URL') or 'redis://localhost:6379'
     
 class ProdConfig(Config):
     
@@ -42,6 +53,15 @@ class ProdConfig(Config):
     SQLALCHEMY_DATABASE_URI = uri
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     DEBUG = config('DEBUG', False, cast=bool)
+    SECRET_KEY = config('SECRET_KEY', 'secret')
+    JWT_ACCESS_TOKEN_EXPIRES = timedelta(minutes=59)
+    JWT_REFRESH_TOKEN_EXPIRES = timedelta(minutes=59)
+    JWT_SECRET_KEY = config('JWT_SECRET_KEY')
+    CACHE_TYPE = 'flask_caching.backends.RedisCache'
+    CACHE_REDIS_URL = "redis://localhost:6379"
+    CACHE_DEFAULT_TIMEOUT = 50
+    DEFAULT_LIMITS = ["5 per minute"]
+    RATELIMIT_STORAGE_URL = os.environ.get('REDIS_URL') or 'redis://localhost:5000'
 
 
 config_dict = {

@@ -7,7 +7,9 @@ from .urls.views import url_namespace
 from .visitor.views import visitor_namespace
 from .account_management.views import manage_namespace
 from .config.config import config_dict
-from .utility import db, cache, limiter
+from .utility import db, cache, limiter, redis_cache
+from redis import Redis
+from flask_caching.backends import RedisCache
 from .models.url import Url
 from .models.user import User, Token
 from flask_migrate import Migrate
@@ -21,14 +23,13 @@ import logging
 from logging.handlers import RotatingFileHandler
 
 
-def create_app(config=config_dict['dev']):
+def create_app(config=config_dict['test']):
     app = Flask(__name__)
     app.config.from_object(config)
     CORS(app)
 
     db.init_app(app)
     
-    cache.init_app(app)
     
     jwt = JWTManager(app)
     bcrypt = Bcrypt(app)
@@ -50,8 +51,11 @@ def create_app(config=config_dict['dev']):
               security='Bearer Auth')
 
     
+    redis_client = Redis.from_url(app.config['RATELIMIT_STORAGE_URL'])
+    limiter = Limiter(app, storage_uri=redis_client)
     
-    limiter.init_app(app)
+    redis_cache = RedisCache(app)
+    cache.init_app(app, config={'CACHE_TYPE': 'flask_caching.backends.RedisCache'})
     
     api.add_namespace(url_namespace, path='/url')
     api.add_namespace(visitor_namespace, path='/visitor')

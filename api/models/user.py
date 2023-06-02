@@ -3,10 +3,8 @@ from sqlalchemy import text
 from sqlalchemy.dialects.postgresql import UUID
 from datetime import datetime
 from uuid import uuid4
-from sqlalchemy.ext.declarative import declarative_base
 from flask_uuid import uuid
 
-Base = declarative_base()
 
 
 class User(db.Model):
