@@ -14,7 +14,7 @@ from ..utility import db, cache, limiter
 from api.helpers.url_validator import URLCreator
 from api.models.user import User
 from api.models.url import Url
-from api.auth.views import DateTimeEncoder
+#from api.auth.views import DateTimeEncoder
  
 
 @url_namespace.route('/create')
@@ -152,9 +152,10 @@ class CreateCustomURL(Resource):
 @url_namespace.route('/urls')
 class GetURLS(Resource):
    
-    @cache.cached(timeout=50)
+    @cache.cached(timeout=5)
     @limiter.limit("5 per minute")
-    @url_namespace.doc(description="Get all URLs", params={"get method": "Get all URLs"})
+    @url_namespace.doc(description="Get all URLs",
+                       params={"get method": "Get all URLs"})
     @url_namespace.marshal_with(url_marshall_serializer)
     @jwt_required()
     
@@ -177,23 +178,12 @@ class GetURLS(Resource):
             logger.warning("User not found")
             return {"message": "User not found"}, HTTPStatus.NOT_FOUND
 
-        page = request.args.get('page', default=1, type=int)
-        per_page = request.args.get('per_page', default=10, type=int)
-        pagination = Url.query.filter_by(creator=authenticated_user.email).paginate(page=page, per_page=per_page)
+        urls = Url.query.filter_by(creator=authenticated_user.email).all()
 
-        urls = pagination.items
-        total_urls = pagination.total
 
         logger.debug(f"{authenticated_user}: Retrieved {len(urls)} URLs")
 
-        response = {
-            'urls': urls,
-            'total_urls': total_urls,
-            'current_page': page,
-            'per_page': per_page
-        }
-
-        return response, HTTPStatus.OK
+        return urls, HTTPStatus.OK
     
     
 @url_namespace.route('/<id>')

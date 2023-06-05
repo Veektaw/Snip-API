@@ -40,6 +40,8 @@ class TestConfig(Config):
     CACHE_DEFAULT_TIMEOUT = 50
     CACHE_TYPE = 'flask_caching.backends.RedisCache'
     DEFAULT_LIMITS = ["5 per minute"]
+    JWT_BLACKLIST_ENABLED = True
+    JWT_BLACKLIST_TOKEN_CHECKS = 'access', 'refresh'
     STORAGE_URI = "redis://localhost:6379"
     CACHE_REDIS_URL = "redis://localhost:6379"
     RATELIMIT_STORAGE_URL = os.environ.get('REDIS_URL') or 'redis://localhost:6379'

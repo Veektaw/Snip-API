@@ -16,7 +16,7 @@ class Url(db.Model):
     created = db.Column(db.DateTime, nullable=False , default=datetime.utcnow)
     url_title = db.Column(db.String(300), nullable=True)
     visited = db.Column(db.Integer(), default=0)
-    creator = db.Column(db.Integer(), db.ForeignKey('users.id') , nullable=False)
+    creator = db.Column(db.String(), db.ForeignKey('users.id') , nullable=False)
 
     def __repr__(self):
         return f"<url {self.id}>"
@@ -26,7 +26,18 @@ class Url(db.Model):
         db.session.commit()
         
     def format_datetime(dt):
-        return dt.strftime("%Y-%m-%d %I:%M %p")    
+        return dt.strftime("%Y-%m-%d %I:%M %p")
+    
+    
+    def serialize(self):
+        return {
+            'id': self.id,
+            'user_long_url': self.user_long_url,
+            'url_title': self.url_title,
+            'short_url': self.short_url,
+            'created': self.created.strftime('%Y-%m-%d %H:%M:%S'),  # Format the datetime as a string
+            # Include other properties you want to include in the serialized representation
+        }    
     
 
     @classmethod

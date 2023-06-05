@@ -1,1 +1,1535 @@
 
+2023-06-02 19:38:48 WARNING: 127.0.0.1 - Invalid credentials
+2023-06-02 19:53:41 WARNING: 127.0.0.1 - Invalid credentials
+2023-06-02 19:55:32 WARNING: 127.0.0.1 - Invalid credentials
+2023-06-02 19:55:32 WARNING: 127.0.0.1 - Invalid credentials
+2023-06-02 19:55:32 WARNING: 127.0.0.1 - Invalid credentials
+2023-06-02 20:03:04 WARNING: 127.0.0.1 - Invalid credentials
+2023-06-02 20:03:04 WARNING: 127.0.0.1 - Invalid credentials
+2023-06-02 20:03:04 WARNING: 127.0.0.1 - Invalid credentials
+2023-06-03 07:48:31 WARNING: 127.0.0.1 - Invalid credentials
+2023-06-03 07:48:31 WARNING: 127.0.0.1 - Invalid credentials
+2023-06-03 07:48:31 WARNING: 127.0.0.1 - Invalid credentials
+2023-06-04 08:49:40 WARNING: 127.0.0.1 - Invalid credentials
+2023-06-04 08:52:11 WARNING: 127.0.0.1 - Invalid credentials
+2023-06-04 08:53:37 WARNING: 127.0.0.1 - Invalid credentials
+2023-06-04 09:19:51 WARNING: 127.0.0.1 - Invalid credentials
+2023-06-04 09:19:51 ERROR: 127.0.0.1 - Exception on /auth/signup [POST]
+Traceback (most recent call last):
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 404, in wrapper
+    resp = resource(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/views.py", line 107, in view
+    return current_app.ensure_sync(self.dispatch_request)(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/resource.py", line 46, in dispatch_request
+    resp = meth(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_limiter/extension.py", line 1191, in __inner
+    R, flask.current_app.ensure_sync(cast(Callable[P, R], obj))(*a, **k)
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/marshalling.py", line 244, in wrapper
+    resp = f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/api/auth/views.py", line 41, in post
+    password = generate_password_hash(data.get('password'))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/werkzeug/security.py", line 88, in generate_password_hash
+    h, actual_method = _hash_internal(method, salt, password)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/werkzeug/security.py", line 36, in _hash_internal
+    password = password.encode("utf-8")
+               ^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'encode'
+2023-06-04 09:19:51 ERROR: 127.0.0.1 - Exception on /auth/signup [POST]
+Traceback (most recent call last):
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 404, in wrapper
+    resp = resource(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/views.py", line 107, in view
+    return current_app.ensure_sync(self.dispatch_request)(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/resource.py", line 46, in dispatch_request
+    resp = meth(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_limiter/extension.py", line 1191, in __inner
+    R, flask.current_app.ensure_sync(cast(Callable[P, R], obj))(*a, **k)
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/marshalling.py", line 244, in wrapper
+    resp = f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/api/auth/views.py", line 41, in post
+    password = generate_password_hash(data.get('password'))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/werkzeug/security.py", line 88, in generate_password_hash
+    h, actual_method = _hash_internal(method, salt, password)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/werkzeug/security.py", line 36, in _hash_internal
+    password = password.encode("utf-8")
+               ^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'encode'
+2023-06-04 09:21:12 WARNING: 127.0.0.1 - Invalid credentials
+2023-06-04 09:30:44 WARNING: 127.0.0.1 - Invalid credentials
+2023-06-04 11:14:55 INFO: 127.0.0.1 - Login is called
+2023-06-04 11:14:56 DEBUG: 127.0.0.1 - User <user veektaw@gmail.com> logged in
+2023-06-04 11:15:14 ERROR: 127.0.0.1 - Exception on /auth/logout [POST]
+Traceback (most recent call last):
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 408, in wrapper
+    return self.make_response(data, code, headers=headers)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 432, in make_response
+    resp = self.representations[mediatype](data, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/representations.py", line 22, in output_json
+    dumped = dumps(data, **settings) + "\n"
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 202, in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type function is not JSON serializable
+2023-06-04 11:34:52 ERROR: 127.0.0.1 - Exception on /auth/logout [POST]
+Traceback (most recent call last):
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 408, in wrapper
+    return self.make_response(data, code, headers=headers)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 432, in make_response
+    resp = self.representations[mediatype](data, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/representations.py", line 22, in output_json
+    dumped = dumps(data, **settings) + "\n"
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 202, in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type function is not JSON serializable
+2023-06-04 11:38:26 ERROR: 127.0.0.1 - Exception on /auth/logout [POST]
+Traceback (most recent call last):
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 408, in wrapper
+    return self.make_response(data, code, headers=headers)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 432, in make_response
+    resp = self.representations[mediatype](data, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/representations.py", line 22, in output_json
+    dumped = dumps(data, **settings) + "\n"
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 202, in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type function is not JSON serializable
+2023-06-04 12:13:12 ERROR: 127.0.0.1 - Exception on /auth/logout [POST]
+Traceback (most recent call last):
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 408, in wrapper
+    return self.make_response(data, code, headers=headers)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 432, in make_response
+    resp = self.representations[mediatype](data, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/representations.py", line 22, in output_json
+    dumped = dumps(data, **settings) + "\n"
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 202, in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type function is not JSON serializable
+2023-06-04 12:14:29 ERROR: 127.0.0.1 - Exception on /auth/logout [POST]
+Traceback (most recent call last):
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 408, in wrapper
+    return self.make_response(data, code, headers=headers)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 432, in make_response
+    resp = self.representations[mediatype](data, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/representations.py", line 22, in output_json
+    dumped = dumps(data, **settings) + "\n"
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 202, in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type function is not JSON serializable
+2023-06-04 12:22:01 ERROR: 127.0.0.1 - Exception on /auth/logout [POST]
+Traceback (most recent call last):
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 408, in wrapper
+    return self.make_response(data, code, headers=headers)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 432, in make_response
+    resp = self.representations[mediatype](data, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/representations.py", line 22, in output_json
+    dumped = dumps(data, **settings) + "\n"
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 202, in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type function is not JSON serializable
+2023-06-04 12:23:51 ERROR: 127.0.0.1 - Exception on /auth/logout [POST]
+Traceback (most recent call last):
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 408, in wrapper
+    return self.make_response(data, code, headers=headers)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 432, in make_response
+    resp = self.representations[mediatype](data, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/representations.py", line 22, in output_json
+    dumped = dumps(data, **settings) + "\n"
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 202, in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type function is not JSON serializable
+2023-06-04 12:29:52 ERROR: 127.0.0.1 - Exception on /auth/logout [POST]
+Traceback (most recent call last):
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 404, in wrapper
+    resp = resource(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/views.py", line 107, in view
+    return current_app.ensure_sync(self.dispatch_request)(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/resource.py", line 46, in dispatch_request
+    resp = meth(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_jwt_extended/view_decorators.py", line 153, in decorator
+    verify_jwt_in_request(optional, fresh, refresh, locations, verify_type)
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_jwt_extended/view_decorators.py", line 89, in verify_jwt_in_request
+    jwt_data, jwt_header, jwt_location = _decode_jwt_from_request(
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_jwt_extended/view_decorators.py", line 323, in _decode_jwt_from_request
+    decoded_token = decode_token(encoded_token, csrf_token)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_jwt_extended/utils.py", line 127, in decode_token
+    return jwt_manager._decode_jwt_from_config(encoded_token, csrf_value, allow_expired)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_jwt_extended/jwt_manager.py", line 553, in _decode_jwt_from_config
+    return _decode_jwt(**kwargs, allow_expired=allow_expired)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_jwt_extended/tokens.py", line 94, in _decode_jwt
+    decoded_token = jwt.decode(
+                    ^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/jwt/api_jwt.py", line 168, in decode
+    decoded = self.decode_complete(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/jwt/api_jwt.py", line 136, in decode_complete
+    self._validate_claims(
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/jwt/api_jwt.py", line 199, in _validate_claims
+    self._validate_exp(payload, now, leeway)
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/jwt/api_jwt.py", line 237, in _validate_exp
+    raise ExpiredSignatureError("Signature has expired")
+jwt.exceptions.ExpiredSignatureError: Signature has expired
+2023-06-04 12:30:02 INFO: 127.0.0.1 - Login is called
+2023-06-04 12:30:02 DEBUG: 127.0.0.1 - User <user veektaw@gmail.com> logged in
+2023-06-04 12:31:41 INFO: 127.0.0.1 - ChangePasswordRequest is called
+2023-06-04 12:31:42 ERROR: 127.0.0.1 - User enters wrong old password
+2023-06-04 12:32:04 INFO: 127.0.0.1 - CreateCustomURL is called
+2023-06-04 12:32:08 INFO: 127.0.0.1 - Custom URL by <user veektaw@gmail.com> is saved to the database
+2023-06-04 12:32:08 DEBUG: 127.0.0.1 - Created custom url: <url 4585b877-4eb4-49b3-ad08-9751ab1672ef>
+2023-06-04 12:35:05 ERROR: 127.0.0.1 - Exception on /auth/logout [POST]
+Traceback (most recent call last):
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 408, in wrapper
+    return self.make_response(data, code, headers=headers)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 432, in make_response
+    resp = self.representations[mediatype](data, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/representations.py", line 22, in output_json
+    dumped = dumps(data, **settings) + "\n"
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 202, in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type function is not JSON serializable
+2023-06-04 12:36:22 ERROR: 127.0.0.1 - Exception on /auth/logout [POST]
+Traceback (most recent call last):
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 408, in wrapper
+    return self.make_response(data, code, headers=headers)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 432, in make_response
+    resp = self.representations[mediatype](data, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/representations.py", line 22, in output_json
+    dumped = dumps(data, **settings) + "\n"
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 202, in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type function is not JSON serializable
+2023-06-04 12:36:58 ERROR: 127.0.0.1 - Exception on /auth/logout [POST]
+Traceback (most recent call last):
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 408, in wrapper
+    return self.make_response(data, code, headers=headers)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 432, in make_response
+    resp = self.representations[mediatype](data, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/representations.py", line 22, in output_json
+    dumped = dumps(data, **settings) + "\n"
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 202, in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type function is not JSON serializable
+2023-06-04 12:38:28 ERROR: 127.0.0.1 - Exception on /auth/logout [POST]
+Traceback (most recent call last):
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 408, in wrapper
+    return self.make_response(data, code, headers=headers)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 432, in make_response
+    resp = self.representations[mediatype](data, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/representations.py", line 22, in output_json
+    dumped = dumps(data, **settings) + "\n"
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 202, in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type function is not JSON serializable
+2023-06-04 14:49:02 INFO: 127.0.0.1 - Login is called
+2023-06-04 14:49:03 DEBUG: 127.0.0.1 - User <user veektaw@gmail.com> logged in
+2023-06-04 14:49:16 ERROR: 127.0.0.1 - Exception on /auth/logout [POST]
+Traceback (most recent call last):
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 408, in wrapper
+    return self.make_response(data, code, headers=headers)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 432, in make_response
+    resp = self.representations[mediatype](data, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/representations.py", line 22, in output_json
+    dumped = dumps(data, **settings) + "\n"
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 202, in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type function is not JSON serializable
+2023-06-04 14:55:46 ERROR: 127.0.0.1 - Exception on /auth/logout [POST]
+Traceback (most recent call last):
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 408, in wrapper
+    return self.make_response(data, code, headers=headers)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 432, in make_response
+    resp = self.representations[mediatype](data, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/representations.py", line 22, in output_json
+    dumped = dumps(data, **settings) + "\n"
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 202, in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type function is not JSON serializable
+2023-06-04 15:15:16 ERROR: 127.0.0.1 - Exception on /auth/logout [POST]
+Traceback (most recent call last):
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 408, in wrapper
+    return self.make_response(data, code, headers=headers)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 432, in make_response
+    resp = self.representations[mediatype](data, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/representations.py", line 22, in output_json
+    dumped = dumps(data, **settings) + "\n"
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 202, in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type function is not JSON serializable
+2023-06-04 15:16:41 ERROR: 127.0.0.1 - Exception on /auth/logout [POST]
+Traceback (most recent call last):
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 408, in wrapper
+    return self.make_response(data, code, headers=headers)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 432, in make_response
+    resp = self.representations[mediatype](data, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/representations.py", line 22, in output_json
+    dumped = dumps(data, **settings) + "\n"
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 202, in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type function is not JSON serializable
+2023-06-04 15:21:53 ERROR: 127.0.0.1 - Exception on /auth/logout [POST]
+Traceback (most recent call last):
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 408, in wrapper
+    return self.make_response(data, code, headers=headers)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 432, in make_response
+    resp = self.representations[mediatype](data, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/representations.py", line 22, in output_json
+    dumped = dumps(data, **settings) + "\n"
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 202, in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type function is not JSON serializable
+2023-06-04 15:25:33 ERROR: 127.0.0.1 - Exception on /auth/logout [POST]
+Traceback (most recent call last):
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 408, in wrapper
+    return self.make_response(data, code, headers=headers)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 432, in make_response
+    resp = self.representations[mediatype](data, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/representations.py", line 22, in output_json
+    dumped = dumps(data, **settings) + "\n"
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 202, in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type function is not JSON serializable
+2023-06-04 15:35:39 ERROR: 127.0.0.1 - Exception on /auth/logout [POST]
+Traceback (most recent call last):
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 408, in wrapper
+    return self.make_response(data, code, headers=headers)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 432, in make_response
+    resp = self.representations[mediatype](data, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/representations.py", line 22, in output_json
+    dumped = dumps(data, **settings) + "\n"
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 202, in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type function is not JSON serializable
+2023-06-04 15:39:27 ERROR: 127.0.0.1 - Exception on /auth/logout [POST]
+Traceback (most recent call last):
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 408, in wrapper
+    return self.make_response(data, code, headers=headers)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 432, in make_response
+    resp = self.representations[mediatype](data, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/representations.py", line 22, in output_json
+    dumped = dumps(data, **settings) + "\n"
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 202, in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type function is not JSON serializable
+2023-06-04 15:46:33 INFO: 127.0.0.1 - Login is called
+2023-06-04 15:46:33 DEBUG: 127.0.0.1 - User <user veektaw@gmail.com> logged in
+2023-06-04 15:46:47 INFO: 127.0.0.1 - GetURLS endpoint called
+2023-06-04 15:46:47 DEBUG: 127.0.0.1 - <user veektaw@gmail.com>: Retrieved 2 URLs
+2023-06-04 15:47:48 INFO: 127.0.0.1 - GetURLS endpoint called
+2023-06-04 15:47:48 DEBUG: 127.0.0.1 - <user veektaw@gmail.com>: Retrieved 2 URLs
+2023-06-04 15:48:01 INFO: 127.0.0.1 - GetURLS endpoint called
+2023-06-04 15:48:01 DEBUG: 127.0.0.1 - <user veektaw@gmail.com>: Retrieved 2 URLs
+2023-06-04 15:53:01 ERROR: 127.0.0.1 - Exception on /url/urls [GET]
+Traceback (most recent call last):
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/sqlalchemy/sql/base.py", line 1694, in _entity_namespace_key
+    return getattr(ns, key)
+           ^^^^^^^^^^^^^^^^
+AttributeError: type object 'Url' has no attribute 'user_id'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 404, in wrapper
+    resp = resource(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/views.py", line 107, in view
+    return current_app.ensure_sync(self.dispatch_request)(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/resource.py", line 46, in dispatch_request
+    resp = meth(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_limiter/extension.py", line 1191, in __inner
+    R, flask.current_app.ensure_sync(cast(Callable[P, R], obj))(*a, **k)
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/marshalling.py", line 244, in wrapper
+    resp = f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_jwt_extended/view_decorators.py", line 154, in decorator
+    return current_app.ensure_sync(fn)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/api/urls/views.py", line 176, in get
+    urls = Url.query.filter_by(user_id=auth_user.id).all()
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/sqlalchemy/orm/query.py", line 1806, in filter_by
+    clauses = [
+              ^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/sqlalchemy/orm/query.py", line 1807, in <listcomp>
+    _entity_namespace_key(from_entity, key) == value
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/sqlalchemy/sql/base.py", line 1696, in _entity_namespace_key
+    util.raise_(
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+sqlalchemy.exc.InvalidRequestError: Entity namespace for "urls" has no property "user_id"
+2023-06-04 15:55:43 INFO: 127.0.0.1 - GetURLS endpoint called
+2023-06-04 15:55:43 DEBUG: 127.0.0.1 - <user veektaw@gmail.com>: Retrieved 2 URLs
+2023-06-04 15:56:36 INFO: 127.0.0.1 - Login is called
+2023-06-04 15:56:36 DEBUG: 127.0.0.1 - User <user veektaw@gmail.com> logged in
+2023-06-04 15:56:46 ERROR: 127.0.0.1 - Exception on /auth/logout [POST]
+Traceback (most recent call last):
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 408, in wrapper
+    return self.make_response(data, code, headers=headers)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 432, in make_response
+    resp = self.representations[mediatype](data, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/representations.py", line 22, in output_json
+    dumped = dumps(data, **settings) + "\n"
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 202, in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type function is not JSON serializable
+2023-06-04 15:56:58 INFO: 127.0.0.1 - GetURLS endpoint called
+2023-06-04 15:56:58 DEBUG: 127.0.0.1 - <user veektaw@gmail.com>: Retrieved 2 URLs
+2023-06-04 15:57:10 ERROR: 127.0.0.1 - Exception on /url/info [GET]
+Traceback (most recent call last):
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 404, in wrapper
+    resp = resource(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/views.py", line 107, in view
+    return current_app.ensure_sync(self.dispatch_request)(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/resource.py", line 46, in dispatch_request
+    resp = meth(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_caching/__init__.py", line 404, in decorated_function
+    rv = self._call_fn(f, *args, **kwargs)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_caching/__init__.py", line 180, in _call_fn
+    return ensure_sync(fn)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_limiter/extension.py", line 1191, in __inner
+    R, flask.current_app.ensure_sync(cast(Callable[P, R], obj))(*a, **k)
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_jwt_extended/view_decorators.py", line 153, in decorator
+    verify_jwt_in_request(optional, fresh, refresh, locations, verify_type)
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_jwt_extended/view_decorators.py", line 89, in verify_jwt_in_request
+    jwt_data, jwt_header, jwt_location = _decode_jwt_from_request(
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_jwt_extended/view_decorators.py", line 323, in _decode_jwt_from_request
+    decoded_token = decode_token(encoded_token, csrf_token)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_jwt_extended/utils.py", line 127, in decode_token
+    return jwt_manager._decode_jwt_from_config(encoded_token, csrf_value, allow_expired)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_jwt_extended/jwt_manager.py", line 553, in _decode_jwt_from_config
+    return _decode_jwt(**kwargs, allow_expired=allow_expired)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_jwt_extended/tokens.py", line 94, in _decode_jwt
+    decoded_token = jwt.decode(
+                    ^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/jwt/api_jwt.py", line 168, in decode
+    decoded = self.decode_complete(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/jwt/api_jwt.py", line 120, in decode_complete
+    decoded = api_jws.decode_complete(
+              ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/jwt/api_jws.py", line 202, in decode_complete
+    self._verify_signature(signing_input, header, signature, key, algorithms)
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/jwt/api_jws.py", line 301, in _verify_signature
+    raise InvalidSignatureError("Signature verification failed")
+jwt.exceptions.InvalidSignatureError: Signature verification failed
+2023-06-04 15:57:21 INFO: 127.0.0.1 - GetURLSInfo is called
+2023-06-04 15:57:21 DEBUG: 127.0.0.1 - Info {'total_Urls': 2, 'total_Clicks': 0} of URL
+2023-06-04 16:00:36 INFO: 127.0.0.1 - GetURLS endpoint called
+2023-06-04 16:00:36 DEBUG: 127.0.0.1 - <user veektaw@gmail.com>: Retrieved 2 URLs
+2023-06-04 16:03:26 INFO: 127.0.0.1 - GetURLS endpoint called
+2023-06-04 16:03:26 DEBUG: 127.0.0.1 - <user veektaw@gmail.com>: Retrieved 2 URLs
+2023-06-04 16:03:26 ERROR: 127.0.0.1 - Exception on /url/urls [GET]
+Traceback (most recent call last):
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 404, in wrapper
+    resp = resource(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/views.py", line 107, in view
+    return current_app.ensure_sync(self.dispatch_request)(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/resource.py", line 46, in dispatch_request
+    resp = meth(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_caching/__init__.py", line 404, in decorated_function
+    rv = self._call_fn(f, *args, **kwargs)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_caching/__init__.py", line 180, in _call_fn
+    return ensure_sync(fn)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_limiter/extension.py", line 1191, in __inner
+    R, flask.current_app.ensure_sync(cast(Callable[P, R], obj))(*a, **k)
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/marshalling.py", line 244, in wrapper
+    resp = f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_jwt_extended/view_decorators.py", line 154, in decorator
+    return current_app.ensure_sync(fn)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/api/urls/views.py", line 190, in get
+    'urls': [url.serialize() for url in urls],
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/api/urls/views.py", line 190, in <listcomp>
+    'urls': [url.serialize() for url in urls],
+             ^^^^^^^^^^^^^
+AttributeError: 'Url' object has no attribute 'serialize'
+2023-06-04 16:05:01 INFO: 127.0.0.1 - GetURLS endpoint called
+2023-06-04 16:05:01 DEBUG: 127.0.0.1 - <user veektaw@gmail.com>: Retrieved 2 URLs
+2023-06-04 16:05:01 ERROR: 127.0.0.1 - Exception on /url/urls [GET]
+Traceback (most recent call last):
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 404, in wrapper
+    resp = resource(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/views.py", line 107, in view
+    return current_app.ensure_sync(self.dispatch_request)(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/resource.py", line 46, in dispatch_request
+    resp = meth(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_caching/__init__.py", line 404, in decorated_function
+    rv = self._call_fn(f, *args, **kwargs)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_caching/__init__.py", line 180, in _call_fn
+    return ensure_sync(fn)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_limiter/extension.py", line 1191, in __inner
+    R, flask.current_app.ensure_sync(cast(Callable[P, R], obj))(*a, **k)
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/marshalling.py", line 244, in wrapper
+    resp = f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_jwt_extended/view_decorators.py", line 154, in decorator
+    return current_app.ensure_sync(fn)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/api/urls/views.py", line 190, in get
+    'urls': [url.serialize() for url in urls],
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/api/urls/views.py", line 190, in <listcomp>
+    'urls': [url.serialize() for url in urls],
+             ^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/api/models/url.py", line 35, in serialize
+    'url': self.url,
+           ^^^^^^^^
+AttributeError: 'Url' object has no attribute 'url'
+2023-06-04 16:07:50 INFO: 127.0.0.1 - GetURLS endpoint called
+2023-06-04 16:07:51 DEBUG: 127.0.0.1 - <user veektaw@gmail.com>: Retrieved 2 URLs
+2023-06-04 16:07:51 ERROR: 127.0.0.1 - Exception on /url/urls [GET]
+Traceback (most recent call last):
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 404, in wrapper
+    resp = resource(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/views.py", line 107, in view
+    return current_app.ensure_sync(self.dispatch_request)(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/resource.py", line 46, in dispatch_request
+    resp = meth(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_caching/__init__.py", line 404, in decorated_function
+    rv = self._call_fn(f, *args, **kwargs)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_caching/__init__.py", line 180, in _call_fn
+    return ensure_sync(fn)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_limiter/extension.py", line 1191, in __inner
+    R, flask.current_app.ensure_sync(cast(Callable[P, R], obj))(*a, **k)
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/marshalling.py", line 244, in wrapper
+    resp = f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_jwt_extended/view_decorators.py", line 154, in decorator
+    return current_app.ensure_sync(fn)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/api/urls/views.py", line 190, in get
+    'urls': [url.serialize() for url in urls],
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/api/urls/views.py", line 190, in <listcomp>
+    'urls': [url.serialize() for url in urls],
+             ^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/api/models/url.py", line 38, in serialize
+    'created_at': self.created_at.strftime('%Y-%m-%d %H:%M:%S'),  # Format the datetime as a string
+                  ^^^^^^^^^^^^^^^
+AttributeError: 'Url' object has no attribute 'created_at'
+2023-06-04 16:08:07 INFO: 127.0.0.1 - GetURLS endpoint called
+2023-06-04 16:08:07 DEBUG: 127.0.0.1 - <user veektaw@gmail.com>: Retrieved 2 URLs
+2023-06-04 16:11:50 INFO: 127.0.0.1 - GetURLS endpoint called
+2023-06-04 16:11:50 DEBUG: 127.0.0.1 - <user veektaw@gmail.com>: Retrieved 2 URLs
+2023-06-04 16:11:50 ERROR: 127.0.0.1 - Exception on /url/urls [GET]
+Traceback (most recent call last):
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 404, in wrapper
+    resp = resource(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/views.py", line 107, in view
+    return current_app.ensure_sync(self.dispatch_request)(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/resource.py", line 46, in dispatch_request
+    resp = meth(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_caching/__init__.py", line 404, in decorated_function
+    rv = self._call_fn(f, *args, **kwargs)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_caching/__init__.py", line 180, in _call_fn
+    return ensure_sync(fn)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_limiter/extension.py", line 1191, in __inner
+    R, flask.current_app.ensure_sync(cast(Callable[P, R], obj))(*a, **k)
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/marshalling.py", line 244, in wrapper
+    resp = f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_jwt_extended/view_decorators.py", line 154, in decorator
+    return current_app.ensure_sync(fn)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/api/urls/views.py", line 194, in get
+    'user_long_url': urls.user_long_url,
+                     ^^^^^^^^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'user_long_url'
+2023-06-04 16:12:53 INFO: 127.0.0.1 - GetURLS endpoint called
+2023-06-04 16:12:53 ERROR: 127.0.0.1 - Exception on /url/urls [GET]
+Traceback (most recent call last):
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 404, in wrapper
+    resp = resource(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/views.py", line 107, in view
+    return current_app.ensure_sync(self.dispatch_request)(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/resource.py", line 46, in dispatch_request
+    resp = meth(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_caching/__init__.py", line 404, in decorated_function
+    rv = self._call_fn(f, *args, **kwargs)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_caching/__init__.py", line 180, in _call_fn
+    return ensure_sync(fn)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_limiter/extension.py", line 1191, in __inner
+    R, flask.current_app.ensure_sync(cast(Callable[P, R], obj))(*a, **k)
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/marshalling.py", line 244, in wrapper
+    resp = f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_jwt_extended/view_decorators.py", line 154, in decorator
+    return current_app.ensure_sync(fn)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/api/urls/views.py", line 184, in get
+    urls = pagination.items
+           ^^^^^^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'items'
+2023-06-04 16:13:38 INFO: 127.0.0.1 - GetURLS endpoint called
+2023-06-04 16:13:38 DEBUG: 127.0.0.1 - <user veektaw@gmail.com>: Retrieved 2 URLs
+2023-06-04 16:13:38 ERROR: 127.0.0.1 - Exception on /url/urls [GET]
+Traceback (most recent call last):
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 404, in wrapper
+    resp = resource(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/views.py", line 107, in view
+    return current_app.ensure_sync(self.dispatch_request)(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/resource.py", line 46, in dispatch_request
+    resp = meth(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_caching/__init__.py", line 404, in decorated_function
+    rv = self._call_fn(f, *args, **kwargs)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_caching/__init__.py", line 180, in _call_fn
+    return ensure_sync(fn)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_limiter/extension.py", line 1191, in __inner
+    R, flask.current_app.ensure_sync(cast(Callable[P, R], obj))(*a, **k)
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/marshalling.py", line 244, in wrapper
+    resp = f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_jwt_extended/view_decorators.py", line 154, in decorator
+    return current_app.ensure_sync(fn)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/api/urls/views.py", line 191, in get
+    'user_long_url': urls.user_long_url,
+                     ^^^^^^^^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'user_long_url'
+2023-06-04 16:14:32 INFO: 127.0.0.1 - GetURLS endpoint called
+2023-06-04 16:14:32 DEBUG: 127.0.0.1 - <user veektaw@gmail.com>: Retrieved 2 URLs
+2023-06-04 16:14:32 ERROR: 127.0.0.1 - Exception on /url/urls [GET]
+Traceback (most recent call last):
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 404, in wrapper
+    resp = resource(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/views.py", line 107, in view
+    return current_app.ensure_sync(self.dispatch_request)(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/resource.py", line 46, in dispatch_request
+    resp = meth(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_caching/__init__.py", line 404, in decorated_function
+    rv = self._call_fn(f, *args, **kwargs)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_caching/__init__.py", line 180, in _call_fn
+    return ensure_sync(fn)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_limiter/extension.py", line 1191, in __inner
+    R, flask.current_app.ensure_sync(cast(Callable[P, R], obj))(*a, **k)
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/marshalling.py", line 244, in wrapper
+    resp = f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_jwt_extended/view_decorators.py", line 154, in decorator
+    return current_app.ensure_sync(fn)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/api/urls/views.py", line 189, in get
+    'short_url': urls.short_url,
+                 ^^^^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'short_url'
+2023-06-04 16:15:17 INFO: 127.0.0.1 - GetURLS endpoint called
+2023-06-04 16:15:17 DEBUG: 127.0.0.1 - <user veektaw@gmail.com>: Retrieved 2 URLs
+2023-06-04 16:19:23 INFO: 127.0.0.1 - GetURLS endpoint called
+2023-06-04 16:19:23 DEBUG: 127.0.0.1 - <user veektaw@gmail.com>: Retrieved 2 URLs
+2023-06-04 16:29:25 WARNING: 127.0.0.1 - Invalid credentials
+2023-06-04 16:32:47 INFO: 127.0.0.1 - Login is called
+2023-06-04 16:32:47 DEBUG: 127.0.0.1 - User <user veektaw@gmail.com> logged in
+2023-06-04 17:11:53 INFO: 127.0.0.1 - GetURLS endpoint called
+2023-06-04 17:11:53 DEBUG: 127.0.0.1 - <user veektaw@gmail.com>: Retrieved 2 URLs
+2023-06-04 17:15:19 INFO: 127.0.0.1 - GetURLS endpoint called
+2023-06-04 17:15:19 DEBUG: 127.0.0.1 - <user veektaw@gmail.com>: Retrieved 2 URLs
+2023-06-04 17:15:26 INFO: 127.0.0.1 - GetURLS endpoint called
+2023-06-04 17:15:26 DEBUG: 127.0.0.1 - <user veektaw@gmail.com>: Retrieved 2 URLs
+2023-06-04 17:15:33 INFO: 127.0.0.1 - GetURLS endpoint called
+2023-06-04 17:15:33 DEBUG: 127.0.0.1 - <user veektaw@gmail.com>: Retrieved 2 URLs
+2023-06-04 17:15:40 INFO: 127.0.0.1 - GetURLS endpoint called
+2023-06-04 17:15:40 DEBUG: 127.0.0.1 - <user veektaw@gmail.com>: Retrieved 2 URLs
+2023-06-04 17:15:45 INFO: 127.0.0.1 - GetURLS endpoint called
+2023-06-04 17:15:45 DEBUG: 127.0.0.1 - <user veektaw@gmail.com>: Retrieved 2 URLs
+2023-06-04 17:15:50 INFO: 127.0.0.1 - GetURLS endpoint called
+2023-06-04 17:15:50 DEBUG: 127.0.0.1 - <user veektaw@gmail.com>: Retrieved 2 URLs
+2023-06-04 17:15:58 INFO: 127.0.0.1 - GetURLS endpoint called
+2023-06-04 17:15:58 DEBUG: 127.0.0.1 - <user veektaw@gmail.com>: Retrieved 2 URLs
+2023-06-04 17:16:03 INFO: 127.0.0.1 - GetURLS endpoint called
+2023-06-04 17:16:03 DEBUG: 127.0.0.1 - <user veektaw@gmail.com>: Retrieved 2 URLs
+2023-06-04 17:16:08 INFO: 127.0.0.1 - GetURLS endpoint called
+2023-06-04 17:16:08 DEBUG: 127.0.0.1 - <user veektaw@gmail.com>: Retrieved 2 URLs
+2023-06-04 17:16:22 INFO: 127.0.0.1 - GetURLS endpoint called
+2023-06-04 17:16:22 DEBUG: 127.0.0.1 - <user veektaw@gmail.com>: Retrieved 2 URLs
+2023-06-04 17:16:27 INFO: 127.0.0.1 - GetURLS endpoint called
+2023-06-04 17:16:27 DEBUG: 127.0.0.1 - <user veektaw@gmail.com>: Retrieved 2 URLs
+2023-06-04 17:16:33 INFO: 127.0.0.1 - GetURLS endpoint called
+2023-06-04 17:16:33 DEBUG: 127.0.0.1 - <user veektaw@gmail.com>: Retrieved 2 URLs
+2023-06-04 17:16:53 INFO: 127.0.0.1 - GetURLS endpoint called
+2023-06-04 17:16:53 DEBUG: 127.0.0.1 - <user veektaw@gmail.com>: Retrieved 2 URLs
+2023-06-04 17:16:58 INFO: 127.0.0.1 - GetURLS endpoint called
+2023-06-04 17:16:58 DEBUG: 127.0.0.1 - <user veektaw@gmail.com>: Retrieved 2 URLs
+2023-06-04 17:17:11 INFO: 127.0.0.1 - GetURLS endpoint called
+2023-06-04 17:17:11 DEBUG: 127.0.0.1 - <user veektaw@gmail.com>: Retrieved 2 URLs
+2023-06-04 17:17:11 INFO: 127.0.0.1 - GetURLS endpoint called
+2023-06-04 17:17:11 DEBUG: 127.0.0.1 - <user veektaw@gmail.com>: Retrieved 2 URLs
+2023-06-04 17:17:12 INFO: 127.0.0.1 - GetURLS endpoint called
+2023-06-04 17:17:12 DEBUG: 127.0.0.1 - <user veektaw@gmail.com>: Retrieved 2 URLs
+2023-06-04 17:17:13 INFO: 127.0.0.1 - GetURLS endpoint called
+2023-06-04 17:17:13 DEBUG: 127.0.0.1 - <user veektaw@gmail.com>: Retrieved 2 URLs
+2023-06-04 17:17:13 INFO: 127.0.0.1 - GetURLS endpoint called
+2023-06-04 17:17:13 DEBUG: 127.0.0.1 - <user veektaw@gmail.com>: Retrieved 2 URLs
+2023-06-04 17:17:14 INFO: 127.0.0.1 - GetURLS endpoint called
+2023-06-04 17:17:14 DEBUG: 127.0.0.1 - <user veektaw@gmail.com>: Retrieved 2 URLs
+2023-06-04 17:17:14 INFO: 127.0.0.1 - GetURLS endpoint called
+2023-06-04 17:17:14 DEBUG: 127.0.0.1 - <user veektaw@gmail.com>: Retrieved 2 URLs
+2023-06-04 17:17:15 INFO: 127.0.0.1 - GetURLS endpoint called
+2023-06-04 17:17:15 DEBUG: 127.0.0.1 - <user veektaw@gmail.com>: Retrieved 2 URLs
+2023-06-04 17:17:16 INFO: 127.0.0.1 - GetURLS endpoint called
+2023-06-04 17:17:16 DEBUG: 127.0.0.1 - <user veektaw@gmail.com>: Retrieved 2 URLs
+2023-06-04 17:17:16 INFO: 127.0.0.1 - GetURLS endpoint called
+2023-06-04 17:17:16 DEBUG: 127.0.0.1 - <user veektaw@gmail.com>: Retrieved 2 URLs
+2023-06-04 17:17:17 INFO: 127.0.0.1 - GetURLS endpoint called
+2023-06-04 17:17:17 DEBUG: 127.0.0.1 - <user veektaw@gmail.com>: Retrieved 2 URLs
+2023-06-04 17:17:18 INFO: 127.0.0.1 - GetURLS endpoint called
+2023-06-04 17:17:18 DEBUG: 127.0.0.1 - <user veektaw@gmail.com>: Retrieved 2 URLs
+2023-06-04 17:17:18 INFO: 127.0.0.1 - GetURLS endpoint called
+2023-06-04 17:17:18 DEBUG: 127.0.0.1 - <user veektaw@gmail.com>: Retrieved 2 URLs
+2023-06-04 17:17:19 INFO: 127.0.0.1 - GetURLS endpoint called
+2023-06-04 17:17:19 DEBUG: 127.0.0.1 - <user veektaw@gmail.com>: Retrieved 2 URLs
+2023-06-04 17:17:19 INFO: 127.0.0.1 - GetURLS endpoint called
+2023-06-04 17:17:19 DEBUG: 127.0.0.1 - <user veektaw@gmail.com>: Retrieved 2 URLs
+2023-06-04 17:17:20 INFO: 127.0.0.1 - GetURLS endpoint called
+2023-06-04 17:17:20 DEBUG: 127.0.0.1 - <user veektaw@gmail.com>: Retrieved 2 URLs
+2023-06-04 17:17:21 INFO: 127.0.0.1 - GetURLS endpoint called
+2023-06-04 17:17:21 DEBUG: 127.0.0.1 - <user veektaw@gmail.com>: Retrieved 2 URLs
+2023-06-04 17:17:21 INFO: 127.0.0.1 - GetURLS endpoint called
+2023-06-04 17:17:21 DEBUG: 127.0.0.1 - <user veektaw@gmail.com>: Retrieved 2 URLs
+2023-06-04 17:17:58 INFO: 127.0.0.1 - GetURLS endpoint called
+2023-06-04 17:17:58 DEBUG: 127.0.0.1 - <user veektaw@gmail.com>: Retrieved 2 URLs
+2023-06-04 17:17:59 INFO: 127.0.0.1 - GetURLS endpoint called
+2023-06-04 17:17:59 DEBUG: 127.0.0.1 - <user veektaw@gmail.com>: Retrieved 2 URLs
+2023-06-04 17:17:59 INFO: 127.0.0.1 - GetURLS endpoint called
+2023-06-04 17:17:59 DEBUG: 127.0.0.1 - <user veektaw@gmail.com>: Retrieved 2 URLs
+2023-06-04 17:18:00 INFO: 127.0.0.1 - GetURLS endpoint called
+2023-06-04 17:18:00 DEBUG: 127.0.0.1 - <user veektaw@gmail.com>: Retrieved 2 URLs
+2023-06-04 17:18:00 INFO: 127.0.0.1 - GetURLS endpoint called
+2023-06-04 17:18:00 DEBUG: 127.0.0.1 - <user veektaw@gmail.com>: Retrieved 2 URLs
+2023-06-04 17:18:01 INFO: 127.0.0.1 - GetURLS endpoint called
+2023-06-04 17:18:01 DEBUG: 127.0.0.1 - <user veektaw@gmail.com>: Retrieved 2 URLs
+2023-06-04 17:18:01 INFO: 127.0.0.1 - GetURLS endpoint called
+2023-06-04 17:18:01 DEBUG: 127.0.0.1 - <user veektaw@gmail.com>: Retrieved 2 URLs
+2023-06-04 17:18:02 INFO: 127.0.0.1 - GetURLS endpoint called
+2023-06-04 17:18:02 DEBUG: 127.0.0.1 - <user veektaw@gmail.com>: Retrieved 2 URLs
+2023-06-04 17:18:02 INFO: 127.0.0.1 - GetURLS endpoint called
+2023-06-04 17:18:02 DEBUG: 127.0.0.1 - <user veektaw@gmail.com>: Retrieved 2 URLs
+2023-06-04 17:22:52 INFO: 127.0.0.1 - Login is called
+2023-06-04 17:22:52 DEBUG: 127.0.0.1 - User <user veektaw@gmail.com> logged in
+2023-06-04 17:23:05 ERROR: 127.0.0.1 - Exception on /auth/logout [POST]
+Traceback (most recent call last):
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 408, in wrapper
+    return self.make_response(data, code, headers=headers)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 432, in make_response
+    resp = self.representations[mediatype](data, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/representations.py", line 22, in output_json
+    dumped = dumps(data, **settings) + "\n"
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 202, in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type function is not JSON serializable
+2023-06-04 17:23:43 ERROR: 127.0.0.1 - Exception on /auth/logout [POST]
+Traceback (most recent call last):
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 408, in wrapper
+    return self.make_response(data, code, headers=headers)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 432, in make_response
+    resp = self.representations[mediatype](data, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/representations.py", line 22, in output_json
+    dumped = dumps(data, **settings) + "\n"
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 202, in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type function is not JSON serializable
+2023-06-04 17:28:57 ERROR: 127.0.0.1 - Exception on /auth/logout [POST]
+Traceback (most recent call last):
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 408, in wrapper
+    return self.make_response(data, code, headers=headers)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 432, in make_response
+    resp = self.representations[mediatype](data, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/representations.py", line 22, in output_json
+    dumped = dumps(data, **settings) + "\n"
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 202, in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type function is not JSON serializable
+2023-06-04 17:31:18 INFO: 127.0.0.1 - Logout is called
+2023-06-04 17:31:18 ERROR: 127.0.0.1 - Exception on /auth/logout [POST]
+Traceback (most recent call last):
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 404, in wrapper
+    resp = resource(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/views.py", line 107, in view
+    return current_app.ensure_sync(self.dispatch_request)(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/resource.py", line 46, in dispatch_request
+    resp = meth(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/api/auth/views.py", line 146, in post
+    email = get_jwt_identity()
+            ^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_jwt_extended/utils.py", line 62, in get_jwt_identity
+    return get_jwt().get(config.identity_claim_key, None)
+           ^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_jwt_extended/utils.py", line 28, in get_jwt
+    raise RuntimeError(
+RuntimeError: You must call `@jwt_required()` or `verify_jwt_in_request()` before using this method
+2023-06-04 17:39:21 ERROR: 127.0.0.1 - Exception on /auth/logout [POST]
+Traceback (most recent call last):
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 408, in wrapper
+    return self.make_response(data, code, headers=headers)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 432, in make_response
+    resp = self.representations[mediatype](data, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/representations.py", line 22, in output_json
+    dumped = dumps(data, **settings) + "\n"
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 202, in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type function is not JSON serializable
+2023-06-04 17:46:59 ERROR: 127.0.0.1 - Exception on /auth/logout [POST]
+Traceback (most recent call last):
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 408, in wrapper
+    return self.make_response(data, code, headers=headers)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 432, in make_response
+    resp = self.representations[mediatype](data, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/representations.py", line 22, in output_json
+    dumped = dumps(data, **settings) + "\n"
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 202, in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type function is not JSON serializable
+2023-06-04 19:42:31 INFO: 127.0.0.1 - Login is called
+2023-06-04 19:42:31 DEBUG: 127.0.0.1 - User <user veektaw@gmail.com> logged in
+2023-06-04 19:42:44 INFO: 127.0.0.1 - CreateURL is called
+2023-06-04 19:42:45 ERROR: 127.0.0.1 - Error loading
+Traceback (most recent call last):
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1900, in _execute_context
+    self.dialect.do_execute(
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.IntegrityError: NOT NULL constraint failed: urls.creator
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/api/urls/views.py", line 64, in post
+    url.save()
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/api/models/url.py", line 26, in save
+    db.session.commit()
+  File "<string>", line 2, in commit
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 1451, in commit
+    self._transaction.commit(_to_root=self.future)
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 829, in commit
+    self._prepare_impl()
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 808, in _prepare_impl
+    self.session.flush()
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 3444, in flush
+    self._flush(objects)
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 3583, in _flush
+    with util.safe_reraise():
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 3544, in _flush
+    flush_context.execute()
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/sqlalchemy/orm/unitofwork.py", line 456, in execute
+    rec.execute(self)
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/sqlalchemy/orm/unitofwork.py", line 630, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/sqlalchemy/orm/persistence.py", line 245, in save_obj
+    _emit_insert_statements(
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/sqlalchemy/orm/persistence.py", line 1238, in _emit_insert_statements
+    result = connection._execute_20(
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1705, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/sqlalchemy/sql/elements.py", line 334, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1572, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1943, in _execute_context
+    self._handle_dbapi_exception(
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2124, in _handle_dbapi_exception
+    util.raise_(
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1900, in _execute_context
+    self.dialect.do_execute(
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) NOT NULL constraint failed: urls.creator
+[SQL: INSERT INTO urls (id, user_long_url, qr_code_url, custom_url, short_url, created, url_title, visited, creator) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('71296d6b-d622-40d8-b2d0-64492e2fb931', 'https://mailtrap.io/blog/python-send-email-gmail/#:~:text=Just%20like%20you%20would%20with,the%20body%20of%20the%20email.', None, None, 'https://127.0.0.1:5000/CENp2', '2023-06-04 18:42:45.876949', 'Sending Emails in Python with Gmail 2023 Tutorial', 0, None)]
+(Background on this error at: https://sqlalche.me/e/14/gkpj)
+2023-06-04 19:42:45 ERROR: 127.0.0.1 - Error loading information
+2023-06-04 19:43:50 INFO: 127.0.0.1 - CreateURL is called
+2023-06-04 19:43:52 INFO: 127.0.0.1 - Custom URL by <user veektaw@gmail.com> is saved to the database
+2023-06-04 19:43:52 DEBUG: 127.0.0.1 - Created a short url: <url 24903b09-50ee-417a-82c4-c27a16f86596>
+2023-06-04 19:48:19 INFO: 127.0.0.1 - Signup is called
+2023-06-04 19:48:20 ERROR: 127.0.0.1 - Exception on /auth/signup [POST]
+Traceback (most recent call last):
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1900, in _execute_context
+    self.dialect.do_execute(
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such table: users
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 404, in wrapper
+    resp = resource(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/views.py", line 107, in view
+    return current_app.ensure_sync(self.dispatch_request)(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/resource.py", line 46, in dispatch_request
+    resp = meth(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_limiter/extension.py", line 1191, in __inner
+    R, flask.current_app.ensure_sync(cast(Callable[P, R], obj))(*a, **k)
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/marshalling.py", line 244, in wrapper
+    resp = f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/api/auth/views.py", line 44, in post
+    signup_attempt = User.query.filter_by(email=new_user.email).first()
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/sqlalchemy/orm/query.py", line 2824, in first
+    return self.limit(1)._iter().first()
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/sqlalchemy/orm/query.py", line 2916, in _iter
+    result = self.session.execute(
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 1714, in execute
+    result = conn._execute_20(statement, params or {}, execution_options)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1705, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/sqlalchemy/sql/elements.py", line 334, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1572, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1943, in _execute_context
+    self._handle_dbapi_exception(
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2124, in _handle_dbapi_exception
+    util.raise_(
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1900, in _execute_context
+    self.dialect.do_execute(
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: users
+[SQL: SELECT users.id AS users_id, users.first_name AS users_first_name, users.last_name AS users_last_name, users.email AS users_email, users.password AS users_password 
+FROM users 
+WHERE users.email = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('veektaw@gmail.com', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/14/e3q8)
+2023-06-04 19:54:29 INFO: 127.0.0.1 - Signup is called
+2023-06-04 19:54:29 DEBUG: 127.0.0.1 - New user is created
+2023-06-04 19:54:38 INFO: 127.0.0.1 - Login is called
+2023-06-04 19:54:38 DEBUG: 127.0.0.1 - User <user veektaw@gmail.com> logged in
+2023-06-04 19:54:55 INFO: 127.0.0.1 - CreateURL is called
+2023-06-04 19:54:57 INFO: 127.0.0.1 - Custom URL by <user veektaw@gmail.com> is saved to the database
+2023-06-04 19:54:57 DEBUG: 127.0.0.1 - Created a short url: <url e32840a3-b71e-4b23-901e-c601ae4b0a20>

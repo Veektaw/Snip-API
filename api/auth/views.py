@@ -1,26 +1,27 @@
-from flask import request
+from flask import request, jsonify
 import json
 import logging
-from ..utility import db 
+from ..utility import db, limiter, jwt, blocklist
 from datetime import datetime 
 from flask_restx import Namespace, Resource, fields
 from ..models.user import User
 from werkzeug.security import generate_password_hash, check_password_hash
 from http import HTTPStatus
-from flask_jwt_extended import create_access_token, create_refresh_token, jwt_required, get_jwt_identity
+from flask_jwt_extended import (create_access_token,
+                                create_refresh_token,
+                                jwt_required,
+                                get_jwt_identity,
+                                 get_jti,
+                                 get_jwt_identity,
+                                 verify_jwt_in_request)
 from .serializer import signup_expect_model, signup_model, auth_namespace, login_expect_model
 
-
-class DateTimeEncoder(json.JSONEncoder):
-    def default(self,o):
-        if isinstance(o , datetime):
-            return o.isoformat()
-        return json.JSONEncoder.default(self, o)
 
 
 @auth_namespace.route('/signup')
 class SignUp(Resource):
    
+   @limiter.limit("2 per minute")
    @auth_namespace.expect(signup_expect_model)
    @auth_namespace.marshal_list_with(signup_model)
    @auth_namespace.doc(description="Signup user")
@@ -84,6 +85,7 @@ class SignUp(Resource):
 @auth_namespace.route('/login')
 class Login(Resource):
    
+   @limiter.limit("2 per minute")
    @auth_namespace.expect(login_expect_model)
    @auth_namespace.doc(description = "Login user",
                        params = {"user input": "Email and password"})
@@ -129,3 +131,33 @@ class Refresh(Resource):
       access_token = create_access_token(identity=email)
 
       return {"access_token": access_token}, HTTPStatus.OK
+   
+   
+
+@auth_namespace.route('/logout')
+class Logout(Resource):
+    @jwt_required
+    
+    def post(self):
+       
+        logger = logging.getLogger(__name__)
+        logger.info("Logout is called")
+
+        # Verify the JWT in the request
+        verify_jwt_in_request()
+
+        # Get the identity (user email) from the JWT
+        identity = get_jwt_identity()
+
+        # Revoke the JWT by adding its identity to the blocklist
+        blocklist.add(identity)
+
+        logger.debug(f"User {identity} logged out")
+
+        return jsonify(message='Logout successful'), 200
+
+
+@jwt.token_in_blocklist_loader
+def is_token_revoked(decoded_token):
+    jti = decoded_token['jti']
+    return jti in blocklist

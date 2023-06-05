@@ -1,13 +1,15 @@
 from flask import Flask, jsonify, request
 from flask_caching import Cache
+from flask_admin import Admin
 from functools import wraps
 from flask_restx import Api
 from .auth.views import auth_namespace
 from .urls.views import url_namespace
+from .urls.admin import UserView
 from .visitor.views import visitor_namespace
 from .account_management.views import manage_namespace
 from .config.config import config_dict
-from .utility import db, cache, limiter, redis_cache
+from .utility import db, cache, limiter, redis_cache, jwt, admin
 from redis import Redis
 from flask_caching.backends import RedisCache
 from .models.url import Url
@@ -23,7 +25,8 @@ import logging
 from logging.handlers import RotatingFileHandler
 
 
-def create_app(config=config_dict['test']):
+
+def create_app(config=config_dict['dev']):
     app = Flask(__name__)
     app.config.from_object(config)
     CORS(app)
@@ -34,6 +37,11 @@ def create_app(config=config_dict['test']):
     jwt = JWTManager(app)
     bcrypt = Bcrypt(app)
     migrate = Migrate(app, db)
+    
+    admin = Admin(app)
+    admin.add_view(UserView(User, db.session))
+    admin.add_view(UserView(Token, db.session))
+    admin.add_view(UserView(Url, db.session))
     
     authorizations = {
         'Bearer Auth':{

@@ -27,8 +27,9 @@ class UserTestCase(unittest.TestCase):
         self.app = None
         self.client = None
         
+        
     def test_user_registration(self):
-
+        
         data = {
             "id": 1,
             "first_name": "Test",
@@ -38,6 +39,43 @@ class UserTestCase(unittest.TestCase):
         }
 
         response = self.client.post('/auth/signup', json=data)
+
         user = User.query.filter_by(email='testuser@gmail.com').first()
         assert user.email == "testuser@gmail.com"
         assert response.status_code == 201
+        
+        
+    def test_user_login(self):
+    
+        user = User(
+            first_name="Test",
+            last_name="User",
+            email="testuser@example.com",
+            password=generate_password_hash("password")
+        )
+        db.session.add(user)
+        db.session.commit()
+
+        data = {
+            "email": "testuser@example.com",
+            "password": "password"
+        }
+        response = self.client.post('/auth/login', json=data)
+
+        assert response.status_code == HTTPStatus.CREATED
+        assert "access_token" in response.json
+        assert "refresh_token" in response.json
+        
+
+    def test_login_with_invalid_credentials(self):
+        
+        payload = {
+            'email': 'testuser@gmail.com',
+            'password': 'wrongpassword'
+        }
+
+        response = self.client.post('/auth/login', json=payload)
+
+        self.assertEqual(response.status_code, 404)
+        self.assertIn('message', response.json)
+        self.assertEqual(response.json['message'], 'Invalid credentials')

@@ -15,6 +15,7 @@ distlib==0.3.6
 exceptiongroup==1.1.0
 filelock==3.9.0
 Flask==2.2.2
+Flask-Admin==1.6.1
 Flask-Bcrypt==1.0.1
 Flask-Caching==2.0.2
 Flask-Cors==3.0.10
@@ -79,4 +80,5 @@ urllib3==1.26.15
 virtualenv==20.17.1
 Werkzeug==2.2.2
 wrapt==1.15.0
+WTForms==3.0.1
 zipp==3.11.0
