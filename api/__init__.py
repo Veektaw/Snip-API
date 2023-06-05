@@ -9,11 +9,12 @@ from .urls.admin import UserView
 from .visitor.views import visitor_namespace
 from .account_management.views import manage_namespace
 from .config.config import config_dict
-from .utility import db, cache, limiter, redis_cache, jwt, admin
+from .utility import db, cache, limiter, redis_cache, jwt, admin, blocklist
 from redis import Redis
 from flask_caching.backends import RedisCache
 from .models.url import Url
 from .models.user import User, Token
+from .models.tokenblocklist import TokenBlocklist
 from flask_migrate import Migrate
 from flask_jwt_extended import JWTManager, verify_jwt_in_request, get_jwt, create_access_token
 from werkzeug.exceptions import NotFound, NotAcceptable, MethodNotAllowed
@@ -84,7 +85,8 @@ def create_app(config=config_dict['dev']):
             'db': db,
             'url': Url,
             'user': User,
-            'Token': Token
+            'Token': Token,
+            'TokenBlocklist': TokenBlocklist,
         }
 
     log_file = 'app.log'
@@ -102,6 +104,21 @@ def create_app(config=config_dict['dev']):
     log_handler.setFormatter(log_formatter)
     log_handler.addFilter(ClientIPFilter())
     app.logger.addHandler(log_handler)
+    
+    
+    @jwt.token_in_blocklist_loader
+    def check_if_token_in_blocklist(jwt_header, jwt_payload):
+        return jwt_payload["jti"] in blocklist
+
+
+    @jwt.revoked_token_loader
+    def revoked_token_callback(jwt_header, jwt_payload):
+        return (
+            jsonify(
+                {"description": "The token has been revoked.", "error": "token_revoked"}
+            ),
+            401,
+        )
     
 
     return app

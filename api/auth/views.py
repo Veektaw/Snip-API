@@ -5,6 +5,7 @@ from ..utility import db, limiter, jwt, blocklist
 from datetime import datetime 
 from flask_restx import Namespace, Resource, fields
 from ..models.user import User
+from ..models.tokenblocklist import TokenBlocklist
 from werkzeug.security import generate_password_hash, check_password_hash
 from http import HTTPStatus
 from flask_jwt_extended import (create_access_token,
@@ -13,7 +14,9 @@ from flask_jwt_extended import (create_access_token,
                                 get_jwt_identity,
                                  get_jti,
                                  get_jwt_identity,
-                                 verify_jwt_in_request)
+                                 verify_jwt_in_request,
+                                 unset_jwt_cookies,
+                                 get_jwt)
 from .serializer import signup_expect_model, signup_model, auth_namespace, login_expect_model
 
 
@@ -134,30 +137,12 @@ class Refresh(Resource):
    
    
 
+
 @auth_namespace.route('/logout')
-class Logout(Resource):
-    @jwt_required
-    
-    def post(self):
-       
-        logger = logging.getLogger(__name__)
-        logger.info("Logout is called")
-
-        # Verify the JWT in the request
-        verify_jwt_in_request()
-
-        # Get the identity (user email) from the JWT
-        identity = get_jwt_identity()
-
-        # Revoke the JWT by adding its identity to the blocklist
-        blocklist.add(identity)
-
-        logger.debug(f"User {identity} logged out")
-
-        return jsonify(message='Logout successful'), 200
-
-
-@jwt.token_in_blocklist_loader
-def is_token_revoked(decoded_token):
-    jti = decoded_token['jti']
-    return jti in blocklist
+class UserLogout(Resource):
+   @jwt_required()
+   def post(self):
+      
+      jti = get_jwt()["jti"]
+      blocklist.add(jti)
+      return {"message": "Successfully logged out"}, HTTPStatus.OK
