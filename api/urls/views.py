@@ -49,6 +49,12 @@ class CreateURL(Resource):
        
         data = request.get_json()
         user_long_url = data.get('user_long_url')
+        
+        existing_url = Url.query.filter_by(user_long_url=user_long_url).first()
+        if existing_url:
+            logger.warning("URL has already been processed")
+            response = {"message": "URL has already been processed"}
+            return response, HTTPStatus.CONFLICT
       
         if URLCreator.is_valid_url(user_long_url):
             url_title = URLCreator.extract_url_data(user_long_url)
@@ -75,7 +81,7 @@ class CreateURL(Resource):
         
             logger.debug(f"Created a short url: {url}")
             
-            return url, HTTPStatus.OK  
+            return url, HTTPStatus.CREATED  
         
         response = {"message": "This is not a valid URL"}
         logger.warning("User provides invalid URL")
@@ -140,7 +146,7 @@ class CreateCustomURL(Resource):
                 return response , HTTPStatus.INTERNAL_SERVER_ERROR
              
             logger.debug(f"Created custom url: {url}")
-            return url, HTTPStatus.OK  
+            return url, HTTPStatus.CREATED  
     
         logger.warning("This is not a valid URL")
         response = {"message": "This is not a valid URL"}
@@ -179,6 +185,10 @@ class GetURLS(Resource):
             return {"message": "User not found"}, HTTPStatus.NOT_FOUND
 
         urls = Url.query.filter_by(creator=authenticated_user.email).all()
+        
+        if urls is None:
+            logger.warning("URL not found")
+            return {"message": "URL not found"}, HTTPStatus.NOT_FOUND
 
 
         logger.debug(f"{authenticated_user}: Retrieved {len(urls)} URLs")
@@ -213,46 +223,49 @@ class ViewDeleteURLbyID(Resource):
         authenticated_user = User.query.filter_by(email = authenticated_user_email).first()
            
         if not authenticated_user:
+            logger.warning("User not found")
+            return {"message": "User not found"}, HTTPStatus.NOT_FOUND
+
+        url = Url.get_by_id(id)
+
+        if url is None:
             logger.warning("URL not found")
             return {"message": "URL not found"}, HTTPStatus.NOT_FOUND
-        
-        url = Url.get_by_id(id)
-        logger.debug(f"Retrieved {url} URL by UUID")
-        
+
+        logger.debug(f"Retrieved URL with ID: {id}")
         return url, HTTPStatus.OK
     
     
     @cache.cached(timeout=50)
     @limiter.limit("5 per minute")
-    @url_namespace.doc(description = "Get a URl by UUID",
-                       params = {"id":"UUID of the URL"})
+    @url_namespace.doc(description="Delete a URL by UUID", params={"id": "UUID of the URL"})
     @jwt_required()
     
     def delete(self, id):
-        
         """
-        
-            This deletes a URL of a particular user.
-        
+        This deletes a URL of a particular user.
         """
-        
         logger = logging.getLogger(__name__)
         logger.info("Delete a URL by UUID called")
-        
-        authenticated_user_email = get_jwt_identity() 
-      
-        authenticated_user = User.query.filter_by(email = authenticated_user_email).first()
-           
+
+        authenticated_user_email = get_jwt_identity()
+        authenticated_user = User.query.filter_by(email=authenticated_user_email).first()
+
         if not authenticated_user:
+            logger.warning("User not found")
+            return {"message": "User not found"}, HTTPStatus.NOT_FOUND
+
+        url = Url.get_by_id(id)
+
+        if url is None:
             logger.warning("URL not found")
             return {"message": "URL not found"}, HTTPStatus.NOT_FOUND
-        
-        url = Url.get_by_id(id)
-        
+
         url.delete()
-        logger.debug(f"Deleted {url} URL")
-        
-        return url, HTTPStatus.OK
+        logger.debug(f"Deleted URL with ID: {id}")
+
+        return {"message": "URL deleted successfully"}, HTTPStatus.OK
+
 
 
 @url_namespace.route('/<short_url>/visited')
@@ -365,6 +378,10 @@ class GenerateURLQRCode(Resource):
         image_data = base64.b64encode(img_io.getvalue()).decode('utf-8')
         url.qr_code_url = image_data
         url.save()
+        
+        if url is None:
+            logger.warning("URL not found")
+            return {"message": "URL not found"}, HTTPStatus.NOT_FOUND
       
         response = make_response(send_file(img_io, mimetype='image/png'))
         response.headers['Content-Disposition'] = f'attachment; filename=qrcode_{url.id}.png'

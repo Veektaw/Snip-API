@@ -27,7 +27,8 @@ class User(db.Model):
 
     @classmethod
     def get_by_id(cls, id):
-        return cls.query.get_or_404(id)
+        url = db.session.get(User, id)
+        return url
     
     def delete(self):
         db.session.delete(self)

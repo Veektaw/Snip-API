@@ -1,6 +1,7 @@
 from ..utility import db
 import random
 import string
+from sqlalchemy.orm import Session
 from datetime import datetime
 from uuid import uuid4
 from flask_uuid import uuid
@@ -35,14 +36,14 @@ class Url(db.Model):
             'user_long_url': self.user_long_url,
             'url_title': self.url_title,
             'short_url': self.short_url,
-            'created': self.created.strftime('%Y-%m-%d %H:%M:%S'),  # Format the datetime as a string
-            # Include other properties you want to include in the serialized representation
+            'created': self.created.strftime('%Y-%m-%d %H:%M:%S'),
         }    
     
 
     @classmethod
     def get_by_id(cls, id):
-        return cls.query.get_or_404(id)
+        url = db.session.get(Url, id)
+        return url
     
     def delete(self):
         db.session.delete(self)

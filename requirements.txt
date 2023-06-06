@@ -72,7 +72,7 @@ rich==13.3.5
 rsa==4.9
 six==1.16.0
 soupsieve==2.4.1
-SQLAlchemy==1.4.46
+SQLAlchemy==2.0.15
 tomli==2.0.1
 typing_extensions==4.5.0
 uritemplate==4.1.1

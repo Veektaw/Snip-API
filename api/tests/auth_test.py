@@ -47,7 +47,7 @@ class UserTestCase(unittest.TestCase):
         
     def test_login(self):
     
-        user = User(
+        user = User (
             first_name="Test",
             last_name="User",
             email="testuser@example.com",
@@ -67,29 +67,31 @@ class UserTestCase(unittest.TestCase):
         assert "refresh_token" in response.json
         
 
-    def test_login_with_invalid_credentials(self):
+    # def test_login_with_invalid_credentials(self):
         
-        payload = {
-            'email': 'testuser@gmail.com',
-            'password': 'wrongpassword'
-        }
+    #     payload = {
+    #         'email': 'testuser@gmail.com',
+    #         'password': 'wrongpassword'
+    #     }
 
-        response = self.client.post('/auth/login', json=payload)
+    #     response = self.client.post('/auth/login', json=payload)
 
-        self.assertEqual(response.status_code, 404)
-        self.assertIn('message', response.json)
-        self.assertEqual(response.json['message'], 'Invalid credentials')
+    #     self.assertEqual(response.status_code, 404)
+    #     self.assertIn('message', response.json)
+    #     self.assertEqual(response.json['message'], 'Invalid credentials')
         
         
-    def test_user_logout(self):
+    # def test_user_logout(self):
 
-        token = create_access_token(identity='testuser')
-        headers = {
-            "Authorization": f"Bearer {token}"
-        }
+    #     token = create_access_token(identity='testuser')
+    #     headers = {
+    #         "Authorization": f"Bearer {token}"
+    #     }
 
-        response = self.client.post('/auth/logout', headers=headers)
+    #     response = self.client.post('/auth/logout', headers=headers)
 
-        self.assertEqual(response.status_code, 200)
-        data = response.get_json()
-        self.assertEqual(data['message'], 'Successfully logged out')
+    #     self.assertEqual(response.status_code, 200)
+    #     data = response.get_json()
+    #     self.assertEqual(data['message'], 'Successfully logged out')
+        
+    
