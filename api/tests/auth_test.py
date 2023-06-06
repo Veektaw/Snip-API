@@ -28,7 +28,7 @@ class UserTestCase(unittest.TestCase):
         self.client = None
         
         
-    def test_user_registration(self):
+    def test_signup(self):
         
         data = {
             "id": 1,
@@ -45,7 +45,7 @@ class UserTestCase(unittest.TestCase):
         assert response.status_code == 201
         
         
-    def test_user_login(self):
+    def test_login(self):
     
         user = User(
             first_name="Test",
@@ -79,3 +79,17 @@ class UserTestCase(unittest.TestCase):
         self.assertEqual(response.status_code, 404)
         self.assertIn('message', response.json)
         self.assertEqual(response.json['message'], 'Invalid credentials')
+        
+        
+    def test_user_logout(self):
+
+        token = create_access_token(identity='testuser')
+        headers = {
+            "Authorization": f"Bearer {token}"
+        }
+
+        response = self.client.post('/auth/logout', headers=headers)
+
+        self.assertEqual(response.status_code, 200)
+        data = response.get_json()
+        self.assertEqual(data['message'], 'Successfully logged out')

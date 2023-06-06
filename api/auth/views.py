@@ -140,6 +140,8 @@ class Refresh(Resource):
 
 @auth_namespace.route('/logout')
 class UserLogout(Resource):
+   
+   @auth_namespace.doc(description = "Logout user by revoking access token of user login")
    @jwt_required()
    def post(self):
       
