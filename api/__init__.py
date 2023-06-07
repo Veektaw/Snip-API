@@ -39,7 +39,6 @@ def create_app(config=config_dict['dev']):
     jwt = JWTManager(app)
     bcrypt = Bcrypt(app)
     migrate = Migrate(app, db)
-    #paginate = Pagination(app)
     
     admin = Admin(app)
     admin.add_view(UserView(User, db.session))

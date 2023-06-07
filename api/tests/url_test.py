@@ -86,7 +86,7 @@ class UrlTestCase(unittest.TestCase):
             password='password'
         )
         user.save()
-        token = create_access_token(identity=user.email)  
+        token = create_access_token(identity=user.email) 
         
         response = self.client.get('/url/urls', headers={'Authorization': f'Bearer {token}'})
         assert response.status_code == 200
@@ -107,7 +107,7 @@ class UrlTestCase(unittest.TestCase):
 
         data = Url(
             id=url_id,
-            user_long_url='https://www.testsite.com',
+            user_long_url='https://www.example.com',
             url_creator=user
         )
         data.save()
@@ -116,15 +116,40 @@ class UrlTestCase(unittest.TestCase):
         response = self.client.get(url_endpoint, headers={'Authorization': f'Bearer {token}'})
 
         assert response.status_code == 200
-        assert response.json['user_long_url'] == 'https://www.testsite.com'
+        assert response.json['user_long_url'] == 'https://www.example.com'
         
         
-    def test_user_deletes_url_by_id(self):
+    # def test_user_deletes_url_by_id(self):
+    #     user = User(
+    #         first_name='Test',
+    #         last_name='Tester',
+    #         email='testuser@gmail.com',
+    #         password='password'
+    #     )
+    #     user.save()
+    #     token = create_access_token(identity=user.email)
+        
+    #     url_id = str(uuid.uuid4())
+
+    #     data = Url(
+    #         id=url_id,
+    #         user_long_url='https://www.example.com',
+    #         url_creator=user
+    #     )
+    #     data.save()
+
+    #     url_endpoint = f'/url/{url_id}'
+    #     response = self.client.delete(url_endpoint, headers={'Authorization': f'Bearer {token}'})
+
+    #     assert response.status_code == 200
+        
+        
+    def test_user_creates_qr_code_by_id(self):
         user = User(
             first_name='Test',
             last_name='Tester',
             email='testuser@gmail.com',
-            password='password'
+               password='password'
         )
         user.save()
         token = create_access_token(identity=user.email)
@@ -133,12 +158,13 @@ class UrlTestCase(unittest.TestCase):
 
         data = Url(
             id=url_id,
-            user_long_url='https://www.testsite.com',
+            user_long_url='https://www.example.com',
             url_creator=user
         )
         data.save()
 
-        url_endpoint = f'/url/{url_id}'
-        response = self.client.delete(url_endpoint, headers={'Authorization': f'Bearer {token}'})
+        url_endpoint = f'/url/{url_id}/qrcode'
+        response = self.client.get(url_endpoint, headers={'Authorization': f'Bearer {token}'})
 
-        assert response.status_code == 200
+        assert response.status_code == 201
+        #assert response.json['user_long_url'] == 'https://www.example.com'

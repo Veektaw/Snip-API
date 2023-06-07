@@ -158,7 +158,7 @@ class CreateCustomURL(Resource):
 @url_namespace.route('/urls')
 class GetURLS(Resource):
    
-    @cache.cached(timeout=5)
+    @cache.cached(timeout=20)
     @limiter.limit("5 per minute")
     @url_namespace.doc(
     description="Get all URLs",
@@ -353,7 +353,7 @@ class GetURLSInfo(Resource):
 class GenerateURLQRCode(Resource):
     
     
-    @cache.cached(timeout=50)
+    #@cache.cached(timeout=50)
     @limiter.limit("5 per minute")
     @url_namespace.doc(description = "Get QR code of a short URL",
                        params={"id": "UUID of the short URL created earlier"}) 
@@ -371,26 +371,36 @@ class GenerateURLQRCode(Resource):
            
         if not authenticated_user:
             return {"message": "User not found"}, HTTPStatus.NOT_FOUND
+        
 
         url = Url.query.filter_by(id=id, creator=authenticated_user.email).first()
+        
+        if url is None:
+            logger.warning("URL not found")
+            return {"message": "URL not found"}, HTTPStatus.NOT_FOUND
+
+        if url.qr_code_url:
+            logger.warning("QR code already exists for the URL")
+            return {"message": "QR code already exists"}, HTTPStatus.BAD_REQUEST
+        
         img = qrcode.make(id)
         img_io = io.BytesIO()
         img.save(img_io, 'PNG')
         img_io.seek(0)
         
+        img = qrcode.make(id)
+        img_io = io.BytesIO()
+        img.save(img_io, 'PNG')
+        img_io.seek(0)
+
         image_data = base64.b64encode(img_io.getvalue()).decode('utf-8')
         url.qr_code_url = image_data
         url.save()
         
-        if url is None:
-            logger.warning("URL not found")
-            return {"message": "URL not found"}, HTTPStatus.NOT_FOUND
-      
+
         response = make_response(send_file(img_io, mimetype='image/png'))
-        response.headers['Content-Disposition'] = f'attachment; filename=qrcode_{url.id}.png'
-        
+        response.headers.set('Content-Disposition', 'attachment', filename=f'qrcode_{url.id}.png')
+
         logger.debug(f"QR code {response} created")
-        
-        return response, HTTPStatus.CREATED
 
-
+        return response

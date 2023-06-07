@@ -1,17 +1,100 @@
-
-2023-06-07 10:10:33 INFO: 127.0.0.1 - Login is called
-2023-06-07 10:10:34 DEBUG: 127.0.0.1 - User <user veektaw@gmail.com> logged in
-2023-06-07 10:10:49 INFO: 127.0.0.1 - GetURLS endpoint called
-2023-06-07 10:10:49 DEBUG: 127.0.0.1 - <user veektaw@gmail.com>: Retrieved 1 URLs
-2023-06-07 10:11:26 WARNING: 127.0.0.1 - URL not found
-2023-06-07 10:11:26 WARNING: 127.0.0.1 - URL not found
-2023-06-07 10:11:26 WARNING: 127.0.0.1 - URL not found
-2023-06-07 10:11:26 WARNING: 127.0.0.1 - URL not found
-2023-06-07 10:11:26 WARNING: 127.0.0.1 - URL not found
-2023-06-07 10:11:26 WARNING: 127.0.0.1 - URL not found
-2023-06-07 10:15:38 INFO: 127.0.0.1 - GetURLS endpoint called
-2023-06-07 10:15:38 DEBUG: 127.0.0.1 - <user veektaw@gmail.com>: Retrieved 1 URLs
-2023-06-07 10:16:26 ERROR: 127.0.0.1 - Exception on /url/create [POST]
+2023-06-07 12:19:50 INFO: 127.0.0.1 - Login is called
+2023-06-07 12:19:50 DEBUG: 127.0.0.1 - User <user veektaw@gmail.com> logged in
+2023-06-07 12:21:07 INFO: 127.0.0.1 - GenerateURLQRCode is called
+2023-06-07 12:21:07 DEBUG: 127.0.0.1 - QR code <Response streamed [200 OK]> created
+2023-06-07 12:21:07 ERROR: 127.0.0.1 - Exception on /url/83c4bf24-99f0-4d30-948d-d43684f00a88/qrcode [GET]
+Traceback (most recent call last):
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 408, in wrapper
+    return self.make_response(data, code, headers=headers)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 432, in make_response
+    resp = self.representations[mediatype](data, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/representations.py", line 22, in output_json
+    dumped = dumps(data, **settings) + "\n"
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 202, in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type Response is not JSON serializable
+2023-06-07 12:24:48 INFO: 127.0.0.1 - GenerateURLQRCode is called
+2023-06-07 12:24:48 DEBUG: 127.0.0.1 - QR code <Response streamed [200 OK]> created
+2023-06-07 12:24:48 ERROR: 127.0.0.1 - Exception on /url/83c4bf24-99f0-4d30-948d-d43684f00a88/qrcode [GET]
+Traceback (most recent call last):
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 408, in wrapper
+    return self.make_response(data, code, headers=headers)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 432, in make_response
+    resp = self.representations[mediatype](data, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/representations.py", line 22, in output_json
+    dumped = dumps(data, **settings) + "\n"
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 202, in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type Response is not JSON serializable
+2023-06-07 12:25:28 INFO: 127.0.0.1 - GenerateURLQRCode is called
+2023-06-07 12:25:28 DEBUG: 127.0.0.1 - QR code <Response streamed [200 OK]> created
+2023-06-07 12:25:28 ERROR: 127.0.0.1 - Exception on /url/83c4bf24-99f0-4d30-948d-d43684f00a88/qrcode [GET]
+Traceback (most recent call last):
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 408, in wrapper
+    return self.make_response(data, code, headers=headers)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 432, in make_response
+    resp = self.representations[mediatype](data, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/representations.py", line 22, in output_json
+    dumped = dumps(data, **settings) + "\n"
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 202, in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type Response is not JSON serializable
+2023-06-07 12:25:37 INFO: 127.0.0.1 - GenerateURLQRCode is called
+2023-06-07 12:25:37 ERROR: 127.0.0.1 - Exception on /url/83c4bf24-99f0-4d30-948d-d43684f00a88/qrcode [GET]
 Traceback (most recent call last):
   File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1820, in full_dispatch_request
     rv = self.dispatch_request()
@@ -28,37 +111,268 @@ Traceback (most recent call last):
   File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/resource.py", line 46, in dispatch_request
     resp = meth(*args, **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/marshalling.py", line 244, in wrapper
-    resp = f(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_jwt_extended/view_decorators.py", line 153, in decorator
-    verify_jwt_in_request(optional, fresh, refresh, locations, verify_type)
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_jwt_extended/view_decorators.py", line 89, in verify_jwt_in_request
-    jwt_data, jwt_header, jwt_location = _decode_jwt_from_request(
-                                         ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_jwt_extended/view_decorators.py", line 323, in _decode_jwt_from_request
-    decoded_token = decode_token(encoded_token, csrf_token)
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_jwt_extended/utils.py", line 127, in decode_token
-    return jwt_manager._decode_jwt_from_config(encoded_token, csrf_value, allow_expired)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_jwt_extended/jwt_manager.py", line 553, in _decode_jwt_from_config
-    return _decode_jwt(**kwargs, allow_expired=allow_expired)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_jwt_extended/tokens.py", line 94, in _decode_jwt
-    decoded_token = jwt.decode(
-                    ^^^^^^^^^^^
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/jwt/api_jwt.py", line 168, in decode
-    decoded = self.decode_complete(
-              ^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/jwt/api_jwt.py", line 136, in decode_complete
-    self._validate_claims(
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/jwt/api_jwt.py", line 199, in _validate_claims
-    self._validate_exp(payload, now, leeway)
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/jwt/api_jwt.py", line 237, in _validate_exp
-    raise ExpiredSignatureError("Signature has expired")
-jwt.exceptions.ExpiredSignatureError: Signature has expired
-2023-06-07 10:16:40 ERROR: 127.0.0.1 - Exception on /url/create [POST]
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_limiter/extension.py", line 1191, in __inner
+    R, flask.current_app.ensure_sync(cast(Callable[P, R], obj))(*a, **k)
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/api/urls/views.py", line 368, in get
+    authenticated_user_email = get_jwt_identity()
+                              ^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_jwt_extended/utils.py", line 62, in get_jwt_identity
+    return get_jwt().get(config.identity_claim_key, None)
+           ^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_jwt_extended/utils.py", line 28, in get_jwt
+    raise RuntimeError(
+RuntimeError: You must call `@jwt_required()` or `verify_jwt_in_request()` before using this method
+2023-06-07 12:26:07 INFO: 127.0.0.1 - GenerateURLQRCode is called
+2023-06-07 12:26:07 DEBUG: 127.0.0.1 - QR code <Response streamed [200 OK]> created
+2023-06-07 12:26:07 ERROR: 127.0.0.1 - Exception on /url/83c4bf24-99f0-4d30-948d-d43684f00a88/qrcode [GET]
+Traceback (most recent call last):
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 408, in wrapper
+    return self.make_response(data, code, headers=headers)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 432, in make_response
+    resp = self.representations[mediatype](data, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/representations.py", line 22, in output_json
+    dumped = dumps(data, **settings) + "\n"
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 202, in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type Response is not JSON serializable
+2023-06-07 12:28:50 INFO: 127.0.0.1 - GenerateURLQRCode is called
+2023-06-07 12:28:50 DEBUG: 127.0.0.1 - QR code <Response streamed [200 OK]> created
+2023-06-07 12:28:50 ERROR: 127.0.0.1 - Exception on /url/83c4bf24-99f0-4d30-948d-d43684f00a88/qrcode [GET]
+Traceback (most recent call last):
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 408, in wrapper
+    return self.make_response(data, code, headers=headers)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 432, in make_response
+    resp = self.representations[mediatype](data, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/representations.py", line 22, in output_json
+    dumped = dumps(data, **settings) + "\n"
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 202, in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type Response is not JSON serializable
+2023-06-07 12:29:31 ERROR: 127.0.0.1 - Exception on /url/83c4bf24-99f0-4d30-948d-d43684f00a88/qrcode [GET]
+Traceback (most recent call last):
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 408, in wrapper
+    return self.make_response(data, code, headers=headers)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 432, in make_response
+    resp = self.representations[mediatype](data, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/representations.py", line 22, in output_json
+    dumped = dumps(data, **settings) + "\n"
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 202, in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type Response is not JSON serializable
+2023-06-07 12:34:06 INFO: 127.0.0.1 - GenerateURLQRCode is called
+2023-06-07 12:34:06 DEBUG: 127.0.0.1 - QR code <Response 504 bytes [200 OK]> created
+2023-06-07 12:34:06 ERROR: 127.0.0.1 - Exception on /url/83c4bf24-99f0-4d30-948d-d43684f00a88/qrcode [GET]
+Traceback (most recent call last):
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 408, in wrapper
+    return self.make_response(data, code, headers=headers)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 432, in make_response
+    resp = self.representations[mediatype](data, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/representations.py", line 22, in output_json
+    dumped = dumps(data, **settings) + "\n"
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 202, in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type Response is not JSON serializable
+2023-06-07 12:36:41 INFO: 127.0.0.1 - GenerateURLQRCode is called
+2023-06-07 12:36:41 DEBUG: 127.0.0.1 - QR code <Response streamed [200 OK]> created
+2023-06-07 12:40:30 INFO: 127.0.0.1 - GenerateURLQRCode is called
+2023-06-07 12:40:30 WARNING: 127.0.0.1 - QR code already exists for the URL
+2023-06-07 12:41:09 INFO: 127.0.0.1 - GenerateURLQRCode is called
+2023-06-07 12:41:09 DEBUG: 127.0.0.1 - QR code <Response streamed [200 OK]> created
+2023-06-07 12:41:09 ERROR: 127.0.0.1 - Exception on /url/9898cd0f-260b-4c3f-9026-ace716ae040d/qrcode [GET]
+Traceback (most recent call last):
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 408, in wrapper
+    return self.make_response(data, code, headers=headers)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 432, in make_response
+    resp = self.representations[mediatype](data, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/representations.py", line 22, in output_json
+    dumped = dumps(data, **settings) + "\n"
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 202, in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type Response is not JSON serializable
+2023-06-07 12:41:44 ERROR: 127.0.0.1 - Exception on /url/9898cd0f-260b-4c3f-9026-ace716ae040d/qrcode [GET]
+Traceback (most recent call last):
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 408, in wrapper
+    return self.make_response(data, code, headers=headers)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 432, in make_response
+    resp = self.representations[mediatype](data, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/representations.py", line 22, in output_json
+    dumped = dumps(data, **settings) + "\n"
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 202, in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type Response is not JSON serializable
+2023-06-07 12:42:31 INFO: 127.0.0.1 - GenerateURLQRCode is called
+2023-06-07 12:42:31 DEBUG: 127.0.0.1 - QR code <Response streamed [200 OK]> created
+2023-06-07 12:42:31 ERROR: 127.0.0.1 - Exception on /url/9898cd0f-260b-4c3f-9026-ace716ae040d/qrcode [GET]
+Traceback (most recent call last):
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 408, in wrapper
+    return self.make_response(data, code, headers=headers)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 432, in make_response
+    resp = self.representations[mediatype](data, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/representations.py", line 22, in output_json
+    dumped = dumps(data, **settings) + "\n"
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 202, in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type Response is not JSON serializable
+2023-06-07 12:42:43 ERROR: 127.0.0.1 - Exception on /url/9898cd0f-260b-4c3f-9026-ace716ae040d/qrcode [GET]
+Traceback (most recent call last):
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 408, in wrapper
+    return self.make_response(data, code, headers=headers)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/api.py", line 432, in make_response
+    resp = self.representations[mediatype](data, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/representations.py", line 22, in output_json
+    dumped = dumps(data, **settings) + "\n"
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 202, in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type Response is not JSON serializable
+2023-06-07 12:43:19 INFO: 127.0.0.1 - GenerateURLQRCode is called
+2023-06-07 12:43:19 DEBUG: 127.0.0.1 - QR code <Response streamed [200 OK]> created
+2023-06-07 12:43:50 INFO: 127.0.0.1 - GenerateURLQRCode is called
+2023-06-07 12:43:50 ERROR: 127.0.0.1 - Exception on /url/9898cd0f-260b-4c3f-9026-ace716ae040d/qrcode [GET]
 Traceback (most recent call last):
   File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask/app.py", line 1820, in full_dispatch_request
     rv = self.dispatch_request()
@@ -75,68 +389,43 @@ Traceback (most recent call last):
   File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/resource.py", line 46, in dispatch_request
     resp = meth(*args, **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_restx/marshalling.py", line 244, in wrapper
-    resp = f(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_jwt_extended/view_decorators.py", line 153, in decorator
-    verify_jwt_in_request(optional, fresh, refresh, locations, verify_type)
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_jwt_extended/view_decorators.py", line 89, in verify_jwt_in_request
-    jwt_data, jwt_header, jwt_location = _decode_jwt_from_request(
-                                         ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_jwt_extended/view_decorators.py", line 323, in _decode_jwt_from_request
-    decoded_token = decode_token(encoded_token, csrf_token)
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_jwt_extended/utils.py", line 127, in decode_token
-    return jwt_manager._decode_jwt_from_config(encoded_token, csrf_value, allow_expired)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_jwt_extended/jwt_manager.py", line 553, in _decode_jwt_from_config
-    return _decode_jwt(**kwargs, allow_expired=allow_expired)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_jwt_extended/tokens.py", line 94, in _decode_jwt
-    decoded_token = jwt.decode(
-                    ^^^^^^^^^^^
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/jwt/api_jwt.py", line 168, in decode
-    decoded = self.decode_complete(
-              ^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/jwt/api_jwt.py", line 136, in decode_complete
-    self._validate_claims(
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/jwt/api_jwt.py", line 199, in _validate_claims
-    self._validate_exp(payload, now, leeway)
-  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/jwt/api_jwt.py", line 237, in _validate_exp
-    raise ExpiredSignatureError("Signature has expired")
-jwt.exceptions.ExpiredSignatureError: Signature has expired
-2023-06-07 10:16:46 INFO: 127.0.0.1 - CreateURL is called
-2023-06-07 10:16:51 INFO: 127.0.0.1 - Custom URL by <user veektaw@gmail.com> is saved to the database
-2023-06-07 10:16:51 DEBUG: 127.0.0.1 - Created a short url: <url c324cf95-65f9-48b9-9844-8533d2a63d5c>
-2023-06-07 10:16:59 INFO: 127.0.0.1 - GetURLS endpoint called
-2023-06-07 10:16:59 DEBUG: 127.0.0.1 - <user veektaw@gmail.com>: Retrieved 2 URLs
-2023-06-07 10:17:43 INFO: 127.0.0.1 - CreateURL is called
-2023-06-07 10:17:46 INFO: 127.0.0.1 - Custom URL by <user veektaw@gmail.com> is saved to the database
-2023-06-07 10:17:46 DEBUG: 127.0.0.1 - Created a short url: <url 5aa52a10-47af-443a-beae-1459ace286a3>
-2023-06-07 10:18:10 INFO: 127.0.0.1 - GetURLS endpoint called
-2023-06-07 10:18:10 DEBUG: 127.0.0.1 - <user veektaw@gmail.com>: Retrieved 3 URLs
-2023-06-07 10:18:57 INFO: 127.0.0.1 - CreateURL is called
-2023-06-07 10:18:59 INFO: 127.0.0.1 - Custom URL by <user veektaw@gmail.com> is saved to the database
-2023-06-07 10:18:59 DEBUG: 127.0.0.1 - Created a short url: <url 6345d51b-0121-47e7-981b-e6181a564994>
-2023-06-07 10:19:10 INFO: 127.0.0.1 - CreateURL is called
-2023-06-07 10:19:10 WARNING: 127.0.0.1 - URL has already been processed
-2023-06-07 10:19:34 INFO: 127.0.0.1 - CreateURL is called
-2023-06-07 10:19:35 INFO: 127.0.0.1 - Custom URL by <user veektaw@gmail.com> is saved to the database
-2023-06-07 10:19:35 DEBUG: 127.0.0.1 - Created a short url: <url 9898cd0f-260b-4c3f-9026-ace716ae040d>
-2023-06-07 10:19:53 INFO: 127.0.0.1 - CreateURL is called
-2023-06-07 10:19:55 INFO: 127.0.0.1 - Custom URL by <user veektaw@gmail.com> is saved to the database
-2023-06-07 10:19:55 DEBUG: 127.0.0.1 - Created a short url: <url 83c4bf24-99f0-4d30-948d-d43684f00a88>
-2023-06-07 10:20:00 INFO: 127.0.0.1 - GetURLS endpoint called
-2023-06-07 10:20:00 DEBUG: 127.0.0.1 - <user veektaw@gmail.com>: Retrieved 5 URLs
-2023-06-07 10:20:09 INFO: 127.0.0.1 - GetURLS endpoint called
-2023-06-07 10:20:09 DEBUG: 127.0.0.1 - <user veektaw@gmail.com>: Retrieved 5 URLs
-2023-06-07 10:21:12 INFO: 127.0.0.1 - GetURLS endpoint called
-2023-06-07 10:21:12 DEBUG: 127.0.0.1 - <user veektaw@gmail.com>: Retrieved 5 URLs
-2023-06-07 10:21:53 INFO: 127.0.0.1 - GetURLS endpoint called
-2023-06-07 10:21:53 DEBUG: 127.0.0.1 - <user veektaw@gmail.com>: Retrieved 6 URLs
-2023-06-07 10:22:07 INFO: 127.0.0.1 - GetURLS endpoint called
-2023-06-07 10:22:07 DEBUG: 127.0.0.1 - <user veektaw@gmail.com>: Retrieved 5 URLs
-2023-06-07 10:23:06 INFO: 127.0.0.1 - ViewDeleteURLbyID a URL by UUID called
-2023-06-07 10:23:06 WARNING: 127.0.0.1 - URL not found
-2023-06-07 10:23:16 INFO: 127.0.0.1 - GetURLS endpoint called
-2023-06-07 10:23:16 DEBUG: 127.0.0.1 - <user veektaw@gmail.com>: Retrieved 1 URLs
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_limiter/extension.py", line 1191, in __inner
+    R, flask.current_app.ensure_sync(cast(Callable[P, R], obj))(*a, **k)
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/venv/lib/python3.11/site-packages/flask_jwt_extended/view_decorators.py", line 154, in decorator
+    return current_app.ensure_sync(fn)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/macbook/Desktop/Return/Python/Code/Scissor_RestX/api/urls/views.py", line 375, in get
+    if url is None:
+       ^^^
+UnboundLocalError: cannot access local variable 'url' where it is not associated with a value
+2023-06-07 12:44:16 INFO: 127.0.0.1 - GenerateURLQRCode is called
+2023-06-07 12:44:16 WARNING: 127.0.0.1 - QR code already exists for the URL
+2023-06-07 12:44:41 INFO: 127.0.0.1 - GenerateURLQRCode is called
+2023-06-07 12:44:41 WARNING: 127.0.0.1 - QR code already exists for the URL
+2023-06-07 12:45:41 INFO: 127.0.0.1 - CreateURL is called
+2023-06-07 12:45:42 INFO: 127.0.0.1 - Custom URL by <user veektaw@gmail.com> is saved to the database
+2023-06-07 12:45:42 DEBUG: 127.0.0.1 - Created a short url: <url 9cbd07da-c0fc-4150-a00d-23c910a63dc3>
+2023-06-07 12:46:10 INFO: 127.0.0.1 - GenerateURLQRCode is called
+2023-06-07 12:46:10 WARNING: 127.0.0.1 - QR code already exists for the URL
+2023-06-07 12:47:02 INFO: 127.0.0.1 - GenerateURLQRCode is called
+2023-06-07 12:47:02 WARNING: 127.0.0.1 - QR code already exists for the URL
+2023-06-07 12:47:07 INFO: 127.0.0.1 - GenerateURLQRCode is called
+2023-06-07 12:47:07 WARNING: 127.0.0.1 - QR code already exists for the URL
+2023-06-07 12:48:36 INFO: 127.0.0.1 - CreateURL is called
+2023-06-07 12:48:38 INFO: 127.0.0.1 - Custom URL by <user veektaw@gmail.com> is saved to the database
+2023-06-07 12:48:38 DEBUG: 127.0.0.1 - Created a short url: <url aa5d2cf3-83d1-40c1-af2c-7faeef1a9c0e>
+2023-06-07 12:49:12 INFO: 127.0.0.1 - GenerateURLQRCode is called
+2023-06-07 12:49:12 DEBUG: 127.0.0.1 - QR code <Response streamed [200 OK]> created
+2023-06-07 12:49:17 INFO: 127.0.0.1 - GenerateURLQRCode is called
+2023-06-07 12:49:17 WARNING: 127.0.0.1 - QR code already exists for the URL
+2023-06-07 12:49:48 WARNING: 127.0.0.1 - URL not found
+2023-06-07 12:49:48 WARNING: 127.0.0.1 - URL not found
+2023-06-07 12:49:48 WARNING: 127.0.0.1 - URL not found
+2023-06-07 12:49:48 WARNING: 127.0.0.1 - URL not found
+2023-06-07 12:49:49 WARNING: 127.0.0.1 - URL not found
+2023-06-07 12:49:49 WARNING: 127.0.0.1 - URL not found
+2023-06-07 12:49:49 WARNING: 127.0.0.1 - URL not found
+2023-06-07 12:49:49 WARNING: 127.0.0.1 - URL not found
+2023-06-07 12:49:49 WARNING: 127.0.0.1 - URL not found
+2023-06-07 12:49:49 WARNING: 127.0.0.1 - URL not found

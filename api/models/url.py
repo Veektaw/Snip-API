@@ -27,17 +27,7 @@ class Url(db.Model):
         db.session.commit()
         
     def format_datetime(dt):
-        return dt.strftime("%Y-%m-%d %I:%M %p")
-    
-    
-    def serialize(self):
-        return {
-            'id': self.id,
-            'user_long_url': self.user_long_url,
-            'url_title': self.url_title,
-            'short_url': self.short_url,
-            'created': self.created.strftime('%Y-%m-%d %H:%M:%S'),
-        }    
+        return dt.strftime("%Y-%m-%d %I:%M %p")   
     
 
     @classmethod
