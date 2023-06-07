@@ -3,7 +3,8 @@ import base64
 import io
 import logging
 from http import HTTPStatus
-from flask_restx import Resource 
+from flask import request
+from flask_restx import Resource, inputs 
 from flask import request, Response, send_file, redirect, make_response, current_app, session
 from flask_jwt_extended import jwt_required , get_jwt_identity
 from .serializer import (url_expect_serializer, url_marshall_serializer,
@@ -23,9 +24,8 @@ class CreateURL(Resource):
     @url_namespace.expect(url_expect_serializer)     
     @url_namespace.marshal_with(url_marshall_serializer)
     @url_namespace.doc(description = "Make a url short",
-                      params={"user_long_url":"Long url by the user"})   
+                      params={"user_long_url":"Long url by the user"})
     @jwt_required()
-    @cache.cached(timeout=50)
     @limiter.limit("5 per minute")
      
     def post(self):
@@ -160,20 +160,18 @@ class GetURLS(Resource):
    
     @cache.cached(timeout=5)
     @limiter.limit("5 per minute")
-    @url_namespace.doc(description="Get all URLs",
-                       params={"get method": "Get all URLs"})
+    @url_namespace.doc(
+    description="Get all URLs",
+    params={"get method": "Get all URLs",
+            "page": {"description": "Page number", "type": int, "default": 1},
+            "per_page": {"description": "Number of URLs per page", "type": int, "default": 5},
+    },
+)   
     @url_namespace.marshal_with(url_marshall_serializer)
     @jwt_required()
     
     
     def get(self):
-        
-        """
-        
-                Get all URLs with a simple GET method.
-                 
-        """
-        
         logger = logging.getLogger(__name__)
         logger.info("GetURLS endpoint called")
 
@@ -184,12 +182,17 @@ class GetURLS(Resource):
             logger.warning("User not found")
             return {"message": "User not found"}, HTTPStatus.NOT_FOUND
 
-        urls = Url.query.filter_by(creator=authenticated_user.email).all()
-        
-        if urls is None:
+        page = request.args.get("page", default=1, type=int)
+        per_page = request.args.get("per_page", default=5, type=int)
+
+        urls_query = Url.query.filter_by(creator=authenticated_user.email)
+        urls_paginated = urls_query.paginate(page=page, per_page=per_page)
+
+        urls = urls_paginated.items
+
+        if not urls:
             logger.warning("URL not found")
             return {"message": "URL not found"}, HTTPStatus.NOT_FOUND
-
 
         logger.debug(f"{authenticated_user}: Retrieved {len(urls)} URLs")
 

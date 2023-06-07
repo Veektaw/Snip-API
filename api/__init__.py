@@ -1,4 +1,5 @@
 from flask import Flask, jsonify, request
+from flask_sqlalchemy import SQLAlchemy
 from flask_caching import Cache
 from flask_admin import Admin
 from functools import wraps
@@ -10,8 +11,8 @@ from .visitor.views import visitor_namespace
 from .account_management.views import manage_namespace
 from .config.config import config_dict
 from .utility import db, cache, limiter, redis_cache, jwt, admin, blocklist
-from redis import Redis
 from flask_caching.backends import RedisCache
+from redis import Redis
 from .models.url import Url
 from .models.user import User, Token
 from .models.tokenblocklist import TokenBlocklist
@@ -38,6 +39,7 @@ def create_app(config=config_dict['dev']):
     jwt = JWTManager(app)
     bcrypt = Bcrypt(app)
     migrate = Migrate(app, db)
+    #paginate = Pagination(app)
     
     admin = Admin(app)
     admin.add_view(UserView(User, db.session))

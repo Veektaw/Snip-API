@@ -66,3 +66,4 @@ class Url(db.Model):
     def check_url(cls , url):
         url_exists = cls.query.filter_by(short_url = url).first()
         return True if url_exists else False
+    
