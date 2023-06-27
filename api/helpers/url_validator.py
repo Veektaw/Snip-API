@@ -24,7 +24,7 @@ class URLCreator:
     def short_url(cls, user_long_url):
         characters_combinantion = string.ascii_letters + string.digits
         random_string_combination = ''.join(random.choices(characters_combinantion, k=5))
-        new_url = f"https://{request.host}/{random_string_combination}"
+        new_url = f"http://{request.host}/{random_string_combination}"
         does_url_exist = Url.check_url(new_url)
         
         if does_url_exist: 
@@ -34,7 +34,7 @@ class URLCreator:
     
     @classmethod
     def custom_url(cls, user_long_url, custom_url):
-            new_url = f"https://{request.host}/{custom_url}"
+            new_url = f"http://{request.host}/{custom_url}"
             does_url_exist = Url.check_url(new_url)
         
             if does_url_exist:

@@ -46,6 +46,8 @@ limits==3.5.0
 Mako==1.2.4
 markdown-it-py==2.2.0
 MarkupSafe==2.1.2
+marshmallow==3.19.0
+marshmallow-sqlalchemy==0.29.0
 mdurl==0.1.2
 oauthlib==3.2.2
 ordered-set==4.1.0

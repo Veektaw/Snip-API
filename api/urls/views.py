@@ -130,7 +130,7 @@ class CreateCustomURL(Resource):
          
             url = Url (
                 user_long_url = user_long_url,
-                custom_url = custom_url,
+                short_url = custom_url,
                 url_title = url_title,
                 creator = authenticated_user.email
             )
@@ -271,7 +271,7 @@ class ViewDeleteURLbyID(Resource):
 
 
 
-@url_namespace.route('/<short_url>/visited')
+@url_namespace.route('/<short_url>')
 class ShortUrlRedirect(Resource):
     
     
@@ -331,27 +331,8 @@ class GetURLSInfo(Resource):
         return response, HTTPStatus.OK  
    
 
-# @url_namespace.route('/date') 
-# class GetLatestURLSApiView(Resource):
-   
-#    @url_namespace.doc(description = "Get more information about urls") 
-#    @url_namespace.marshal_list_with(url_marshall_serializer)       
-#    @jwt_required()
-     
-#    def get(self):
-#       authenticated_user_email = get_jwt_identity() 
-#       authenticated_user = User.query.filter_by(email=authenticated_user_email).first()
-         
-#       if not authenticated_user:
-#          return {"message": "User not found"}, HTTPStatus.NOT_FOUND
-
-#       urls = Url.query.filter_by(creator = authenticated_user.email).order_by(Url.created.desc()).limit(5).all()  
-#       return urls, HTTPStatus.OK   
-
-
 @url_namespace.route('/<id>/qrcode')
 class GenerateURLQRCode(Resource):
-    
     
     #@cache.cached(timeout=50)
     @limiter.limit("5 per minute")
@@ -381,7 +362,7 @@ class GenerateURLQRCode(Resource):
 
         if url.qr_code_url:
             logger.warning("QR code already exists for the URL")
-            return {"message": "QR code already exists"}, HTTPStatus.BAD_REQUEST
+            return {"message": "QR code already exists"}, HTTPStatus.CONFLICT
         
         img = qrcode.make(id)
         img_io = io.BytesIO()

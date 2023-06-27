@@ -167,4 +167,3 @@ class UrlTestCase(unittest.TestCase):
         response = self.client.get(url_endpoint, headers={'Authorization': f'Bearer {token}'})
 
         assert response.status_code == 201
-        #assert response.json['user_long_url'] == 'https://www.example.com'
